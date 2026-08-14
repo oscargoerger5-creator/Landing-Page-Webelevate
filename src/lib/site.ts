@@ -142,3 +142,66 @@ export const caseStudies: CaseStudy[] = [
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return caseStudies.find((c) => c.slug === slug);
 }
+
+// ---------------------------------------------------------------------------
+// Preuve sociale : logos clients (slider), témoignages, note.
+// ---------------------------------------------------------------------------
+
+// Logos clients affichés dans le slider du hero.
+// Dépose les fichiers dans public/clients/ (SVG/PNG, fond transparent) puis
+// renseigne `logo`. Sans `logo`, le nom s'affiche en texte.
+export type ClientLogo = { name: string; logo?: string };
+
+export const clients: ClientLogo[] = [
+  { name: "Client A" },
+  { name: "Client B" },
+  { name: "Client C" },
+  { name: "Client D" },
+  { name: "Client E" },
+  { name: "Client F" },
+  { name: "Client G" },
+  { name: "Client H" },
+];
+
+// Témoignages. Dépose les photos dans public/testimonials/ puis renseigne `photo`
+// (ex. "/testimonials/jean.jpg"). Ici des photos de placeholder (à remplacer).
+export type Testimonial = {
+  name: string;
+  role: string;
+  quote: string;
+  photo?: string;
+};
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Jean Dupont",
+    role: "Fondateur, Marque A",
+    quote:
+      "Webelevate a transformé notre présence en ligne — site, photos et vidéos, tout est cohérent et pro.",
+    photo:
+      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600",
+  },
+  {
+    name: "Camille Martin",
+    role: "Dirigeante, Marque B",
+    quote:
+      "Des visuels bluffants et un site rapide. On a doublé nos demandes de contact.",
+    photo:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600",
+  },
+  {
+    name: "Alex Bernard",
+    role: "CEO, Marque C",
+    quote:
+      "Réactifs, créatifs et carrés. L'IA qu'ils ont intégrée nous fait gagner un temps fou.",
+    photo:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&h=600&auto=format&fit=crop",
+  },
+];
+
+// Note affichée dans le bloc de preuve sociale du hero.
+export const socialProof = {
+  rating: "5,0",
+  count: "30+",
+  label: "projets réalisés",
+} as const;

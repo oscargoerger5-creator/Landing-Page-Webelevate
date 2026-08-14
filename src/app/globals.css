@@ -128,3 +128,13 @@
     @apply font-sans;
   }
 }
+
+/* Slider clients (marquee) : les logos défilent en boucle. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

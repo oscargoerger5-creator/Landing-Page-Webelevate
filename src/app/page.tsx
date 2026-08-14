@@ -1,41 +1,16 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { caseStudies, site } from "@/lib/site";
+import { caseStudies } from "@/lib/site";
+import { Hero } from "@/components/hero";
+import { Testimonials } from "@/components/testimonials";
 
 // ACCUEIL — landing page (structure placeholder).
 // Chaque section marquée « [21st] » sera remplacée par un composant 21st.dev.
 export default function HomePage() {
   return (
     <>
-      {/* [21st] HERO */}
-      <section className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <p className="mb-4 text-sm font-medium uppercase tracking-widest text-black/50">
-          Agence web
-        </p>
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight md:text-6xl">
-          {site.tagline}
-        </h1>
-        <p className="mt-6 max-w-xl text-lg text-black/60">
-          {site.description}
-        </p>
-        <div className="mt-8 flex flex-wrap gap-4">
-          <Link
-            href="/contact"
-            className={buttonVariants({ variant: "secondary", size: "lg" })}
-          >
-            Démarrer un projet
-          </Link>
-          <Link
-            href="/realisations"
-            className={buttonVariants({ variant: "ghost", size: "lg" })}
-          >
-            Voir nos réalisations
-          </Link>
-        </div>
-        <p className="mt-10 text-xs text-black/30">
-          [Zone HERO — à remplacer par un composant 21st.dev]
-        </p>
-      </section>
+      {/* HERO (composant dédié) + slider clients */}
+      <Hero />
 
       {/* SERVICES — grille bento (média pour photo/vidéo, propre pour sites/IA) */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
@@ -119,6 +94,9 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* TÉMOIGNAGES */}
+      <Testimonials />
 
       {/* [21st] RÉALISATIONS (en avant) */}
       <section className="mx-auto max-w-6xl px-6 py-16">

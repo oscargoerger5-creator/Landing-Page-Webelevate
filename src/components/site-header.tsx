@@ -77,7 +77,7 @@ export function SiteHeader() {
             rel="noopener noreferrer"
             aria-label="Nous écrire sur WhatsApp"
             title="WhatsApp"
-            className="ml-2 inline-flex size-10 items-center justify-center rounded-lg border border-black/15 text-neutral-800 transition-colors hover:border-black/25 hover:bg-black/5"
+            className="ml-2 inline-flex size-10 items-center justify-center rounded-lg bg-[#25D366] text-white transition-all duration-200 hover:bg-[#1EBE57] hover:shadow-[0_0_0_4px_rgba(37,211,102,0.28)]"
           >
             <WhatsAppIcon className="size-5" />
           </a>
@@ -133,7 +133,7 @@ export function SiteHeader() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg border border-black/15 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/5"
+              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#25D366] text-sm font-medium text-white transition-colors hover:bg-[#1EBE57]"
             >
               <WhatsAppIcon className="size-5" />
               WhatsApp
