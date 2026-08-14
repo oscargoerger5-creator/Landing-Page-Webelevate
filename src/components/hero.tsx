@@ -52,8 +52,10 @@ function SocialProof() {
 // HERO — adapté à Webelevate (sites, photo, vidéo, IA), thème clair.
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* Fond en pointillés noirs, léger, estompé au centre */}
+    <>
+      {/* SECTION HERO — les pointillés restent confinés ici */}
+      <section className="relative overflow-hidden">
+        {/* Fond en pointillés noirs, léger, estompé au centre */}
       <DotPattern
         cr={1.3}
         className={cn(
@@ -67,7 +69,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[460px] bg-[radial-gradient(50%_60%_at_50%_0%,rgba(255,255,255,0.6),transparent)]"
       />
 
-      <div className="mx-auto flex max-w-3xl flex-col items-center px-6 pb-16 pt-24 text-center md:pt-28">
+        <div className="mx-auto flex max-w-3xl flex-col items-center px-6 pb-28 pt-24 text-center md:pb-32 md:pt-28">
         <SocialProof />
 
         <h1 className="mt-6 text-balance text-4xl font-semibold tracking-tight md:text-6xl">
@@ -89,14 +91,16 @@ export function Hero() {
           </Link>
           <Link
             href="/realisations"
-            className="inline-flex h-11 items-center justify-center whitespace-nowrap rounded-full border border-black/15 px-6 text-sm font-medium text-neutral-900 transition-colors hover:bg-black/5"
+            className="inline-flex h-11 items-center justify-center whitespace-nowrap rounded-full border border-black/15 bg-white px-6 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50"
           >
             Voir nos réalisations
           </Link>
         </div>
-      </div>
+        </div>
+      </section>
 
+      {/* SECTION CLIENTS — séparée, sans pointillés */}
       <ClientLogos />
-    </section>
+    </>
   );
 }
