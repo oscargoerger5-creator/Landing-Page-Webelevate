@@ -1,8 +1,15 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { testimonials, socialProof } from "@/lib/site";
+import { socialProof } from "@/lib/site";
 import { ClientLogos } from "@/components/client-logos";
 import { DotPattern } from "@/components/ui/dot-pattern";
+
+// Têtes affichées dans le bloc de preuve sociale (au-dessus du titre).
+const heroAvatars = [
+  { name: "Chapelon", photo: "/clients/chapelon-mg.jpg" },
+  { name: "Robin Dormion", photo: "/clients/robin-dormion.jpg" },
+  { name: "Kylian Khalifa", photo: "/clients/kyliankhalifa.jpg" },
+];
 
 function StarIcon({ className }: { className?: string }) {
   return (
@@ -17,24 +24,15 @@ function SocialProof() {
   return (
     <div className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-white px-3.5 py-1.5 shadow-sm">
       <div className="flex -space-x-2">
-        {testimonials.slice(0, 3).map((t, i) =>
-          t.photo ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={i}
-              src={t.photo}
-              alt=""
-              className="size-6 rounded-full border-2 border-white object-cover"
-            />
-          ) : (
-            <span
-              key={i}
-              className="grid size-6 place-items-center rounded-full border-2 border-white bg-neutral-200 text-[10px] font-medium text-neutral-600"
-            >
-              {t.name.charAt(0)}
-            </span>
-          ),
-        )}
+        {heroAvatars.map((a, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={i}
+            src={a.photo}
+            alt={a.name}
+            className="size-6 rounded-full border-2 border-white object-cover"
+          />
+        ))}
       </div>
       <div className="flex text-amber-400">
         {Array.from({ length: 5 }).map((_, i) => (

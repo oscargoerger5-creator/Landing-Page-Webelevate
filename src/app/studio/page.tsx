@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { studioProjects } from "@/lib/site";
+import { ClientFaces } from "@/components/client-faces";
 
 export const metadata: Metadata = {
   title: "Studio",
@@ -64,20 +65,9 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* Confiance */}
+      {/* Confiance — les entrepreneurs accompagnés (visages + activité) */}
       <section className="mx-auto max-w-6xl px-6 py-12">
-        <p className="text-center text-sm text-black/40">
-          Ils nous ont fait confiance
-        </p>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-70">
-          {["Client A", "Client B", "Client C", "Client D", "Client E"].map(
-            (c) => (
-              <span key={c} className="text-lg font-medium text-black/50">
-                {c}
-              </span>
-            ),
-          )}
-        </div>
+        <ClientFaces />
       </section>
 
       {/* CTA */}

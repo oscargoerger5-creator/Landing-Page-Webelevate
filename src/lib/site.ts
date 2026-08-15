@@ -147,21 +147,76 @@ export function getCaseStudy(slug: string): CaseStudy | undefined {
 // Preuve sociale : logos clients (slider), témoignages, note.
 // ---------------------------------------------------------------------------
 
-// Logos clients affichés dans le slider du hero.
-// Dépose les fichiers dans public/clients/ (SVG/PNG, fond transparent) puis
-// renseigne `logo`. Sans `logo`, le nom s'affiche en texte.
-export type ClientLogo = { name: string; logo?: string };
+// Clients affichés en preuve sociale.
+// - type "company" : une entreprise → logo (public/clients/xxx.svg) ou nom en texte
+// - type "person"  : un entrepreneur → photo (public/clients/xxx.jpg) + nom + activité
+export type Client = {
+  type: "company" | "person";
+  name: string;
+  logo?: string; // company
+  logoClassName?: string; // company : override de taille du logo (ex. TBV)
+  role?: string; // person (son activité, ex. "Coach business")
+  photo?: string; // person
+};
 
-export const clients: ClientLogo[] = [
-  { name: "Client A" },
-  { name: "Client B" },
-  { name: "Client C" },
-  { name: "Client D" },
-  { name: "Client E" },
-  { name: "Client F" },
-  { name: "Client G" },
-  { name: "Client H" },
+export const clients: Client[] = [
+  // Ordre : 1 entreprise puis 1 entrepreneur, selon la numérotation fournie.
+  { type: "company", name: "Dachser", logo: "/clients/dachser.png" },
+  {
+    type: "person",
+    name: "Mathias et Grégoire Chapelon",
+    role: "SaaS Builder",
+    photo: "/clients/chapelon-mg.jpg",
+  },
+  { type: "company", name: "Schmidt", logo: "/clients/cuisine-schmidt.png" },
+  {
+    type: "person",
+    name: "Robin Dormion",
+    role: "Founder Blow Up AI",
+    photo: "/clients/robin-dormion.jpg",
+  },
+  { type: "company", name: "TBV", logo: "/clients/tbv.png" },
+  {
+    type: "person",
+    name: "Kylian Khalifa",
+    role: "Founder Taap.it & Corporations",
+    photo: "/clients/kyliankhalifa.jpg",
+  },
+  { type: "company", name: "Solvation", logo: "/clients/solvation.jpg" },
+  {
+    type: "person",
+    name: "Florent Ghizzoni",
+    role: "Fondateur Ikovaline",
+    photo: "/clients/florent-ghizzoni.png",
+  },
+  {
+    type: "company",
+    name: "Cuisina création",
+    logo: "/clients/cuisina-creations.png",
+  },
+  {
+    type: "person",
+    name: "Paul-Marie Hamon",
+    role: "Founder Speechly & Readyt AI",
+    photo: "/clients/paulm-hm.jpg",
+  },
+  { type: "company", name: "Naawah", logo: "/clients/naawah.png" },
+  {
+    type: "person",
+    name: "Raphael Guilhem",
+    role: "Founding growth Pletor AI",
+    photo: "/clients/raph-guilhem.jpg",
+  },
+  {
+    type: "person",
+    name: "Rafael Guilbert",
+    role: "Co-founder & CTO of Speechly",
+    photo: "/clients/rafael-glbrt.jpg",
+  },
 ];
+
+// Uniquement les entrepreneurs (pour la version complète sur le Studio).
+export const clientPersons = clients.filter((c) => c.type === "person");
 
 // Témoignages. Dépose les photos dans public/testimonials/ puis renseigne `photo`
 // (ex. "/testimonials/jean.jpg"). Ici des photos de placeholder (à remplacer).
