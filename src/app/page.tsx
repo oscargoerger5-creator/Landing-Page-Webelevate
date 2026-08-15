@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { caseStudies } from "@/lib/site";
 import { Hero } from "@/components/hero";
+import { RealisationsGallery } from "@/components/realisations-gallery";
 import { Testimonials } from "@/components/testimonials";
 
-// ACCUEIL — landing page (structure placeholder).
-// Chaque section marquée « [21st] » sera remplacée par un composant 21st.dev.
+// ACCUEIL — ordre : Hero → Clients → Réalisations → Services → Process → Avis → CTA.
 export default function HomePage() {
   return (
     <>
       {/* HERO (composant dédié) + slider clients */}
       <Hero />
+
+      {/* RÉALISATIONS — carrousel de projets */}
+      <RealisationsGallery />
 
       {/* SERVICES — grille bento (média pour photo/vidéo, propre pour sites/IA) */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
@@ -95,44 +97,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TÉMOIGNAGES */}
-      <Testimonials />
-
-      {/* [21st] RÉALISATIONS (en avant) */}
-      <section className="mx-auto max-w-6xl px-6 py-16">
-        <div className="mb-10 flex items-end justify-between">
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-            Réalisations
-          </h2>
-          <Link
-            href="/realisations"
-            className="text-sm text-black/60 hover:text-black"
-          >
-            Tous les projets →
-          </Link>
-        </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          {caseStudies.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/realisations/${c.slug}`}
-              className="group rounded-xl border border-black/10 p-6 transition-colors hover:border-black/25"
-            >
-              {/* Emplacement visuel du projet (mockup couleur) */}
-              <div className="mb-6 flex aspect-video items-center justify-center rounded-lg border border-black/10 bg-black/5 text-xs text-black/30">
-                [Mockup projet]
-              </div>
-              <p className="text-sm text-black/50">{c.client}</p>
-              <h3 className="mt-1 text-xl font-medium group-hover:underline">
-                {c.title}
-              </h3>
-              <p className="mt-2 text-sm text-black/60">{c.summary}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* [21st] PROCESS */}
+      {/* PROCESS — comment on travaille */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="mb-10 text-2xl font-semibold tracking-tight md:text-3xl">
           Notre processus
@@ -147,7 +112,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* [21st] CTA final */}
+      {/* AVIS / TÉMOIGNAGES — renfort social juste avant le CTA */}
+      <Testimonials />
+
+      {/* CTA final */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <div className="rounded-2xl border border-black/10 bg-black/5 p-10 text-center md:p-16">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">

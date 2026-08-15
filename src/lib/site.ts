@@ -260,3 +260,40 @@ export const socialProof = {
   count: "30+",
   label: "projets réalisés",
 } as const;
+
+// Réalisations du carrousel (accueil) — PLACEHOLDERS à remplir.
+// Ajoute `image` (ex. "/realisations/projet.jpg") ; sinon un cadre placeholder s'affiche.
+export type Realisation = {
+  title: string;
+  summary: string;
+  url?: string;
+  image?: string;
+};
+
+export const realisations: Realisation[] = [
+  {
+    title: "Refonte de site vitrine",
+    summary: "Un site moderne et rapide qui convertit mieux.",
+    url: "/realisations",
+  },
+  {
+    title: "Boutique e-commerce",
+    summary: "Une expérience d'achat fluide, du panier au paiement.",
+    url: "/realisations",
+  },
+  {
+    title: "Film de marque",
+    summary: "Une vidéo à forte identité pour marquer les esprits.",
+    url: "/realisations",
+  },
+  {
+    title: "Shooting produit",
+    summary: "Des visuels léchés qui valorisent vos produits.",
+    url: "/realisations",
+  },
+  {
+    title: "Automatisation IA",
+    summary: "Des process automatisés pour gagner un temps précieux.",
+    url: "/realisations",
+  },
+];
