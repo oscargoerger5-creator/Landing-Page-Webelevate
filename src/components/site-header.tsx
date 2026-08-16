@@ -67,7 +67,9 @@ export function SiteHeader() {
           />
         </Link>
 
-        <div className="hidden items-center gap-0.5 sm:flex md:gap-1">
+        {/* max-sm:hidden (plutôt que hidden+sm:flex) : la classe `hidden` peut
+            être écrasée par le CSS injecté de certaines extensions Chrome. */}
+        <div className="flex items-center gap-0.5 max-sm:hidden md:gap-1">
           {nav.map((item) => (
             <Link key={item.href} href={item.href} className={navLink}>
               {item.label}
@@ -82,7 +84,7 @@ export function SiteHeader() {
             rel="noopener noreferrer"
             aria-label="Nous écrire sur WhatsApp"
             title="WhatsApp"
-            className="ml-2 hidden size-10 items-center justify-center rounded-lg bg-[#25D366] text-white transition-all duration-200 hover:bg-[#1EBE57] hover:shadow-[0_0_0_4px_rgba(37,211,102,0.28)] md:inline-flex"
+            className="ml-2 inline-flex size-10 items-center justify-center rounded-lg bg-[#25D366] text-white transition-all duration-200 max-md:hidden hover:bg-[#1EBE57] hover:shadow-[0_0_0_4px_rgba(37,211,102,0.28)]"
           >
             <WhatsAppIcon className="size-5" />
           </a>
@@ -103,7 +105,7 @@ export function SiteHeader() {
       <div
         className={cn(
           "fixed inset-x-0 top-16 bottom-0 z-50 flex flex-col overflow-hidden border-t border-black/10 bg-white sm:hidden",
-          open ? "block" : "hidden",
+          open ? "block" : "max-sm:hidden",
         )}
       >
         <div

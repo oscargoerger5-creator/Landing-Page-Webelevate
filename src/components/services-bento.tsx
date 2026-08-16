@@ -136,7 +136,7 @@ export function ServicesBento() {
         </div>
         <Link
           href="/services"
-          className="hidden text-sm text-black/60 hover:text-black sm:block"
+          className="text-sm text-black/60 max-sm:hidden hover:text-black"
         >
           Tous les services →
         </Link>
