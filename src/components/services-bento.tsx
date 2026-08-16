@@ -1,8 +1,10 @@
 import Link from "next/link";
 
-// Renseigne ces chemins quand tu déposes tes médias dans public/ :
-const VIDEO_SRC = ""; // ex. "/videos/showreel.mp4"
-const PHOTO_SRC = ""; // ex. "/photos/apercu.jpg"
+const VIDEO_SRC = "/videos/showreel.mp4";
+
+// Diaporama de la tuile Photo — ordre d'affichage voulu (photo-1 → photo-9).
+const PHOTOS = Array.from({ length: 9 }, (_, i) => `/photos/photo-${i + 1}.jpg`);
+const PHOTO_SLIDE_SECONDS = 3; // durée d'affichage de chaque photo
 
 // Tuiles unifiées : même carte claire, le visuel vit à l'intérieur.
 const tile =
@@ -53,6 +55,36 @@ function BrowserMockup() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Diaporama en fondu : la première photo sert de fond stable, les autres
+// se relaient par-dessus via les keyframes `photo-cycle` (globals.css).
+function PhotoSlideshow() {
+  const total = PHOTOS.length * PHOTO_SLIDE_SECONDS;
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={PHOTOS[0]}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {PHOTOS.map((src, i) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={src}
+          src={src}
+          alt={i === 0 ? "Photos Webelevate" : ""}
+          className="absolute inset-0 h-full w-full object-cover opacity-0"
+          style={{
+            animation: `photo-cycle ${total}s linear infinite`,
+            animationDelay: `${i * PHOTO_SLIDE_SECONDS}s`,
+          }}
+        />
+      ))}
+    </>
   );
 }
 
@@ -207,18 +239,7 @@ export function ServicesBento() {
         {/* Photo — bas droite */}
         <Link href="/studio" className={tile}>
           <div className={`${mediaArea} bg-neutral-900`}>
-            {PHOTO_SRC ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={PHOTO_SRC}
-                alt="Photo"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-            ) : (
-              <span className="absolute inset-0 flex items-center justify-center text-xs text-white/25">
-                [ Photo ]
-              </span>
-            )}
+            <PhotoSlideshow />
             <span className={`${badge} border-white/20 text-white/70`}>
               Photo
             </span>
