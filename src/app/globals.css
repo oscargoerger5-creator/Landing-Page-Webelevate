@@ -174,7 +174,9 @@
 }
 
 /* Diaporama de la tuile Photo (services-bento) : 9 photos × 3s = cycle de 27s.
-   Chaque image est visible ~1/9 du cycle (11,1 %) avec 1s de fondu (3,7 %).
+   La photo entrante fond par-dessus la courante restée opaque (pas de fondu
+   croisé) : chaque image reste à 100 % jusqu'à être recouverte par la
+   suivante (14,81 %), puis s'efface une fois cachée.
    Si le nombre de photos change, recalculer ces pourcentages. */
 @keyframes photo-cycle {
   0% {
@@ -183,10 +185,10 @@
   3.7% {
     opacity: 1;
   }
-  11.11% {
+  14.81% {
     opacity: 1;
   }
-  14.81% {
+  18.51% {
     opacity: 0;
   }
   100% {

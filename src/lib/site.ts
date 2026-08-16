@@ -175,6 +175,11 @@ export const clients: Client[] = [
     role: "Founder Blow Up AI",
     photo: "/clients/robin-dormion.jpg",
   },
+  {
+    type: "company",
+    name: "Eugenia School",
+    logo: "/clients/eugenia-school.png",
+  },
   { type: "company", name: "TBV", logo: "/clients/tbv.png" },
   {
     type: "person",
