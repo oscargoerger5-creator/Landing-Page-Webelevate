@@ -8,7 +8,7 @@ import { ClientFaces } from "@/components/client-faces";
 export const metadata: Metadata = {
   title: "Studio",
   description:
-    "Photo & vidéo — la vitrine créative de Webelevate : projets et clients accompagnés.",
+    "Photo & vidéo : la vitrine créative de Webelevate, ses projets et les clients accompagnés.",
 };
 
 // Dispositions asymétriques (effet éditorial / galerie).
@@ -33,7 +33,7 @@ export default function StudioPage() {
           Photo &amp; Vidéo
         </h1>
         <p className="mt-6 max-w-xl text-lg text-black/60">
-          On capture l'image de votre marque — et celle des personnes qu'on
+          On capture l'image de votre marque, et celle des personnes qu'on
           accompagne. Quelques projets qu'on a réalisés.
         </p>
       </section>

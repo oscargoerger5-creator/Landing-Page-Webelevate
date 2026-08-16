@@ -178,6 +178,26 @@
    croisé) : chaque image reste à 100 % jusqu'à être recouverte par la
    suivante (14,81 %), puis s'efface une fois cachée.
    Si le nombre de photos change, recalculer ces pourcentages. */
+/* Diaporama par paires (page /services) : 4 duos × 4s = cycle de 16s.
+   Même principe que photo-cycle : l'entrant fond par-dessus l'opaque. */
+@keyframes pair-cycle {
+  0% {
+    opacity: 0;
+  }
+  6.25% {
+    opacity: 1;
+  }
+  31.25% {
+    opacity: 1;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes photo-cycle {
   0% {
     opacity: 0;

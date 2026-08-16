@@ -19,7 +19,7 @@ export default function MentionsLegalesPage() {
             Éditeur du site
           </h2>
           <p>
-            {site.name} — [forme juridique à compléter]
+            {site.name}, [forme juridique à compléter]
             <br />
             [Adresse à compléter]
             <br />
@@ -41,7 +41,7 @@ export default function MentionsLegalesPage() {
             Hébergement
           </h2>
           <p>
-            [Hébergeur à compléter — ex. Vercel Inc., 440 N Barranca Ave #4133,
+            [Hébergeur à compléter, ex. Vercel Inc., 440 N Barranca Ave #4133,
             Covina, CA 91723, États-Unis]
           </p>
         </section>

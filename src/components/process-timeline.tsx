@@ -80,7 +80,7 @@ export function ProcessTimeline() {
   }, []);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section id="processus" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-medium uppercase tracking-widest text-black/40">
           Notre processus

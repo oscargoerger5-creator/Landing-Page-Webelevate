@@ -15,7 +15,8 @@ const badge =
 const label = "px-1.5 pb-1 pt-3";
 
 // Mini site web coloré dans une fenêtre de navigateur (représente « Site internet »).
-function BrowserMockup() {
+// Exporté : aussi utilisé sur la page /services.
+export function BrowserMockup() {
   return (
     <div className="w-full max-w-[300px] overflow-hidden rounded-lg border border-black/10 bg-white shadow-md transition-transform duration-300 group-hover:-translate-y-1">
       {/* Barre du navigateur */}
@@ -106,7 +107,8 @@ function CheckIcon() {
 
 // Chat IA animé (représente « IA ») — clair pour tout le monde :
 // on demande une tâche, l'IA « écrit… » puis livre le résultat, en boucle.
-function AiChat() {
+// Exporté : aussi utilisé sur la page /services.
+export function AiChat() {
   return (
     <div className="w-full max-w-[300px] rounded-xl border border-black/10 bg-white p-3 shadow-md transition-transform duration-300 group-hover:-translate-y-1">
       {/* En-tête */}
@@ -224,7 +226,7 @@ export function ServicesBento() {
                 [ Vidéo — showreel ]
               </span>
             )}
-            <span className={`${badge} border-white/20 text-white/70`}>
+            <span className={`${badge} border-[rgba(255,255,255,0.25)] text-[rgba(255,255,255,0.75)]`}>
               Vidéo
             </span>
           </div>
@@ -240,7 +242,7 @@ export function ServicesBento() {
         <Link href="/studio" className={tile}>
           <div className={`${mediaArea} bg-neutral-900`}>
             <PhotoSlideshow />
-            <span className={`${badge} border-white/20 text-white/70`}>
+            <span className={`${badge} border-[rgba(255,255,255,0.25)] text-[rgba(255,255,255,0.75)]`}>
               Photo
             </span>
           </div>

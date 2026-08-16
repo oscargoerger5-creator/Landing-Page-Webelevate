@@ -4,7 +4,7 @@
 
 export const site = {
   name: "webelevate",
-  tagline: "Sites web, photo, vidéo & IA — sous un même toit",
+  tagline: "Sites web, photo, vidéo & IA sous un même toit",
   description:
     "Webelevate est une agence créative et tech : on conçoit des sites, on produit vos images et vidéos, et on met l'IA à votre service.",
   email: "hello@webelevate.fr",
@@ -376,6 +376,80 @@ export const realisations: Realisation[] = [
     title: "Automatisation IA",
     summary: "Des process automatisés pour gagner un temps précieux.",
     url: "/realisations",
+  },
+];
+
+// Détail des services (page /services) — accroche, description longue et
+// liste de ce qui est inclus. Ordre d'affichage = ordre du tableau.
+export type ServiceDetail = {
+  slug: string;
+  kicker: string; // sous-titre métier au-dessus du titre
+  title: string;
+  headline: string;
+  description: string;
+  included: string[];
+};
+
+export const serviceDetails: ServiceDetail[] = [
+  {
+    slug: "sites-internet",
+    kicker: "Conception & développement",
+    title: "Site internet",
+    headline: "Votre site ne doit pas juste exister. Il doit vendre.",
+    description:
+      "Vitrine, e-commerce ou web-app : on conçoit un site sur-mesure qui raconte votre marque et transforme vos visiteurs en clients. Pas de template, rien de superflu.",
+    included: [
+      "Design sur-mesure, à votre image",
+      "Rapide, sécurisé, irréprochable sur mobile",
+      "Optimisé pour Google dès le premier jour",
+      "En ligne en 21 jours, retours illimités",
+      "Vous restez propriétaire de tout",
+    ],
+  },
+  {
+    slug: "ia",
+    kicker: "Automatisation & assistants",
+    title: "IA",
+    headline: "Vos journées font 24 heures. On vous en rend quelques-unes.",
+    description:
+      "On repère ce qui vous fait perdre du temps (relances, contenus, support, admin) et on l'automatise avec des outils simples, branchés sur ceux que vous utilisez déjà.",
+    included: [
+      "Audit de vos process, sans jargon",
+      "Automatisations qui tournent seules",
+      "Assistants et chatbots à votre voix",
+      "Intégrés à vos outils existants",
+      "Votre équipe formée et autonome",
+    ],
+  },
+  {
+    slug: "video",
+    kicker: "Production & montage",
+    title: "Vidéo",
+    headline: "Vous avez 3 secondes pour capter l'attention. On les soigne.",
+    description:
+      "Films de marque, événementiel, automobile, formats réseaux : on écrit, on tourne, on monte. Vous repartez avec des vidéos prêtes à publier, partout.",
+    included: [
+      "Films de marque et corporate",
+      "Événementiel couvert de bout en bout",
+      "Reels et formats verticaux inclus",
+      "Tournage, montage, étalonnage : tout est là",
+      "Déclinés pour chaque plateforme",
+    ],
+  },
+  {
+    slug: "photo",
+    kicker: "Shooting & direction artistique",
+    title: "Photo",
+    headline: "On ne prend pas des photos. On construit votre image.",
+    description:
+      "Produits, portraits, événements, automobile : des images dirigées artistiquement, cohérentes avec votre marque, prêtes pour votre site comme pour vos réseaux.",
+    included: [
+      "Direction artistique incluse",
+      "Produits, portraits, reportage",
+      "Retouches professionnelles",
+      "Livrées optimisées web et print",
+      "Cohérentes avec votre site, forcément",
+    ],
   },
 ];
 
