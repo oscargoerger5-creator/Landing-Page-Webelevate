@@ -185,7 +185,7 @@ export function ProcessTimeline() {
         <InfinityIcon className="size-7 md:size-8" />
         {guarantee.title}
         <span className="font-normal text-black/50">
-          — {guarantee.description}
+          {guarantee.description}
         </span>
       </p>
 

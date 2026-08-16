@@ -7,48 +7,54 @@ type MenuToggleProps = React.ComponentProps<"svg"> & {
   duration?: number;
 };
 
+// Burger minimaliste : trois traits identiques qui se transforment en croix
+// (trait du haut et du bas pivotent, celui du milieu s'efface).
 export function MenuToggleIcon({
   open,
   className,
-  fill = "none",
   stroke = "currentColor",
-  strokeWidth = 2.5,
-  strokeLinecap = "round",
-  strokeLinejoin = "round",
-  duration = 500,
+  strokeWidth = 2,
+  duration = 300,
   ...props
 }: MenuToggleProps) {
+  const lineClass =
+    "origin-center [transform-box:fill-box] transition-all ease-in-out";
+  const style = { transitionDuration: `${duration}ms` };
+
   return (
     <svg
-      strokeWidth={strokeWidth}
-      fill={fill}
-      stroke={stroke}
       viewBox="0 0 32 32"
-      strokeLinecap={strokeLinecap}
-      strokeLinejoin={strokeLinejoin}
-      className={cn(
-        "transition-transform ease-in-out",
-        open && "-rotate-45",
-        className,
-      )}
-      style={{
-        transitionDuration: `${duration}ms`,
-      }}
+      fill="none"
+      stroke={stroke}
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      className={className}
       {...props}
     >
-      <path
-        className={cn(
-          "transition-all ease-in-out",
-          open
-            ? "[stroke-dasharray:20_300] [stroke-dashoffset:-32.42px]"
-            : "[stroke-dasharray:12_63]",
-        )}
-        style={{
-          transitionDuration: `${duration}ms`,
-        }}
-        d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+      <line
+        x1="7"
+        y1="9"
+        x2="25"
+        y2="9"
+        style={style}
+        className={cn(lineClass, open && "translate-y-[7px] rotate-45")}
       />
-      <path d="M7 16 27 16" />
+      <line
+        x1="7"
+        y1="16"
+        x2="25"
+        y2="16"
+        style={style}
+        className={cn(lineClass, open && "opacity-0")}
+      />
+      <line
+        x1="7"
+        y1="23"
+        x2="25"
+        y2="23"
+        style={style}
+        className={cn(lineClass, open && "-translate-y-[7px] -rotate-45")}
+      />
     </svg>
   );
 }
