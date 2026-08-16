@@ -4,10 +4,10 @@ import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { faq } from "@/lib/site";
 
-// FAQ — accordéon minimaliste : une question ouverte à la fois,
-// ouverture animée (grid-rows), icône + qui pivote en ×.
+// FAQ — accordéon minimaliste : tout fermé par défaut, une question ouverte
+// à la fois, ouverture animée (grid-rows), icône + qui pivote en ×.
 export function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-20 md:py-24">

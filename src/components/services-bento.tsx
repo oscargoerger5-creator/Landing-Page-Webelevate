@@ -121,7 +121,7 @@ function AiChat() {
   );
 }
 
-// SERVICES — bento 2×2 : Vidéo (HG) · Photo (HD) · Site internet (BG) · IA (BD).
+// SERVICES — bento 2×2 : Site internet (HG) · IA (HD) · Vidéo (BG) · Photo (BD).
 export function ServicesBento() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
@@ -143,7 +143,39 @@ export function ServicesBento() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        {/* Vidéo — haut gauche */}
+        {/* Site internet — haut gauche */}
+        <Link href="/services" className={tile}>
+          <div className={`${mediaArea} flex items-center justify-center bg-neutral-50 p-4`}>
+            <BrowserMockup />
+            <span className={`${badge} border-black/10 bg-white text-black/50`}>
+              Site internet
+            </span>
+          </div>
+          <div className={label}>
+            <h3 className="text-lg font-medium">Site internet</h3>
+            <p className="mt-0.5 text-sm text-black/60">
+              Sites vitrines, e-commerce et web-apps sur-mesure.
+            </p>
+          </div>
+        </Link>
+
+        {/* IA — haut droite */}
+        <Link href="/services" className={tile}>
+          <div className={`${mediaArea} flex items-center justify-center bg-neutral-50 p-4`}>
+            <AiChat />
+            <span className={`${badge} border-black/10 bg-white text-black/50`}>
+              IA
+            </span>
+          </div>
+          <div className={label}>
+            <h3 className="text-lg font-medium">IA</h3>
+            <p className="mt-0.5 text-sm text-black/60">
+              Automatisations et solutions IA pour gagner du temps.
+            </p>
+          </div>
+        </Link>
+
+        {/* Vidéo — bas gauche */}
         <Link href="/studio" className={tile}>
           <div className={`${mediaArea} bg-neutral-900`}>
             {VIDEO_SRC ? (
@@ -172,7 +204,7 @@ export function ServicesBento() {
           </div>
         </Link>
 
-        {/* Photo — haut droite */}
+        {/* Photo — bas droite */}
         <Link href="/studio" className={tile}>
           <div className={`${mediaArea} bg-neutral-900`}>
             {PHOTO_SRC ? (
@@ -195,38 +227,6 @@ export function ServicesBento() {
             <h3 className="text-lg font-medium">Photo</h3>
             <p className="mt-0.5 text-sm text-black/60">
               Shootings produits, portraits et images de marque.
-            </p>
-          </div>
-        </Link>
-
-        {/* Site internet — bas gauche */}
-        <Link href="/services" className={tile}>
-          <div className={`${mediaArea} flex items-center justify-center bg-neutral-50 p-4`}>
-            <BrowserMockup />
-            <span className={`${badge} border-black/10 bg-white text-black/50`}>
-              Site internet
-            </span>
-          </div>
-          <div className={label}>
-            <h3 className="text-lg font-medium">Site internet</h3>
-            <p className="mt-0.5 text-sm text-black/60">
-              Sites vitrines, e-commerce et web-apps sur-mesure.
-            </p>
-          </div>
-        </Link>
-
-        {/* IA — bas droite */}
-        <Link href="/services" className={tile}>
-          <div className={`${mediaArea} flex items-center justify-center bg-neutral-50 p-4`}>
-            <AiChat />
-            <span className={`${badge} border-black/10 bg-white text-black/50`}>
-              IA
-            </span>
-          </div>
-          <div className={label}>
-            <h3 className="text-lg font-medium">IA</h3>
-            <p className="mt-0.5 text-sm text-black/60">
-              Automatisations et solutions IA pour gagner du temps.
             </p>
           </div>
         </Link>

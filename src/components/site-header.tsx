@@ -26,8 +26,11 @@ export function SiteHeader() {
 
   React.useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    // Signale l'état du menu au reste de la page (ex. bouton WhatsApp flottant).
+    document.body.classList.toggle("menu-open", open);
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
     };
   }, [open]);
 
