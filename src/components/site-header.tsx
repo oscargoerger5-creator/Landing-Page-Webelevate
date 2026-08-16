@@ -59,16 +59,21 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
           className="flex items-center"
         >
-          <Logo className="h-10" wordmarkClassName="text-2xl" theme="light" />
+          {/* Wordmark masqué entre 640 et 830px pour laisser la place à la nav */}
+          <Logo
+            className="h-10"
+            wordmarkClassName="text-2xl sm:max-[830px]:hidden"
+            theme="light"
+          />
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-0.5 sm:flex md:gap-1">
           {nav.map((item) => (
             <Link key={item.href} href={item.href} className={navLink}>
               {item.label}
             </Link>
           ))}
-          <Link href="/contact" className={cn(cta, "ml-3")}>
+          <Link href="/contact" className={cn(cta, "ml-2 md:ml-3")}>
             Démarrer un projet
           </Link>
           <a
@@ -77,7 +82,7 @@ export function SiteHeader() {
             rel="noopener noreferrer"
             aria-label="Nous écrire sur WhatsApp"
             title="WhatsApp"
-            className="ml-2 inline-flex size-10 items-center justify-center rounded-lg bg-[#25D366] text-white transition-all duration-200 hover:bg-[#1EBE57] hover:shadow-[0_0_0_4px_rgba(37,211,102,0.28)]"
+            className="ml-2 hidden size-10 items-center justify-center rounded-lg bg-[#25D366] text-white transition-all duration-200 hover:bg-[#1EBE57] hover:shadow-[0_0_0_4px_rgba(37,211,102,0.28)] md:inline-flex"
           >
             <WhatsAppIcon className="size-5" />
           </a>
@@ -88,7 +93,7 @@ export function SiteHeader() {
           aria-label="Menu"
           aria-expanded={open}
           onClick={() => setOpen(!open)}
-          className="flex size-10 items-center justify-center rounded-lg border border-black/10 text-neutral-900 md:hidden"
+          className="flex size-10 items-center justify-center rounded-lg border border-black/10 text-neutral-900 sm:hidden"
         >
           <MenuToggleIcon open={open} className="size-5" duration={300} />
         </button>
@@ -97,7 +102,7 @@ export function SiteHeader() {
       {/* Menu mobile */}
       <div
         className={cn(
-          "fixed inset-x-0 top-16 bottom-0 z-50 flex flex-col overflow-hidden border-t border-black/10 bg-white md:hidden",
+          "fixed inset-x-0 top-16 bottom-0 z-50 flex flex-col overflow-hidden border-t border-black/10 bg-white sm:hidden",
           open ? "block" : "hidden",
         )}
       >

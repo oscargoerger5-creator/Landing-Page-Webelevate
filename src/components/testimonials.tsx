@@ -136,13 +136,13 @@ export function Testimonials() {
           <TestimonialsColumn items={firstColumn} duration={42} />
           <TestimonialsColumn
             items={secondColumn}
-            className="hidden md:block"
+            className="hidden sm:block"
             duration={35}
             reverse
           />
           <TestimonialsColumn
             items={thirdColumn}
-            className="hidden lg:block"
+            className="hidden md:block"
             duration={39}
           />
         </div>

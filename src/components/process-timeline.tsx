@@ -114,12 +114,12 @@ export function ProcessTimeline() {
                 ref={(el) => {
                   rowRefs.current[i] = el;
                 }}
-                className="relative grid grid-cols-[4.5rem_3rem_1fr] items-start py-8 md:grid-cols-[9rem_6rem_1fr] md:py-12"
+                className="relative grid grid-cols-[4.5rem_3rem_1fr] items-center py-8 md:grid-cols-[9rem_6rem_1fr] md:py-12"
               >
-                {/* Gros numéro du jour */}
+                {/* Gros numéro du jour — centré sur la ligne du point */}
                 <span
                   className={cn(
-                    "text-right text-4xl font-semibold tracking-tighter transition-colors duration-500 md:text-7xl",
+                    "text-right text-4xl font-semibold leading-none tracking-tighter transition-colors duration-500 md:text-7xl",
                     active ? "text-neutral-900" : "text-neutral-200",
                   )}
                 >
@@ -127,10 +127,10 @@ export function ProcessTimeline() {
                 </span>
 
                 {/* Point sur la ligne */}
-                <span className="relative flex h-full justify-center">
+                <span className="relative flex h-full items-center justify-center">
                   <span
                     className={cn(
-                      "mt-2 size-3 rounded-full border-2 bg-white transition-colors duration-500 md:mt-4",
+                      "size-3 rounded-full border-2 bg-white transition-colors duration-500",
                       active
                         ? "border-neutral-900 bg-neutral-900"
                         : "border-neutral-300",
@@ -141,7 +141,7 @@ export function ProcessTimeline() {
                 {/* Contenu */}
                 <div
                   className={cn(
-                    "flex items-start gap-4 pt-0.5 transition-all duration-500 md:gap-5 md:pt-2",
+                    "flex items-center gap-4 transition-all duration-500 md:gap-5",
                     active ? "opacity-100" : "translate-y-1 opacity-40",
                   )}
                 >
@@ -150,7 +150,7 @@ export function ProcessTimeline() {
                     return Icon ? (
                       <span
                         className={cn(
-                          "mt-0.5 grid size-9 shrink-0 place-items-center rounded-full border transition-colors duration-500 md:size-10",
+                          "grid size-9 shrink-0 place-items-center rounded-full border transition-colors duration-500 md:size-10",
                           active
                             ? "border-neutral-900 text-neutral-900"
                             : "border-neutral-300 text-neutral-400",
