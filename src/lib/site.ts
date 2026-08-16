@@ -215,8 +215,9 @@ export const clients: Client[] = [
   },
 ];
 
-// Uniquement les entrepreneurs (pour la version complète sur le Studio).
+// Sous-ensembles par type (sections séparées entreprises / entrepreneurs).
 export const clientPersons = clients.filter((c) => c.type === "person");
+export const clientCompanies = clients.filter((c) => c.type === "company");
 
 // Témoignages. Dépose les photos dans public/testimonials/ puis renseigne `photo`
 // (ex. "/testimonials/jean.jpg"). Ici des photos de placeholder (à remplacer).
@@ -224,33 +225,108 @@ export type Testimonial = {
   name: string;
   role: string;
   quote: string;
-  photo?: string;
+  photo?: string; // personne : photo ronde
+  logo?: string; // entreprise : logo affiché dans une pastille
 };
 
+// Avis de vrais clients — textes placeholders crédibles, À FAIRE VALIDER par
+// chaque client (ou à remplacer par leurs vrais mots) avant mise en ligne.
 export const testimonials: Testimonial[] = [
+  // Entrepreneurs — photo & vidéo
   {
-    name: "Jean Dupont",
-    role: "Fondateur, Marque A",
+    name: "Mathias et Grégoire Chapelon",
+    role: "SaaS Builder",
     quote:
-      "Webelevate a transformé notre présence en ligne — site, photos et vidéos, tout est cohérent et pro.",
-    photo:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600",
+      "Shooting et vidéos livrés en avance, rendu au-dessus de ce qu'on imaginait. L'équipe capte vite et propose toujours mieux que ce qu'on demande.",
+    photo: "/clients/chapelon-mg.jpg",
   },
   {
-    name: "Camille Martin",
-    role: "Dirigeante, Marque B",
+    name: "Robin Dormion",
+    role: "Founder Blow Up AI",
     quote:
-      "Des visuels bluffants et un site rapide. On a doublé nos demandes de contact.",
-    photo:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600",
+      "Des photos et des vidéos carrées, avec une vraie direction artistique. Notre image a pris un niveau au-dessus, et les délais ont été tenus.",
+    photo: "/clients/robin-dormion.jpg",
   },
   {
-    name: "Alex Bernard",
-    role: "CEO, Marque C",
+    name: "Kylian Khalifa",
+    role: "Founder Taap.it & Corporations",
     quote:
-      "Réactifs, créatifs et carrés. L'IA qu'ils ont intégrée nous fait gagner un temps fou.",
-    photo:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&h=600&auto=format&fit=crop",
+      "Ils ont géré le shooting photo et les vidéos en même temps. Une seule équipe pour toute l'image de marque, ça change tout.",
+    photo: "/clients/kyliankhalifa.jpg",
+  },
+  // Entrepreneurs — vidéo
+  {
+    name: "Florent Ghizzoni",
+    role: "Fondateur Ikovaline",
+    quote:
+      "Vidéos livrées dans les temps, process ultra clair, retours pris en compte en moins de 24h. On savait exactement où on allait.",
+    photo: "/clients/florent-ghizzoni.png",
+  },
+  {
+    name: "Paul-Marie Hamon",
+    role: "Founder Speechly & Readyt AI",
+    quote:
+      "Ils ont produit nos vidéos avec une vraie exigence sur les détails. Le rendu reflète enfin le niveau de nos produits.",
+    photo: "/clients/paulm-hm.jpg",
+  },
+  // Entrepreneurs — photo & vidéo
+  {
+    name: "Raphael Guilhem",
+    role: "Founding growth Pletor AI",
+    quote:
+      "Des photos et des vidéos qui claquent, pensées pour nos réseaux et notre site. Exactement le contenu qu'il nous fallait.",
+    photo: "/clients/raph-guilhem.jpg",
+  },
+  {
+    name: "Rafael Guilbert",
+    role: "Co-founder & CTO of Speechly",
+    quote:
+      "Photos et vidéos impeccables : bien préparées, bien produites, livrées vite. Rare de voir une équipe aussi carrée.",
+    photo: "/clients/rafael-glbrt.jpg",
+  },
+  // Entreprises — vidéo
+  {
+    name: "Dachser",
+    role: "Transport & logistique",
+    quote:
+      "Des vidéos corporate à la hauteur d'un groupe international. Cadrage, tournage, livraison : tout était carré.",
+    logo: "/clients/dachser.png",
+  },
+  {
+    name: "Cuisine Schmidt",
+    role: "Cuisiniste",
+    quote:
+      "Des vidéos de nos showrooms impeccables. On les utilise partout, du site aux réseaux sociaux.",
+    logo: "/clients/cuisine-schmidt.png",
+  },
+  {
+    name: "TBV",
+    role: "Entreprise",
+    quote:
+      "Des vidéos qui ont donné un vrai coup de neuf à notre image. Réactifs et à l'écoute du début à la fin.",
+    logo: "/clients/tbv.png",
+  },
+  // Entreprises — site internet
+  {
+    name: "Solvation",
+    role: "Entreprise",
+    quote:
+      "Un site clair qui inspire confiance, livré dans les temps. Exactement ce qu'il nous fallait.",
+    logo: "/clients/solvation.jpg",
+  },
+  {
+    name: "Cuisina Création",
+    role: "Cuisiniste",
+    quote:
+      "Notre nouveau site met vraiment en valeur nos réalisations. Nos clients le remarquent tout de suite.",
+    logo: "/clients/cuisina-creations.png",
+  },
+  {
+    name: "Naawah",
+    role: "Entreprise",
+    quote:
+      "Un site qui nous ressemble, créatif et efficace. Le résultat dépasse le brief.",
+    logo: "/clients/naawah.png",
   },
 ];
 
@@ -297,3 +373,132 @@ export const realisations: Realisation[] = [
     url: "/realisations",
   },
 ];
+
+// FAQ — questions générales (accueil). Réponses à affiner si besoin.
+export type FaqItem = { question: string; answer: string };
+
+export const faq: FaqItem[] = [
+  {
+    question: "Comment est-ce que vous fonctionnez ?",
+    answer:
+      "Tout commence par un appel pour comprendre votre marque et vos objectifs. Ensuite on cadre le projet, on pose la direction artistique, on produit (design, photo, vidéo, développement) et on vous présente une V1. Vous donnez vos retours, on ajuste, et on met en ligne. Vous avez un seul interlocuteur du début à la fin.",
+  },
+  {
+    question: "Combien de temps ça prend ?",
+    answer:
+      "Un site est livré en 21 jours en moyenne, du premier appel à la mise en ligne. Pour un shooting photo ou une vidéo seuls, comptez une à deux semaines selon la production. On vous donne un planning précis dès le kick-off.",
+  },
+  {
+    question: "Combien ça coûte ?",
+    answer:
+      "Chaque projet est sur devis, selon le périmètre : nombre de pages, shooting, vidéo, automatisations… Vous recevez un prix clair et détaillé après le premier appel, sans surprise ensuite.",
+  },
+  {
+    question: "Et si le résultat ne me plaît pas ?",
+    answer:
+      "Les retours sont illimités : on ajuste jusqu'à votre satisfaction totale. C'est notre engagement. Vous validez chaque étape, du design à la mise en ligne.",
+  },
+  {
+    question: "Vous vous occupez aussi des photos et des vidéos ?",
+    answer:
+      "Oui, c'est notre force : studio photo/vidéo et développement web sous le même toit. Votre site est pensé avec vos visuels dès le départ, pas rempli d'images de banque.",
+  },
+  {
+    question: "Que se passe-t-il après la mise en ligne ?",
+    answer:
+      "On ne disparaît pas : maintenance, évolutions, nouvelles pages, contenus… On reste disponibles pour faire vivre votre site. Et vous restez propriétaire de tout (site, nom de domaine, contenus).",
+  },
+];
+
+// Process (agenda 21 jours) — à ajuster avec ton vrai déroulé.
+// Chaque événement est placé sur un jour du calendrier.
+// `day` = jour du calendrier où l'étape est placée (jour cliquable).
+export type ProcessEvent = {
+  day: number;
+  title: string;
+  short: string; // libellé court affiché sous le chiffre dans le calendrier
+  emoji: string;
+  description: string;
+};
+
+export const processInfo = {
+  promise: "Votre site livré en 21 jours.",
+  subtitle: "Un déroulé clair, jour par jour, du premier appel à la mise en ligne.",
+  cta: { label: "Réserver un appel", href: "/contact" },
+  events: [
+    {
+      day: 1,
+      title: "Appel de vente",
+      short: "Appel",
+      emoji: "📞",
+      description: "On cadre vos objectifs, votre marque et vos besoins.",
+    },
+    {
+      day: 2,
+      title: "Kick-off projet",
+      short: "Kick-off",
+      emoji: "🤝",
+      description: "On lance le projet ensemble et on planifie tout.",
+    },
+    {
+      day: 4,
+      title: "Cadrage & arborescence",
+      short: "Cadrage",
+      emoji: "🗺️",
+      description: "Structure du site, contenus et parcours utilisateur.",
+    },
+    {
+      day: 8,
+      title: "Direction artistique",
+      short: "DA",
+      emoji: "🎨",
+      description: "On pose l'univers visuel de votre marque.",
+    },
+    {
+      day: 9,
+      title: "Shooting photo & vidéo",
+      short: "Shooting",
+      emoji: "📸",
+      description: "On produit vos visuels et vos vidéos.",
+    },
+    {
+      day: 11,
+      title: "Maquettes design",
+      short: "Design",
+      emoji: "🖌️",
+      description: "Le design de chaque page, validé avec vous.",
+    },
+    {
+      day: 15,
+      title: "Développement",
+      short: "Dev",
+      emoji: "💻",
+      description: "On construit un site rapide et optimisé.",
+    },
+    {
+      day: 17,
+      title: "Présentation de votre V1",
+      short: "V1",
+      emoji: "🖥️",
+      description: "Vous découvrez votre site et donnez vos retours.",
+    },
+    {
+      day: 18,
+      title: "Ajustements",
+      short: "Ajustements",
+      emoji: "✨",
+      description: "On peaufine jusqu'au moindre détail.",
+    },
+    {
+      day: 19,
+      title: "Mise en ligne",
+      short: "En ligne",
+      emoji: "🚀",
+      description: "Votre site est en ligne, prêt à performer.",
+    },
+  ] as ProcessEvent[],
+  guarantee: {
+    title: "Retours illimités",
+    description: "On ajuste jusqu'à votre satisfaction totale.",
+  },
+};

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { socialProof } from "@/lib/site";
-import { ClientLogos } from "@/components/client-logos";
+import { Clients } from "@/components/clients";
 import { DotPattern } from "@/components/ui/dot-pattern";
 
 // Têtes affichées dans le bloc de preuve sociale (au-dessus du titre).
@@ -98,7 +98,7 @@ export function Hero() {
       </section>
 
       {/* SECTION CLIENTS — séparée, sans pointillés */}
-      <ClientLogos />
+      <Clients />
     </>
   );
 }
