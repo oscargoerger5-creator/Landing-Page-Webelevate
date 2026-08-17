@@ -124,7 +124,8 @@ export default function ServicesPage() {
           return (
             <section
               key={s.slug}
-              className="grid items-center gap-10 border-t border-black/[0.07] py-16 first:border-t-0 md:grid-cols-2 md:gap-14 md:py-24"
+              id={s.slug}
+              className="grid scroll-mt-24 items-center gap-10 border-t border-black/[0.07] py-16 first:border-t-0 md:grid-cols-2 md:gap-14 md:py-24"
             >
               {/* Texte */}
               <div className={cn(reversed && "md:order-2")}>

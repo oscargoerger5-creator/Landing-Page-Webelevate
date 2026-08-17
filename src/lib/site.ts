@@ -7,7 +7,7 @@ export const site = {
   tagline: "Sites web, photo, vidéo & IA sous un même toit",
   description:
     "Webelevate est une agence créative et tech : on conçoit des sites, on produit vos images et vidéos, et on met l'IA à votre service.",
-  email: "hello@webelevate.fr",
+  email: "oscargoergerpro@gmail.com", // TODO : passer sur contact@webelevate.fr quand le domaine sera actif
 } as const;
 
 export type NavItem = { label: string; href: string };
@@ -46,17 +46,17 @@ export const services: Service[] = [
     category: "tech",
   },
   {
-    slug: "photo",
-    title: "Photo",
-    description:
-      "Shootings produits, portraits et images de marque qui marquent.",
-    category: "studio",
-  },
-  {
     slug: "video",
     title: "Vidéo",
     description:
       "Films de marque, reels et contenus vidéo à forte identité.",
+    category: "studio",
+  },
+  {
+    slug: "photo",
+    title: "Photo",
+    description:
+      "Shootings produits, portraits et images de marque qui marquent.",
     category: "studio",
   },
 ];
