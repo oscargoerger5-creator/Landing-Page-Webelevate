@@ -1,9 +1,10 @@
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { BookCallButton } from "@/components/cal-booking";
 
 const WHATSAPP_URL = "https://wa.me/33658488714";
 
-// CTA final — grand bloc sombre qui clôt la page avant le footer.
+// CTA final : grand bloc sombre qui clôt la page avant le footer.
+// « Réserver un appel » ouvre l'agenda Cal.com en modale.
 export function FinalCta() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20 md:py-24">
@@ -20,17 +21,14 @@ export function FinalCta() {
           Donnons à votre marque l'image qu'elle mérite.
         </h2>
         <p className="mx-auto mt-5 max-w-md text-white/60 md:text-lg">
-          Un appel pour cadrer votre projet, une réponse sous 24h. Votre site en
-          ligne en 21 jours.
+          Un appel de 15 minutes pour cadrer votre projet. Votre site en ligne
+          en 21 jours.
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link
-            href="/contact"
-            className="inline-flex h-12 items-center gap-1.5 rounded-full bg-white px-7 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-200"
-          >
+          <BookCallButton className="inline-flex h-12 cursor-pointer items-center gap-1.5 rounded-full bg-white px-7 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-200">
             Réserver un appel
             <ArrowUpRight className="size-4" />
-          </Link>
+          </BookCallButton>
           <a
             href={WHATSAPP_URL}
             target="_blank"

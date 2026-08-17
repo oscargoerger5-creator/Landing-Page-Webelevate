@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { ArrowUpRight, Infinity as InfinityIcon } from "lucide-react";
+import { BookCallButton } from "@/components/cal-booking";
 import { cn } from "@/lib/utils";
 import { processInfo } from "@/lib/site";
 
@@ -193,13 +193,10 @@ export function ProcessTimeline() {
       </p>
 
       <div className="mt-8 text-center">
-        <Link
-          href={cta.href}
-          className="inline-flex h-11 items-center gap-1.5 rounded-full bg-neutral-900 px-6 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
-        >
+        <BookCallButton className="inline-flex h-11 cursor-pointer items-center gap-1.5 rounded-full bg-neutral-900 px-6 text-sm font-medium text-white transition-colors hover:bg-neutral-800">
           {cta.label}
           <ArrowUpRight className="size-4" />
-        </Link>
+        </BookCallButton>
       </div>
     </section>
   );
