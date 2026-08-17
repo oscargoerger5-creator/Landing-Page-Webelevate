@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
+import { CalModalCleanup } from "@/components/cal-booking";
 import { site } from "@/lib/site";
 
 // Police principale : Outfit — sans-serif géométrique proche du wordmark Webelevate.
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <WhatsAppFloat />
+        <CalModalCleanup />
       </body>
     </html>
   );

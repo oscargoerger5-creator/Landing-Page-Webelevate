@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Cal, { getCalApi } from "@calcom/embed-react";
 
 // Intégration Cal.com (appel découverte 15 min).
@@ -62,4 +63,14 @@ export function BookCallButton({
       {children}
     </button>
   );
+}
+
+// La modale Cal persiste dans le <body> entre les navigations Next :
+// on la retire à chaque changement de page pour éviter qu'elle réapparaisse.
+export function CalModalCleanup() {
+  const pathname = usePathname();
+  useEffect(() => {
+    document.querySelectorAll("cal-modal-box").forEach((el) => el.remove());
+  }, [pathname]);
+  return null;
 }
