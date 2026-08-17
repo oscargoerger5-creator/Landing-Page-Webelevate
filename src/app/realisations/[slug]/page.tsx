@@ -4,7 +4,13 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { FinalCta } from "@/components/final-cta";
 import {
+  hasMockup,
+  RealisationMockup,
+  SiteScreenMockup,
+} from "@/components/realisation-mockup";
+import {
   getRealisation,
+  orderedRealisations,
   realisationCategories,
   realisationsList,
 } from "@/lib/realisations";
@@ -99,15 +105,42 @@ export default async function RealisationPage({
           </div>
         </header>
 
-        {/* Visuel principal */}
-        <div className="mt-10 overflow-hidden rounded-2xl border border-black/10 bg-neutral-100">
-          {r.image ? (
+        {/* Visuel principal : vidéo, capture du site, image, mockup, logo ou nom */}
+        <div className="group mt-10 overflow-hidden rounded-2xl border border-black/10 bg-neutral-100">
+          {r.video ? (
+            <video
+              src={r.video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={r.image}
+              className="aspect-video w-full object-cover"
+            />
+          ) : r.screen ? (
+            <div className="aspect-[16/10] w-full">
+              <SiteScreenMockup screen={r.screen} client={r.client} hero />
+            </div>
+          ) : r.image ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={r.image}
               alt={`${r.client} : ${r.title}`}
-              className="w-full object-cover"
+              className="max-h-[560px] w-full object-cover"
             />
+          ) : hasMockup(r.slug) ? (
+            <div className="aspect-[16/9] w-full">
+              <RealisationMockup slug={r.slug} hero />
+            </div>
+          ) : r.logo ? (
+            <div className="grid aspect-[16/9] w-full place-items-center bg-neutral-50 p-12">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={r.logo}
+                alt={r.client}
+                className="max-h-20 w-auto max-w-[60%] object-contain"
+              />
+            </div>
           ) : (
             <div className="grid aspect-[16/9] w-full place-items-center">
               <span className="px-6 text-center text-4xl font-semibold tracking-tight text-neutral-300">
@@ -117,18 +150,15 @@ export default async function RealisationPage({
           )}
         </div>
 
-        {/* Chiffres clés */}
+        {/* Chiffres clés : minimalistes, juste le chiffre et son libellé */}
         {r.stats && (
-          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="mt-14 grid grid-cols-2 gap-x-10 gap-y-10 md:flex md:flex-wrap md:justify-between md:gap-x-8">
             {r.stats.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl border border-black/[0.08] p-5 text-center"
-              >
-                <p className="text-2xl font-semibold tracking-tight md:text-3xl">
+              <div key={s.label}>
+                <p className="text-4xl font-semibold leading-none tracking-tight md:text-[2.75rem]">
                   {s.value}
                 </p>
-                <p className="mt-1 text-xs text-black/50 md:text-sm">
+                <p className="mt-2.5 max-w-[11rem] text-[11px] font-medium uppercase tracking-[0.14em] text-black/40">
                   {s.label}
                 </p>
               </div>
@@ -169,6 +199,30 @@ export default async function RealisationPage({
             </figcaption>
           </figure>
         )}
+        {/* Projet suivant : on garde le visiteur dans les réalisations */}
+        {(() => {
+          const idx = orderedRealisations.findIndex((p) => p.slug === r.slug);
+          const next =
+            orderedRealisations[(idx + 1) % orderedRealisations.length];
+          return (
+            <Link
+              href={`/realisations/${next.slug}`}
+              className="group mt-14 flex items-center justify-between rounded-2xl border border-black/10 p-6 transition-colors hover:border-black/25 md:p-7"
+            >
+              <div>
+                <p className="text-xs font-medium uppercase tracking-widest text-black/40">
+                  Projet suivant
+                </p>
+                <p className="mt-1.5 text-lg font-semibold tracking-tight md:text-xl">
+                  {next.client} : {next.title}
+                </p>
+              </div>
+              <span className="ml-6 grid size-11 shrink-0 place-items-center rounded-full border border-black/15 transition-colors group-hover:bg-neutral-900 group-hover:text-white">
+                <ArrowLeft className="size-4 rotate-180" />
+              </span>
+            </Link>
+          );
+        })()}
       </article>
 
       <FinalCta />

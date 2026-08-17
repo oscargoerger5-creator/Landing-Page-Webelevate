@@ -42,3 +42,8 @@ next-env.d.ts
 
 # Claude Code local config
 .claude/
+
+# Assets bruts déposés par l'utilisateur (photos/vidéos/screens sources,
+# non optimisés) : les versions optimisées utilisées par le site vivent
+# dans public/realisations/, public/photos/, etc.
+public/Réalisations/

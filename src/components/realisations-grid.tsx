@@ -4,6 +4,11 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
+  hasMockup,
+  RealisationMockup,
+  SiteScreenMockup,
+} from "@/components/realisation-mockup";
+import {
   orderedRealisations,
   realisationCategories,
   type Realisation,
@@ -21,16 +26,31 @@ function RealisationCard({ r }: { r: Realisation }) {
     >
       {/* Visuel (ou placeholder monochrome tant que le mockup n'est pas fourni) */}
       <div className="relative aspect-[16/10] overflow-hidden bg-neutral-100">
-        {r.image ? (
+        {r.screen ? (
+          <SiteScreenMockup screen={r.screen} client={r.client} />
+        ) : r.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={r.image}
             alt={`${r.client} : ${r.title}`}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />
+        ) : hasMockup(r.slug) ? (
+          <div className="h-full w-full transition-transform duration-300 group-hover:scale-[1.02]">
+            <RealisationMockup slug={r.slug} />
+          </div>
+        ) : r.logo ? (
+          <div className="grid h-full w-full place-items-center bg-neutral-50 p-10">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={r.logo}
+              alt={r.client}
+              className="max-h-14 w-auto max-w-[70%] object-contain transition-transform duration-300 group-hover:scale-[1.04]"
+            />
+          </div>
         ) : (
           <div className="grid h-full w-full place-items-center">
-            <span className="text-3xl font-semibold tracking-tight text-neutral-300">
+            <span className="px-4 text-center text-3xl font-semibold tracking-tight text-neutral-300">
               {r.client}
             </span>
           </div>

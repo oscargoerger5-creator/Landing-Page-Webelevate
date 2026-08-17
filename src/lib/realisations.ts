@@ -36,6 +36,10 @@ export type Realisation = {
   stats?: { value: string; label: string }[];
   testimonial?: { quote: string; author: string; role?: string };
   image?: string;
+  logo?: string; // visuel de secours : logo centré sur fond neutre
+  video?: string; // page détail : vidéo en héro à la place de l'image
+  // Capture du site livré, affichée dans un mockup navigateur (carte + héro).
+  screen?: { src: string; url: string };
 };
 
 export const realisationsList: Realisation[] = [
@@ -45,28 +49,36 @@ export const realisationsList: Realisation[] = [
     tags: ["Site vitrine", "Avis clients", "Référencement local"],
     client: "CG Poissonnerie",
     category: "site-internet",
+    screen: {
+      src: "/realisations/site-cg-poissonnerie.jpg",
+      url: "poissonnerieducentre.com",
+    },
     title: "Le site vitrine qui remplit le carnet de commandes",
     summary:
-      "Un site vitrine pour une poissonnerie parisienne, pensé pour capter les demandes et mettre en avant les avis clients.",
+      "Un site vitrine pour la Poissonnerie du Centre à Gisors : produits frais, créations artisanales et service traiteur, pensé pour capter les demandes.",
     context:
-      "CG Poissonnerie, poissonnerie à Paris, voulait une vraie présence en ligne : être trouvée par les clients du quartier, montrer la fraîcheur de ses produits et faciliter la prise de contact.",
+      "La Poissonnerie du Centre, à Gisors, voulait une vraie présence en ligne : être trouvée par les clients de la ville, montrer son savoir-faire artisanal et faciliter la commande.",
     solution:
-      "Nous avons conçu un site vitrine sur-mesure, clair et rapide : présentation de la maison, mise en avant des produits et des avis clients, et un parcours de contact sans friction pour commander ou se renseigner.",
+      "Nous avons conçu un site vitrine sur-mesure, clair et rapide : présentation de la maison et de son poissonnier, mise en avant des créations, plateaux et prestations traiteur, et un parcours de contact sans friction pour commander ou se renseigner.",
     results:
-      "Le site capte énormément de demandes et les avis clients renforcent la confiance des nouveaux visiteurs. La poissonnerie dispose maintenant d'une vitrine en ligne à la hauteur de son comptoir.",
+      "Le site capte énormément de demandes et donne à la poissonnerie une vitrine en ligne à la hauteur de son comptoir : les clients découvrent les prestations traiteur et commandent en avance.",
   },
   {
     slug: "f-comme-fermeture",
-    tags: ["Campagnes publicitaires", "Page de conversion", "Suivi des performances"],
-    client: "F comme Fermeture",
+    tags: ["Google Ads", "Page de conversion", "Suivi des performances"],
+    client: "F Comme Fermetures",
     category: "site-internet",
+    screen: {
+      src: "/realisations/site-f-comme-fermeture.jpg",
+      url: "fcommefermetures.com",
+    },
     title: "1 500 € investis en publicité, 18 000 € de chiffre d'affaires",
     summary:
-      "Site et campagnes publicitaires pour un spécialiste de la fermeture : un retour sur investissement de 12 fois la mise.",
+      "Landing page et campagnes publicitaires pour un artisan menuisier alsacien : un retour sur investissement de 12 fois la mise.",
     context:
-      "F comme Fermeture voulait générer des demandes qualifiées sans dépendre du bouche-à-oreille. L'enjeu : transformer un budget publicitaire maîtrisé en clients signés.",
+      "F Comme Fermetures, artisan menuisier spécialisé dans la pose de fenêtres, volets et portes en Alsace, voulait générer des demandes qualifiées sans dépendre du bouche-à-oreille. L'enjeu : transformer un budget publicitaire maîtrisé en clients signés.",
     solution:
-      "Nous avons mis en place des campagnes publicitaires ciblées et un parcours de conversion optimisé : chaque clic arrive sur une page pensée pour transformer la visite en demande de devis.",
+      "Nous avons mis en place des campagnes Google Ads ciblées et une landing page pensée pour convertir : promesse claire, avis Google 5 étoiles mis en avant et formulaire de devis accessible dès le premier écran.",
     results:
       "Avec 1 500 € investis, la campagne a généré 1 500 clics, 30 leads qualifiés et 6 clients signés, pour 18 000 € de chiffre d'affaires. Un retour sur investissement de 12 pour 1.",
     stats: [
@@ -81,15 +93,19 @@ export const realisationsList: Realisation[] = [
     tags: ["Site vitrine", "SEO", "Demandes de devis"],
     client: "BS Traiteur",
     category: "site-internet",
-    title: "Un site vitrine qui capte les demandes de devis",
+    screen: {
+      src: "/realisations/site-bs-traiteur.jpg",
+      url: "bs-traiteur.fr",
+    },
+    title: "Le traiteur que Google place en tête des recherches",
     summary:
-      "Site vitrine et référencement pour un traiteur : des demandes de devis en continu grâce à un très bon positionnement Google.",
+      "Site vitrine et référencement pour un traiteur événementiel : des demandes de devis en continu grâce à un très bon positionnement Google.",
     context:
-      "BS Traiteur avait besoin d'un site à la hauteur de ses prestations, capable de transformer les recherches locales en demandes de devis.",
+      "BS Traiteur, cuisinier à domicile et traiteur événementiel (mariages, baptêmes, événements d'entreprise), avait besoin d'un site à la hauteur de ses prestations, capable de transformer les recherches locales en demandes de devis.",
     solution:
-      "Nous avons créé un site vitrine élégant qui met les prestations en appétit, structuré pour le référencement naturel : contenus travaillés, pages optimisées et parcours de demande de devis simplifié.",
+      "Nous avons créé un site vitrine élégant qui met les prestations en appétit, structuré pour le référencement naturel : contenus travaillés, pages dédiées aux entreprises et aux particuliers, avis clients mis en avant et parcours de demande de devis simplifié.",
     results:
-      "Le site est très bien référencé sur les recherches du secteur et capte énormément de demandes de devis. Le traiteur reçoit un flux régulier de nouveaux contacts qualifiés.",
+      "Le site est 1er sur Google sur les recherches BS Traiteur, devant des traiteurs parisiens réputés, et capte énormément de demandes de devis. Le traiteur reçoit un flux régulier de nouveaux contacts qualifiés.",
   },
   {
     slug: "owen",
@@ -103,29 +119,38 @@ export const realisationsList: Realisation[] = [
     solution:
       "Nous avons conçu son tunnel de bout en bout : une page de vente au copywriting travaillé, un parcours simplifié au maximum et un paiement fluide, sans étape superflue.",
     results:
-      "Le tunnel a généré des ventes dès son lancement. L'offre de coaching dispose maintenant d'un parcours qui convertit, en continu et sans intervention manuelle.",
+      "Le tunnel a généré des ventes dès son lancement et Owen est pleinement satisfait du résultat. Son offre de coaching dispose maintenant d'un parcours qui convertit, en continu et sans intervention manuelle.",
     tags: ["Tunnel de vente", "Copywriting", "Paiement en ligne"],
   },
 
   // ----------------------------- E-COMMERCE ------------------------------
   {
     slug: "sab",
-    tags: ["E-commerce", "Design sur-mesure", "Autonomie de gestion"],
-    client: "Sab",
+    tags: ["E-commerce", "Personnalisation produit", "Autonomie de gestion"],
+    client: "Le petit atelier de Sab",
     category: "e-commerce",
-    title: "Une boutique en ligne simple et fidèle à son univers",
+    screen: {
+      src: "/realisations/site-sab.jpg",
+      url: "lepetitatelierdesab.fr",
+    },
+    title: "Un e-commerce aussi soigné que ses créations",
     summary:
-      "Création d'un site e-commerce épuré, pensé pour refléter l'univers de la marque et faciliter l'achat.",
+      "Boutique en ligne pour un atelier de personnalisation : textile floqué, gravure, objets personnalisés. Un parcours simple, de l'idée à la commande.",
     context:
-      "Sab voulait vendre en ligne sans complexité inutile : une boutique qui lui ressemble, facile à gérer au quotidien.",
+      "Le petit atelier de Sab personnalise à la main textile, gourdes, gobelets et objets gravés. Il fallait une boutique en ligne chaleureuse, capable de présenter sept univers de produits et de guider chaque client vers sa création.",
     solution:
-      "Nous avons conçu un e-commerce simple et efficace, dans l'univers de la marque : parcours d'achat direct, fiches produits soignées, gestion autonome des commandes.",
+      "Nous avons conçu un e-commerce fidèle à l'identité de l'atelier : univers clairs, personnalisation directement sur la fiche produit (texte, visuel), parcours de commande simple et paiement sécurisé.",
     results:
-      "Une boutique en ligne opérationnelle, cohérente avec l'image de la marque, que la cliente pilote en toute autonomie.",
+      "Une boutique opérationnelle que Sab pilote en toute autonomie : les clients personnalisent et commandent en ligne, l'atelier produit et expédie.",
   },
   {
     slug: "naawah",
     tags: ["Refonte e-commerce", "Design premium", "Base technique saine"],
+    logo: "/realisations/naawah-logo.png",
+    screen: {
+      src: "/realisations/site-naawah.jpg",
+      url: "naawah.com",
+    },
     client: "Naawah",
     category: "e-commerce",
     title: "Reconstruire l'e-commerce d'une marque de cacao de luxe",
@@ -148,13 +173,17 @@ export const realisationsList: Realisation[] = [
     tags: ["Refonte e-commerce", "Parcours d'achat", "Mobile"],
     client: "Fleur et Végétal",
     category: "e-commerce",
-    title: "Refonte de la partie e-commerce",
+    screen: {
+      src: "/realisations/site-fleur-et-vegetal.jpg",
+      url: "fleuretvegetal.fr",
+    },
+    title: "Une boutique en ligne remise au goût du jour",
     summary:
-      "Modernisation de la boutique en ligne : un parcours d'achat repensé pour vendre mieux.",
+      "Modernisation de la boutique en ligne d'un fleuriste : un catalogue clair et un parcours d'achat repensé pour vendre mieux.",
     context:
-      "Fleur et Végétal disposait d'une partie e-commerce vieillissante qui freinait les ventes en ligne.",
+      "Fleur et Végétal, fleuriste haut de gamme, disposait d'une partie e-commerce vieillissante qui freinait les ventes en ligne.",
     solution:
-      "Nous avons refondu la boutique : parcours d'achat simplifié, présentation des produits modernisée et expérience mobile revue.",
+      "Nous avons refondu la boutique : catalogue organisé par type de création (bouquets du moment, sur commande, fleurs séchées, roses), photos mises en valeur, parcours d'achat simplifié et expérience mobile revue.",
     results:
       "Un e-commerce plus clair et plus agréable, qui facilite le passage à l'achat.",
   },
@@ -163,6 +192,7 @@ export const realisationsList: Realisation[] = [
   {
     slug: "cuisine-schmidt",
     tags: ["Vidéos récurrentes", "Image de marque", "Événementiel"],
+    image: "/realisations/cuisine-schmidt.jpg",
     client: "Cuisine Schmidt",
     category: "video",
     title: "250 000 vues en 2 semaines, un contrat renouvelé pour 3 ans",
@@ -188,6 +218,7 @@ export const realisationsList: Realisation[] = [
   {
     slug: "dachser",
     tags: ["Événementiel", "Drone", "Film corporate"],
+    image: "/realisations/dachser.jpg",
     client: "Dachser",
     category: "video",
     title: "Trois tournages pour un groupe logistique international",
@@ -209,9 +240,11 @@ export const realisationsList: Realisation[] = [
   {
     slug: "saas-summit",
     tags: ["Captation d'événement", "Interviews", "Formats réseaux"],
+    image: "/realisations/saas-summit.jpg",
+    video: "/realisations/saas-summit.mp4",
     client: "SaaS Summit",
     category: "video",
-    title: "Couvrir l'événement des entrepreneurs du SaaS",
+    title: "Au cœur de l'événement des entrepreneurs du SaaS",
     summary:
       "Captation vidéo d'un événement entrepreneurial : conférences, workshops et interviews des fondateurs présents.",
     context:
@@ -224,17 +257,18 @@ export const realisationsList: Realisation[] = [
   {
     slug: "mg-chapelon",
     tags: ["Direction artistique", "Tournage", "Montage"],
+    image: "/realisations/mg-chapelon.jpg",
     client: "MG Chapelon",
     category: "video",
-    title: "Une image de marque et des contenus au niveau supérieur",
+    title: "L'image de marque qui accompagne leur croissance",
     summary:
       "Travail de fond sur l'image de marque de Mathias et Grégoire Chapelon : direction artistique et qualité de contenu.",
     context:
       "Mathias et Grégoire Chapelon voulaient professionnaliser leur image et la qualité de leurs contenus pour accompagner leur croissance.",
     solution:
-      "Nous avons travaillé leur image de marque en vidéo : direction artistique, tournages soignés et montage exigeant, avec une cohérence visuelle sur tous leurs contenus.",
+      "Nous travaillons leur image de marque en vidéo : direction artistique, tournages soignés et montage exigeant, avec une cohérence visuelle sur tous leurs contenus, des réseaux sociaux à leurs événements.",
     results:
-      "Une identité visuelle affirmée et des contenus dont la qualité sert directement leur crédibilité d'entrepreneurs.",
+      "Une identité visuelle affirmée, des contenus dont la qualité sert directement leur crédibilité d'entrepreneurs, et une collaboration qui dure depuis maintenant plusieurs mois.",
     testimonial: {
       quote:
         "Shooting et vidéos livrés en avance, rendu au-dessus de ce qu'on imaginait. L'équipe capte vite et propose toujours mieux que ce qu'on demande.",
@@ -263,7 +297,7 @@ export const realisationsList: Realisation[] = [
     tags: ["Vidéo sportive", "Formats courts", "Réseaux sociaux"],
     client: "HSG",
     category: "video",
-    title: "Faire vivre le club en vidéo",
+    title: "Le club vit aussi en dehors du terrain",
     summary:
       "Vidéos d'équipe pour le club HSG : des contenus qui donnent de la visibilité au club et à ses joueurs.",
     context:
@@ -274,19 +308,34 @@ export const realisationsList: Realisation[] = [
       "Une présence en ligne dynamisée et une visibilité en nette hausse pour le club et ses équipes.",
   },
   {
-    slug: "pirath-metz",
+    slug: "pirates-handball",
     tags: ["Vidéo sportive", "Formats courts", "Coulisses"],
-    client: "Pirath · Metz",
+    client: "Les Pirates Handball",
     category: "video",
-    title: "Le sport en formats courts",
+    title: "L'intensité du handball en formats courts",
     summary:
-      "Production de vidéos sportives : temps forts et coulisses en formats courts pour les réseaux.",
+      "Vidéos pour le club des Pirates : temps forts des matchs et coulisses en formats courts pour les réseaux.",
     context:
-      "Pirath et Metz voulaient des contenus vidéo réguliers pour faire vivre leurs équipes en ligne.",
+      "Les Pirates voulaient des contenus vidéo réguliers pour faire vivre le club en ligne et rassembler leur communauté au-delà des tribunes.",
     solution:
-      "Captation des matchs et des coulisses, montage rythmé et formats verticaux prêts à publier.",
+      "Captation des matchs et des coulisses, montage rythmé et formats verticaux prêts à publier sur les réseaux du club.",
     results:
-      "Des contenus qui fédèrent la communauté et augmentent la visibilité des équipes.",
+      "Des contenus qui fédèrent la communauté et augmentent la visibilité du club et de ses équipes.",
+  },
+  {
+    slug: "metz-handball",
+    tags: ["Vidéo sportive", "Formats courts", "Réseaux sociaux"],
+    client: "Metz Handball",
+    category: "video",
+    title: "Des images à la hauteur d'un grand club",
+    summary:
+      "Production vidéo pour Metz Handball : l'intensité des matchs captée et montée en formats courts pour les réseaux.",
+    context:
+      "Metz Handball, club de référence du handball français, attend des contenus au niveau de son exigence sportive.",
+    solution:
+      "Nous captons l'intensité des rencontres et la vie du club, puis livrons des formats courts calibrés pour les réseaux sociaux.",
+    results:
+      "Des images à la hauteur du club, qui font vivre les matchs bien au-delà de la salle.",
   },
   {
     slug: "karcher-tp",
@@ -345,11 +394,11 @@ export const realisationsList: Realisation[] = [
     category: "ia",
     title: "L'accueil téléphonique qui ne manque plus jamais un appel",
     summary:
-      "Mise en place d'une IA téléphonique : elle répond aux appels entrants, oriente vers le bon service et capte chaque demande, 24h/24, même pendant les congés.",
+      "IA téléphonique pour une entreprise de rénovation de piscines : elle répond aux appels entrants, oriente vers le bon service et capte chaque demande, 24h/24.",
     context:
-      "Chez PRCP, chaque appel manqué était un client potentiel perdu : impossible de répondre à tout, tout le temps, et encore moins pendant les congés ou en dehors des horaires d'ouverture.",
+      "Chez PRCP, entreprise de rénovation de piscines, chaque appel manqué était un chantier potentiel perdu : impossible de répondre à tout, tout le temps, entre les interventions, les congés et les horaires d'ouverture.",
     solution:
-      "Nous avons déployé une IA téléphonique qui décroche chaque appel entrant, comprend la demande et oriente l'appelant vers le bon secteur de l'entreprise. En parallèle, une automatisation d'e-mails enregistre chaque demande et la transmet immédiatement à l'équipe concernée.",
+      "Nous avons déployé une IA téléphonique qui décroche chaque appel entrant, comprend la demande et oriente l'appelant vers le bon interlocuteur : devis, suivi de chantier ou entretien. En parallèle, une automatisation d'e-mails enregistre chaque demande et la transmet immédiatement à l'équipe concernée.",
     results:
       "L'accueil tourne désormais 24h/24, 7j/7, congés compris : chaque appel est pris en charge, chaque demande est captée et tracée. Plus aucun client perdu faute de réponse.",
     tags: ["IA téléphonique", "Automatisation d'e-mails", "Accueil 24h/24"],
@@ -375,7 +424,7 @@ export const realisationsList: Realisation[] = [
     results:
       "Une série de photos et de vidéos que leur propriétaire est fier de partager, et qui montre notre exigence sur l'automobile.",
     tags: ["Shooting automobile", "Vidéo", "Retouche & étalonnage"],
-    image: "/photos/photo-5.jpg",
+    image: "/photos/photo-7.jpg",
   },
 ];
 
