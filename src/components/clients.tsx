@@ -123,6 +123,8 @@ export function Clients() {
       <p className="mb-5 mt-14 text-center text-sm text-black/40">
         …et des entrepreneurs
       </p>
+      {/* Ordre d'origine : au chargement on voit les Chapelon, Robin et
+          Kylian en premier (priorité à la première impression). */}
       <Marquee
         items={clientPersons}
         render={(c) => <PersonItem c={c} />}

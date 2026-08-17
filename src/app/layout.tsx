@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  // TODO : passer à https://webelevate.fr quand le domaine sera actif
+  // (mettre aussi à jour sitemap.ts et robots.ts).
+  metadataBase: new URL("https://landing-page-webelevate.vercel.app"),
   title: {
     default: `${site.name} · ${site.tagline}`,
     template: `%s · ${site.name}`,

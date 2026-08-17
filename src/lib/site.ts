@@ -1,6 +1,8 @@
 // Configuration centrale du site Webelevate.
 // Source unique pour la navigation, les services, le studio et les réalisations.
-// Contenus encore en partie placeholders — à affiner avec le vrai contenu/médias.
+// Contenus encore en partie placeholders, à affiner avec le vrai contenu/médias.
+
+import { realisationsList } from "./realisations";
 
 export const site = {
   name: "webelevate",
@@ -103,45 +105,6 @@ export const studioProjects: StudioProject[] = [
     type: "photo",
   },
 ];
-
-export type CaseStudy = {
-  slug: string;
-  client: string;
-  title: string;
-  summary: string;
-  tags: string[];
-  context: string;
-  solution: string;
-  result: string;
-};
-
-// Placeholders — remplacer par les vrais projets fournis par le client.
-export const caseStudies: CaseStudy[] = [
-  {
-    slug: "projet-alpha",
-    client: "Client Alpha",
-    title: "Refonte complète d'un site vitrine",
-    summary: "Une refonte moderne qui a doublé le taux de prise de contact.",
-    tags: ["Site internet", "Design", "SEO"],
-    context: "Contexte du projet à compléter.",
-    solution: "Solution apportée à compléter.",
-    result: "Résultats chiffrés à compléter.",
-  },
-  {
-    slug: "projet-beta",
-    client: "Client Beta",
-    title: "Boutique e-commerce sur-mesure",
-    summary: "Une expérience d'achat rapide et fluide, du panier au paiement.",
-    tags: ["E-commerce", "Performance"],
-    context: "Contexte du projet à compléter.",
-    solution: "Solution apportée à compléter.",
-    result: "Résultats chiffrés à compléter.",
-  },
-];
-
-export function getCaseStudy(slug: string): CaseStudy | undefined {
-  return caseStudies.find((c) => c.slug === slug);
-}
 
 // ---------------------------------------------------------------------------
 // Preuve sociale : logos clients (slider), témoignages, note.
@@ -342,8 +305,17 @@ export const socialProof = {
   label: "projets réalisés",
 } as const;
 
-// Réalisations du carrousel (accueil) — PLACEHOLDERS à remplir.
-// Ajoute `image` (ex. "/realisations/projet.jpg") ; sinon un cadre placeholder s'affiche.
+// Réalisations mises en avant dans le carrousel de l'accueil :
+// une sélection des vrais projets (données dans lib/realisations.ts).
+const featuredSlugs = [
+  "dachser",
+  "cuisine-schmidt",
+  "saas-summit",
+  "mg-chapelon",
+  "naawah",
+  "fynn-porsche",
+];
+
 export type Realisation = {
   title: string;
   summary: string;
@@ -351,33 +323,15 @@ export type Realisation = {
   image?: string;
 };
 
-export const realisations: Realisation[] = [
-  {
-    title: "Refonte de site vitrine",
-    summary: "Un site moderne et rapide qui convertit mieux.",
-    url: "/realisations",
-  },
-  {
-    title: "Boutique e-commerce",
-    summary: "Une expérience d'achat fluide, du panier au paiement.",
-    url: "/realisations",
-  },
-  {
-    title: "Film de marque",
-    summary: "Une vidéo à forte identité pour marquer les esprits.",
-    url: "/realisations",
-  },
-  {
-    title: "Shooting produit",
-    summary: "Des visuels léchés qui valorisent vos produits.",
-    url: "/realisations",
-  },
-  {
-    title: "Automatisation IA",
-    summary: "Des process automatisés pour gagner un temps précieux.",
-    url: "/realisations",
-  },
-];
+export const realisations: Realisation[] = featuredSlugs
+  .map((slug) => realisationsList.find((r) => r.slug === slug))
+  .filter((r) => r !== undefined)
+  .map((r) => ({
+    title: `${r.client} : ${r.title}`,
+    summary: r.summary,
+    url: `/realisations/${r.slug}`,
+    image: r.image,
+  }));
 
 // Détail des services (page /services) — accroche, description longue et
 // liste de ce qui est inclus. Ordre d'affichage = ordre du tableau.
