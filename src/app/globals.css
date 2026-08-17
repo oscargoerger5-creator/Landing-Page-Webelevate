@@ -215,3 +215,25 @@
     opacity: 0;
   }
 }
+
+/* Révélation au scroll de l'agenda process (mobile uniquement). */
+@media (max-width: 639.9px) {
+  .reveal-m {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease;
+  }
+  .reveal-m.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-m {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

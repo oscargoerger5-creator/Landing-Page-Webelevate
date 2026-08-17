@@ -1,82 +1,47 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Camera,
-  Code2,
-  Handshake,
-  Infinity as InfinityIcon,
-  Map,
-  MonitorCheck,
-  Palette,
-  PenTool,
-  Phone,
-  Rocket,
-  Sparkles,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowUpRight, Infinity as InfinityIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { processInfo } from "@/lib/site";
 
-// Icône minimaliste associée à chaque jour du process.
-const ICONS: Record<number, LucideIcon> = {
-  1: Phone,
-  2: Handshake,
-  4: Map,
-  8: Palette,
-  9: Camera,
-  11: PenTool,
-  15: Code2,
-  17: MonitorCheck,
-  18: Sparkles,
-  19: Rocket,
-};
+const WEEKDAYS = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 
-// PROCESS — timeline minimaliste noir & blanc. Une fine ligne se remplit au
-// scroll ; chaque jour « s'allume » à son passage : gros numéro gris clair qui
-// devient noir, titre et description sobres. Aucun autre artifice.
+// Blocs monochromes, fidèles à la DA : gris très clair au repos,
+// noir pour le bloc actif et pour l'arrivée (mise en ligne).
+function blockClasses(isFinish: boolean, isActive = false) {
+  return isFinish || isActive
+    ? "bg-neutral-900 text-white"
+    : "bg-black/[0.05] text-neutral-800";
+}
 
+// PROCESS — calendrier complet des 21 jours, façon Cal.com : 3 semaines,
+// les étapes en blocs colorés dans les cases, détail au survol ou au clic.
 export function ProcessTimeline() {
   const { promise, subtitle, cta, events, guarantee } = processInfo;
-  const finishIndex = events.length - 1;
+  const eventByDay = new Map(events.map((e) => [e.day, e]));
+  const finishDay = events[events.length - 1].day;
+  const [activeDay, setActiveDay] = useState(events[0].day);
+  const active = eventByDay.get(activeDay) ?? events[0];
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const fillRef = useRef<HTMLDivElement>(null);
-  const rowRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const [activeCount, setActiveCount] = useState(1);
-
+  // Mobile : révèle les lignes de l'agenda une à une au scroll.
+  const agendaRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const container = containerRef.current;
-    const fill = fillRef.current;
-    if (!container || !fill) return;
-
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const rect = container.getBoundingClientRect();
-      const fillPx = Math.min(
-        rect.height,
-        Math.max(0, window.innerHeight * 0.62 - rect.top),
-      );
-      fill.style.height = `${fillPx}px`;
-      let count = 0;
-      rowRefs.current.forEach((row) => {
-        if (row && row.offsetTop + 40 <= fillPx) count += 1;
-      });
-      setActiveCount(Math.max(1, count));
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
+    const rows = agendaRef.current?.querySelectorAll(".reveal-m");
+    if (!rows?.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    rows.forEach((r) => io.observe(r));
+    return () => io.disconnect();
   }, []);
 
   return (
@@ -91,97 +56,135 @@ export function ProcessTimeline() {
         <p className="mt-4 text-black/60">{subtitle}</p>
       </div>
 
-      {/* Timeline */}
-      <div ref={containerRef} className="relative mx-auto mt-16 max-w-3xl">
-        {/* Ligne (rail + remplissage au scroll) */}
-        <div className="absolute bottom-0 top-0 left-24 w-px -translate-x-1/2 bg-neutral-200 md:left-48" />
-        <div
-          ref={fillRef}
-          className="absolute top-0 left-24 w-px -translate-x-1/2 bg-neutral-900 md:left-48"
-          style={{ height: 0 }}
-        >
-          {/* pointe du remplissage */}
-          <span className="absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rounded-full bg-neutral-900" />
+      {/* Calendrier */}
+      <div className="mx-auto mt-14 max-w-4xl overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
+        {/* Barre du haut, sobre */}
+        <div className="flex items-center justify-between border-b border-black/[0.07] px-4 py-3 sm:px-5">
+          <p className="text-sm font-semibold">Votre projet</p>
+          <span className="rounded-full border border-black/10 px-2.5 py-1 text-[11px] font-medium text-black/50">
+            3 semaines
+          </span>
         </div>
 
-        <ul>
-          {events.map((e, i) => {
-            const active = i < activeCount;
-            const isFinish = i === finishIndex;
+        {/* Jours de la semaine (desktop) */}
+        <div className="grid grid-cols-7 border-b border-black/[0.07] bg-neutral-50/60 max-sm:hidden">
+          {WEEKDAYS.map((d) => (
+            <div
+              key={d}
+              className="py-2.5 text-center text-[11px] font-medium uppercase tracking-wider text-slate-400"
+            >
+              {d}
+            </div>
+          ))}
+        </div>
+
+        {/* Grille des 21 jours (desktop) */}
+        <div className="grid grid-cols-7 max-sm:hidden">
+          {Array.from({ length: 21 }, (_, i) => i + 1).map((day) => {
+            const ev = eventByDay.get(day);
+            const isFinish = day === finishDay;
+            const isActive = ev && day === activeDay;
             return (
-              <li
-                key={e.day}
-                ref={(el) => {
-                  rowRefs.current[i] = el;
-                }}
-                className="relative grid grid-cols-[4.5rem_3rem_1fr] items-center py-8 md:grid-cols-[9rem_6rem_1fr] md:py-12"
+              <div
+                key={day}
+                onClick={ev ? () => setActiveDay(day) : undefined}
+                onMouseEnter={ev ? () => setActiveDay(day) : undefined}
+                className={cn(
+                  "relative flex min-h-16 flex-col gap-1 border-b border-r border-black/[0.06] p-1 sm:min-h-[88px] sm:p-1.5",
+                  "[&:nth-child(7n)]:border-r-0 [&:nth-last-child(-n+7)]:border-b-0",
+                  ev && "cursor-pointer",
+                )}
               >
-                {/* Gros numéro du jour — centré sur la ligne du point */}
                 <span
                   className={cn(
-                    "text-right text-4xl font-semibold leading-none tracking-tighter transition-colors duration-500 md:text-7xl",
-                    active ? "text-neutral-900" : "text-neutral-200",
+                    "px-1 text-[11px] font-medium sm:text-xs",
+                    ev ? "text-slate-600" : "text-slate-300",
                   )}
                 >
-                  J{e.day}
+                  {day}
                 </span>
-
-                {/* Point sur la ligne */}
-                <span className="relative flex h-full items-center justify-center">
-                  <span
+                {ev && (
+                  <div
                     className={cn(
-                      "size-3 rounded-full border-2 bg-white transition-colors duration-500",
-                      active
-                        ? "border-neutral-900 bg-neutral-900"
-                        : "border-neutral-300",
+                      "rounded-md px-1.5 py-1 leading-tight transition-colors duration-200 sm:px-2 sm:py-1.5",
+                      blockClasses(isFinish, !!isActive),
                     )}
-                  />
-                </span>
-
-                {/* Contenu */}
-                <div
-                  className={cn(
-                    "flex items-center gap-4 transition-all duration-500 md:gap-5",
-                    active ? "opacity-100" : "translate-y-1 opacity-40",
-                  )}
-                >
-                  {(() => {
-                    const Icon = ICONS[e.day];
-                    return Icon ? (
-                      <span
-                        className={cn(
-                          "grid size-9 shrink-0 place-items-center rounded-full border transition-colors duration-500 md:size-10",
-                          active
-                            ? "border-neutral-900 text-neutral-900"
-                            : "border-neutral-300 text-neutral-400",
-                        )}
-                      >
-                        <Icon strokeWidth={1.5} className="size-4 md:size-[18px]" />
-                      </span>
-                    ) : null;
-                  })()}
-                  <div>
-                    <h3
-                      className={cn(
-                        "text-lg font-semibold tracking-tight md:text-2xl",
-                        isFinish && "underline decoration-2 underline-offset-8",
-                      )}
-                    >
-                      {e.title}
-                    </h3>
-                    <p className="mt-1.5 max-w-md text-sm text-black/50 md:text-[15px]">
-                      {e.description}
+                  >
+                    <p className="truncate text-[10px] font-semibold sm:text-[11px]">
+                      {ev.short}
+                    </p>
+                    <p className="hidden text-[10px] opacity-70 sm:block">
+                      Jour {day}
                     </p>
                   </div>
-                </div>
-              </li>
+                )}
+              </div>
             );
           })}
-        </ul>
+        </div>
+
+        {/* Agenda vertical (mobile) : compact, groupé par semaine, révélé au scroll */}
+        <div ref={agendaRef} className="sm:hidden">
+          {[1, 2, 3].map((week) => {
+            const weekEvents = events.filter(
+              (e) => e.day > (week - 1) * 7 && e.day <= week * 7,
+            );
+            return (
+              <div
+                key={week}
+                style={{ transitionDelay: `${(week - 1) * 90}ms` }}
+                className="reveal-m border-b border-black/[0.06] px-5 py-4 last:border-b-0"
+              >
+                <p className="text-[11px] font-bold uppercase tracking-widest text-black/40">
+                  Semaine {week}
+                </p>
+                <ul className="mt-2.5 space-y-2">
+                  {weekEvents.map((e) => {
+                    const isFinish = e.day === finishDay;
+                    return isFinish ? (
+                      <li
+                        key={e.day}
+                        className="-mx-2 flex items-baseline gap-3 rounded-lg bg-neutral-900 px-3 py-2.5 text-white"
+                      >
+                        <span className="w-8 shrink-0 text-sm font-bold">
+                          J{e.day}
+                        </span>
+                        <span className="text-[15px] font-semibold">
+                          {e.title}
+                        </span>
+                      </li>
+                    ) : (
+                      <li key={e.day} className="flex items-baseline gap-3">
+                        <span className="w-8 shrink-0 text-sm font-bold text-neutral-400">
+                          J{e.day}
+                        </span>
+                        <span className="text-[15px] font-medium">{e.title}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Détail de l'étape survolée / cliquée (desktop) */}
+        <div className="flex min-h-[58px] items-center gap-3 border-t border-black/[0.07] bg-neutral-50/60 px-4 py-3 max-sm:hidden sm:px-5">
+          <span className="size-2.5 shrink-0 rounded-full bg-neutral-900" />
+          <div className="leading-snug">
+            <span className="text-sm font-semibold">
+              Jour {active.day} · {active.title}
+            </span>
+            <span className="ml-2 hidden text-sm text-black/55 sm:inline">
+              {active.description}
+            </span>
+            <p className="text-xs text-black/55 sm:hidden">{active.description}</p>
+          </div>
+        </div>
       </div>
 
-      {/* Retours illimités — texte simple, mis en avant */}
-      <p className="mx-auto mt-16 flex max-w-3xl flex-wrap items-center justify-center gap-3 text-center text-xl font-semibold tracking-tight md:text-2xl">
+      {/* Retours illimités, en texte simple */}
+      <p className="mx-auto mt-14 flex max-w-3xl flex-wrap items-center justify-center gap-3 text-center text-xl font-semibold tracking-tight md:text-2xl">
         <InfinityIcon className="size-7 md:size-8" />
         {guarantee.title}
         <span className="font-normal text-black/50">

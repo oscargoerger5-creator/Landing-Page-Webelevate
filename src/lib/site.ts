@@ -569,7 +569,7 @@ export const processInfo = {
       description: "On peaufine jusqu'au moindre détail.",
     },
     {
-      day: 19,
+      day: 21,
       title: "Mise en ligne",
       short: "En ligne",
       emoji: "🚀",
