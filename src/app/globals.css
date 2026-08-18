@@ -237,3 +237,213 @@
     transform: none;
   }
 }
+
+/* Tunnel de vente animé (mockup Owen), cycle de 10 s :
+   page de vente -> le curseur scrolle et clique le CTA -> page de paiement
+   (les infos bancaires se remplissent) -> clic sur Payer -> coche verte
+   clignotante « Paiement validé ». */
+.fnl-a {
+  animation: fnl-a 10s infinite;
+}
+@keyframes fnl-a {
+  0%,
+  34% {
+    opacity: 1;
+  }
+  40%,
+  100% {
+    opacity: 0;
+  }
+}
+.fnl-a-scroll {
+  animation: fnl-a-scroll 10s infinite;
+}
+@keyframes fnl-a-scroll {
+  0%,
+  10% {
+    transform: translateY(0);
+  }
+  22%,
+  100% {
+    transform: translateY(-26%);
+  }
+}
+.fnl-b {
+  animation: fnl-b 10s infinite;
+}
+@keyframes fnl-b {
+  0%,
+  36% {
+    opacity: 0;
+  }
+  42%,
+  100% {
+    opacity: 1;
+  }
+}
+.fnl-f1 {
+  animation: fnl-f1 10s infinite;
+}
+@keyframes fnl-f1 {
+  0%,
+  46% {
+    opacity: 0;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+.fnl-f2 {
+  animation: fnl-f2 10s infinite;
+}
+@keyframes fnl-f2 {
+  0%,
+  52% {
+    opacity: 0;
+  }
+  56%,
+  100% {
+    opacity: 1;
+  }
+}
+.fnl-f3 {
+  animation: fnl-f3 10s infinite;
+}
+@keyframes fnl-f3 {
+  0%,
+  58% {
+    opacity: 0;
+  }
+  62%,
+  100% {
+    opacity: 1;
+  }
+}
+.fnl-c {
+  animation: fnl-c 10s infinite;
+}
+@keyframes fnl-c {
+  0%,
+  72% {
+    opacity: 0;
+  }
+  76%,
+  97% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* Coche verte : pop puis clignotement */
+.fnl-pop {
+  animation: fnl-pop 10s infinite;
+}
+@keyframes fnl-pop {
+  0%,
+  74% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  81% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  84% {
+    opacity: 0.35;
+  }
+  87% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.35;
+  }
+  93%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* Curseur : descend vers le CTA, clique, va sur Payer, clique */
+.fnl-cursor {
+  animation: fnl-cursor 10s infinite;
+}
+@keyframes fnl-cursor {
+  0% {
+    left: 74%;
+    top: 16%;
+    opacity: 0;
+    transform: scale(1);
+  }
+  5% {
+    opacity: 1;
+  }
+  26% {
+    left: 52%;
+    top: 58%;
+    transform: scale(1);
+  }
+  29% {
+    transform: scale(0.72);
+  }
+  32% {
+    left: 52%;
+    top: 58%;
+    transform: scale(1);
+  }
+  60% {
+    left: 53%;
+    top: 71%;
+    transform: scale(1);
+  }
+  64% {
+    transform: scale(0.72);
+  }
+  67% {
+    left: 53%;
+    top: 71%;
+    transform: scale(1);
+  }
+  74% {
+    opacity: 1;
+  }
+  79%,
+  100% {
+    left: 53%;
+    top: 71%;
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fnl-a,
+  .fnl-a-scroll,
+  .fnl-b,
+  .fnl-f1,
+  .fnl-f2,
+  .fnl-f3,
+  .fnl-c,
+  .fnl-pop,
+  .fnl-cursor {
+    animation: none;
+  }
+  /* état final statique : paiement validé */
+  .fnl-a,
+  .fnl-cursor {
+    opacity: 0;
+  }
+  .fnl-b,
+  .fnl-f1,
+  .fnl-f2,
+  .fnl-f3,
+  .fnl-c,
+  .fnl-pop {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -158,15 +158,21 @@ export default async function RealisationPage({
           )}
         </div>
 
-        {/* Chiffres clés : minimalistes, juste le chiffre et son libellé */}
+        {/* Chiffres clés : grille à colonnes égales, chiffres alignés */}
         {r.stats && (
-          <div className="mt-14 grid grid-cols-2 gap-x-10 gap-y-10 md:flex md:flex-wrap md:justify-between md:gap-x-8">
+          <div
+            className={`mt-14 grid grid-cols-2 gap-x-8 gap-y-10 ${
+              { 1: "md:grid-cols-1", 2: "md:grid-cols-2", 3: "md:grid-cols-3" }[
+                r.stats.length
+              ] ?? "md:grid-cols-4"
+            }`}
+          >
             {r.stats.map((s) => (
               <div key={s.label}>
-                <p className="text-4xl font-semibold leading-none tracking-tight md:text-[2.75rem]">
+                <p className="whitespace-nowrap text-3xl font-semibold leading-none tracking-tight md:text-[2rem]">
                   {s.value}
                 </p>
-                <p className="mt-2.5 max-w-[11rem] text-[11px] font-medium uppercase tracking-[0.14em] text-black/40">
+                <p className="mt-2.5 text-[11px] font-medium uppercase leading-snug tracking-[0.14em] text-black/40">
                   {s.label}
                 </p>
               </div>

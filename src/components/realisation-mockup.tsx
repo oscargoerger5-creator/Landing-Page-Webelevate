@@ -1,4 +1,4 @@
-import { Check, Phone } from "lucide-react";
+import { Check, Lock, MousePointer2, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Visuels générés en code pour les réalisations sites / e-commerce / IA :
@@ -132,52 +132,121 @@ export function SiteScreenMockup({
 
 /* ----------------------- Owen : tunnel de vente -------------------------- */
 
+// Scène animée (cycle 10 s, keyframes fnl-* dans globals.css) : page de
+// vente factice, le curseur scrolle et clique le CTA, la page de paiement
+// se remplit (fausses infos bancaires), clic sur Payer, coche verte
+// clignotante « Paiement validé ».
 function OwenMockup({ hero }: MockupProps) {
-  const steps = [
-    { label: "Page de vente", note: "Copywriting travaillé" },
-    { label: "Offre de coaching", note: "Parcours simplifié" },
-    { label: "Paiement", note: "Vente confirmée" },
-  ];
+  const line = (w: string) => (
+    <div className="h-1.5 rounded-full bg-neutral-200" style={{ width: w }} />
+  );
   return (
     <Browser url="Tunnel de vente · Owen" hero={hero}>
-      <div className="px-4 py-4">
-        <span className="text-[8px] font-semibold uppercase tracking-[0.18em] text-neutral-400">
-          Tunnel de vente
-        </span>
-        <div className="mt-2.5 space-y-1.5">
-          {steps.map((s, i) => (
-            <div key={s.label} className="flex items-center gap-2.5">
-              <span
-                className={cn(
-                  "grid size-5 shrink-0 place-items-center rounded-full text-[8px] font-bold",
-                  i === 2
-                    ? "bg-neutral-900 text-white"
-                    : "border border-black/15 text-neutral-500",
-                )}
-              >
-                {i === 2 ? <Check className="size-2.5" /> : i + 1}
+      <div className="relative h-full w-full overflow-hidden bg-white">
+        {/* Écran B : page de paiement */}
+        <div className="fnl-b absolute inset-0 grid place-items-center bg-neutral-50">
+          <div
+            className={cn(
+              "w-[72%] max-w-[250px] rounded-xl border border-black/[0.08] bg-white p-3 shadow-sm",
+              hero && "md:max-w-[300px] md:p-4",
+            )}
+          >
+            <div className="flex items-center justify-between">
+              <span className={cn("text-[9px] font-bold tracking-tight", hero && "md:text-[11px]")}>
+                Paiement
               </span>
-              <div
-                className={cn(
-                  "flex flex-1 items-center justify-between rounded-lg border p-2",
-                  i === 2
-                    ? "border-neutral-900 bg-neutral-900 text-white"
-                    : "border-black/[0.08] bg-white",
-                )}
-              >
-                <span className="text-[10px] font-semibold tracking-tight">{s.label}</span>
-                <span
-                  className={cn(
-                    "text-[8px]",
-                    i === 2 ? "text-white/60" : "text-neutral-400",
-                  )}
-                >
-                  {s.note}
+              <span className="flex items-center gap-1 text-[7px] text-neutral-400">
+                <Lock className="size-2" />
+                Sécurisé
+              </span>
+            </div>
+            <div className={cn("mt-2 space-y-1.5", hero && "md:mt-3 md:space-y-2")}>
+              <div className={cn("flex h-5 items-center rounded-md bg-neutral-50 px-2 ring-1 ring-black/[0.06]", hero && "md:h-6")}>
+                <span className={cn("fnl-f1 text-[8px] text-neutral-600", hero && "md:text-[10px]")}>
+                  Owen D.
                 </span>
               </div>
+              <div className={cn("flex h-5 items-center rounded-md bg-neutral-50 px-2 ring-1 ring-black/[0.06]", hero && "md:h-6")}>
+                <span className={cn("fnl-f2 text-[8px] tracking-wider text-neutral-600", hero && "md:text-[10px]")}>
+                  4242 4242 4242 4242
+                </span>
+              </div>
+              <div className="flex gap-1.5">
+                <div className={cn("flex h-5 flex-1 items-center rounded-md bg-neutral-50 px-2 ring-1 ring-black/[0.06]", hero && "md:h-6")}>
+                  <span className={cn("fnl-f3 text-[8px] text-neutral-600", hero && "md:text-[10px]")}>
+                    12/28
+                  </span>
+                </div>
+                <div className={cn("flex h-5 flex-1 items-center rounded-md bg-neutral-50 px-2 ring-1 ring-black/[0.06]", hero && "md:h-6")}>
+                  <span className={cn("fnl-f3 text-[8px] text-neutral-600", hero && "md:text-[10px]")}>
+                    123
+                  </span>
+                </div>
+              </div>
+              <div className={cn("grid h-6 place-items-center rounded-md bg-neutral-900 text-[9px] font-semibold text-white", hero && "md:h-7 md:text-[11px]")}>
+                Payer
+              </div>
             </div>
-          ))}
+          </div>
         </div>
+
+        {/* Écran C : paiement validé */}
+        <div className="fnl-c absolute inset-0 z-10 grid place-items-center bg-white/95">
+          <div className="flex flex-col items-center gap-2">
+            <span className={cn("fnl-pop grid size-10 place-items-center rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/30", hero && "md:size-14")}>
+              <Check className={cn("size-5 text-white", hero && "md:size-7")} strokeWidth={3.5} />
+            </span>
+            <span className={cn("text-[10px] font-semibold tracking-tight text-neutral-800", hero && "md:text-sm")}>
+              Paiement validé
+            </span>
+          </div>
+        </div>
+
+        {/* Écran A : page de vente (au-dessus, disparaît après le clic) */}
+        <div className="fnl-a absolute inset-0 z-20 overflow-hidden bg-white">
+          <div className="fnl-a-scroll px-5 pt-3">
+            <div className="flex items-center justify-between border-b border-black/[0.06] pb-2">
+              <span className={cn("text-[9px] font-bold tracking-tight", hero && "md:text-[11px]")}>
+                Owen · Coaching
+              </span>
+              <span className="rounded-full bg-neutral-900 px-2 py-0.5 text-[7px] font-medium text-white">
+                Coaching 1:1
+              </span>
+            </div>
+            <div className="mt-4 flex flex-col items-center text-center">
+              <p className={cn("text-[13px] font-bold leading-snug tracking-tight text-neutral-900", hero && "md:text-lg")}>
+                Passe au niveau supérieur,
+                <br />
+                avec un coaching 1:1.
+              </p>
+              <div className="mt-2.5 flex flex-col items-center gap-1.5">
+                {line("120px")}
+                {line("90px")}
+              </div>
+              {/* CTA cliqué par le curseur (position ~52% / 58%) */}
+              <span className={cn("mt-4 rounded-full bg-neutral-900 px-3.5 py-1.5 text-[9px] font-semibold text-white", hero && "md:px-5 md:py-2 md:text-[11px]")}>
+                Réserver mon coaching
+              </span>
+              <div className="mt-5 grid w-full grid-cols-3 gap-2 opacity-60">
+                {[0, 1, 2].map((i) => (
+                  <div key={i} className="rounded-lg border border-black/[0.07] p-2">
+                    <div className="h-1.5 w-2/3 rounded-full bg-neutral-300" />
+                    <div className="mt-1.5 h-1 rounded-full bg-neutral-200" />
+                    <div className="mt-1 h-1 w-4/5 rounded-full bg-neutral-200" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Curseur */}
+        <span className="fnl-cursor absolute z-30">
+          <MousePointer2
+            className={cn("size-4 fill-neutral-900 text-white drop-shadow", hero && "md:size-5")}
+            strokeWidth={1.5}
+          />
+        </span>
       </div>
     </Browser>
   );
