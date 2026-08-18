@@ -313,6 +313,7 @@ const featuredSlugs = [
   "saas-summit",
   "mg-chapelon",
   "naawah",
+  "saas-workshop",
   "fynn-porsche",
 ];
 

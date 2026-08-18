@@ -280,18 +280,32 @@ export const realisationsList: Realisation[] = [
   },
   {
     slug: "saas-workshop",
-    tags: ["Captation d'événement", "Workshop", "Vidéo YouTube"],
-    client: "SaaS Workshop",
+    tags: ["Captation d'événement", "Workshop privé", "Vidéo YouTube"],
+    client: "SaaS Summit Workshop",
     category: "video",
-    title: "Une journée de workshop captée de bout en bout",
+    extraCategories: ["photo"],
+    image: "/realisations/saas-workshop.jpg",
+    video: "/realisations/saas-workshop.mp4",
+    youtube: "n-3MkCnVCPI",
+    gallery: [
+      "/realisations/saas-workshop-1.jpg",
+      "/realisations/saas-workshop-2.jpg",
+      "/realisations/saas-workshop-3.jpg",
+      "/realisations/saas-workshop-4.jpg",
+      "/realisations/saas-workshop-5.jpg",
+      "/realisations/saas-workshop-6.jpg",
+      "/realisations/saas-workshop-7.jpg",
+      "/realisations/saas-workshop-8.jpg",
+    ],
+    title: "Un workshop privé capté de bout en bout",
     summary:
-      "Captation vidéo de la journée workshop au Novotel Paris Bercy, au lendemain du SaaS Summit : ateliers, échanges et temps forts entre entrepreneurs.",
+      "Captation vidéo et photo du workshop privé du SaaS Summit au Novotel Paris Bercy : une journée d'ateliers entre entrepreneurs, à huis clos.",
     context:
-      "Au lendemain du SaaS Summit, les organisateurs réunissaient les entrepreneurs pour une journée complète de workshop à l'hôtel Novotel Paris Bercy : des ateliers concrets, des échanges directs et beaucoup de valeur partagée.",
+      "Au lendemain du SaaS Summit, les organisateurs réunissaient une sélection d'entrepreneurs pour une journée complète de workshop privé à l'hôtel Novotel Paris Bercy : des ateliers concrets, des échanges directs et beaucoup de valeur partagée, loin du public de la veille.",
     solution:
-      "Nous avons couvert la journée en vidéo de bout en bout : les ateliers, les échanges entre entrepreneurs et l'énergie des sessions, avec des formats courts pour les réseaux sociaux et une vidéo YouTube qui retrace l'événement.",
+      "Nous avons couvert la journée en vidéo et en photo de bout en bout : les ateliers, les échanges entre entrepreneurs et l'énergie des sessions, avec la discrétion qu'impose un événement à huis clos. Le tout décliné en formats courts pour les réseaux et en une vidéo YouTube qui retrace la journée.",
     results:
-      "Des contenus qui prolongent la journée bien après sa clôture : la vidéo YouTube fait revivre l'événement et les formats courts valorisent les participants comme les organisateurs.",
+      "Des contenus qui font vivre ce workshop privé au-delà de ses participants : la vidéo YouTube retrace la journée et les formats courts valorisent l'événement comme ses organisateurs.",
   },
   {
     slug: "mg-chapelon",
@@ -519,6 +533,7 @@ export const featuredOrder = [
   "saas-summit",
   "mg-chapelon",
   "naawah",
+  "saas-workshop",
   "fynn-porsche",
 ];
 
