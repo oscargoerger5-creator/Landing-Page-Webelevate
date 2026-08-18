@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { BookCallButton } from "@/components/cal-booking";
+import { AvatarStack, LogoRow } from "@/components/trust-strip";
 
 const WHATSAPP_URL = "https://wa.me/33658488714";
 
@@ -37,6 +38,26 @@ export function FinalCta() {
           >
             Nous écrire sur WhatsApp
           </a>
+        </div>
+
+        {/* Preuve sociale : les marques d'abord (logos couleur, variantes
+            fond sombre), puis les entrepreneurs */}
+        <div className="mt-12 flex flex-col items-center gap-7">
+          <LogoRow
+            tone="dark"
+            className="mx-auto max-w-3xl gap-x-7 md:gap-x-9"
+            imgClassName="h-8 max-w-[96px] md:h-9 md:max-w-[120px]"
+          />
+          <div className="flex flex-col items-center gap-3">
+            <AvatarStack
+              size="size-10 md:size-11"
+              ringClassName="ring-neutral-900"
+              max={7}
+            />
+            <p className="text-sm text-white/50">
+              Ils travaillent déjà avec nous.
+            </p>
+          </div>
         </div>
       </div>
     </section>

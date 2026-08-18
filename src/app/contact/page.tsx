@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { CalInline } from "@/components/cal-booking";
+import { TrustStrip } from "@/components/trust-strip";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -51,8 +52,11 @@ export default function ContactPage() {
         <CalInline />
       </div>
 
+      {/* Preuve sociale : ils ont déjà réservé cet appel */}
+      <TrustStrip />
+
       {/* Contacts écrits, discrets */}
-      <p className="mt-8 text-center text-sm text-black/50">
+      <p className="mt-10 text-center text-sm text-black/50">
         Vous préférez écrire ?{" "}
         <a
           href={`mailto:${site.email}`}
