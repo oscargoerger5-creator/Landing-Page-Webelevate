@@ -28,7 +28,9 @@ function Reel({
     if (!v) return;
     v.muted = !withSound;
     setMuted(!withSound);
-    void v.play();
+    // catch : play() est rejeté si pause() arrive pendant le lancement
+    // (survol quitté trop vite) ; sans lui, erreur console AbortError.
+    void v.play().catch(() => {});
     setPlaying(true);
   };
   const pause = () => {

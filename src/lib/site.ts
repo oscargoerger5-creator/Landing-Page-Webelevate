@@ -316,11 +316,25 @@ export const testimonials: Testimonial[] = [
   },
   // Entreprises — site internet
   {
-    name: "Solvation",
+    name: "Solvation Germany",
     role: "Entreprise",
     quote:
-      "Un site clair qui inspire confiance, livré dans les temps. Exactement ce qu'il nous fallait.",
+      "L'équipe s'est déplacée en Allemagne et a tout capté : l'agence, les équipes, les chantiers. Des images qu'on utilise partout.",
     logo: "/clients/solvation.jpg",
+  },
+  {
+    name: "Ambiance & Styles",
+    role: "Arts de la table & cuisine",
+    quote:
+      "Des photos du magasin qui donnent envie de pousser la porte. Nos réseaux ont enfin des visuels à la hauteur de nos univers.",
+    logo: "/clients/ambiance-styles.jpg",
+  },
+  {
+    name: "Tout & Bon",
+    role: "Traiteur d'entreprise",
+    quote:
+      "Des photos qui mettent nos prestations en appétit. Nos supports commerciaux ont pris un vrai niveau.",
+    logo: "/clients/tout-et-bon.jpg",
   },
   {
     name: "Cuisina Création",
