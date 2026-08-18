@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { ExpandingGallery } from "@/components/expanding-gallery";
 import { FinalCta } from "@/components/final-cta";
+import { ReelGrid } from "@/components/reel-grid";
 import {
   hasMockup,
   RealisationMockup,
@@ -48,9 +50,12 @@ export default async function RealisationPage({
   const r = getRealisation(slug);
   if (!r) notFound();
 
-  const categoryLabel =
-    realisationCategories.find((c) => c.key === r.category)?.label ??
-    r.category;
+  const categoryLabel = [r.category, ...(r.extraCategories ?? [])]
+    .map(
+      (key) =>
+        realisationCategories.find((c) => c.key === key)?.label ?? key,
+    )
+    .join(" · ");
 
   // Données structurées : l'étude de cas comme CreativeWork signée Webelevate.
   const jsonLd = {
@@ -187,17 +192,58 @@ export default async function RealisationPage({
           ))}
         </div>
 
-        {/* Témoignage du client */}
-        {r.testimonial && (
-          <figure className="mt-12 rounded-2xl bg-neutral-900 p-7 text-white md:p-9">
-            <blockquote className="text-lg font-medium leading-relaxed md:text-xl">
-              « {r.testimonial.quote} »
-            </blockquote>
-            <figcaption className="mt-4 text-sm text-white/60">
-              {r.testimonial.author}
-              {r.testimonial.role && ` · ${r.testimonial.role}`}
-            </figcaption>
-          </figure>
+        {/* Réels vidéo : carrousel avec flèches, lecture au survol / au tap */}
+        {r.reels && r.reels.length > 0 && (
+          <div className="mt-14">
+            <ReelGrid reels={r.reels} client={r.client} />
+          </div>
+        )}
+
+        {/* Galerie photos : accordéon dès 4 photos, sinon grille simple */}
+        {r.gallery && r.gallery.length > 0 && (
+          <section className="mt-14">
+            <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
+              En images
+            </h2>
+            <div className="mt-5">
+              {r.gallery.length >= 4 ? (
+                <ExpandingGallery images={r.gallery} client={r.client} />
+              ) : (
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {r.gallery.map((src, i) => (
+                    <div key={src} className="overflow-hidden rounded-2xl">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt={`${r.client} : photo ${i + 1}`}
+                        loading="lazy"
+                        className="aspect-video w-full object-cover transition-transform duration-500 hover:scale-[1.04]"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* Vidéo YouTube mise en avant */}
+        {r.youtube && (
+          <section className="mt-14">
+            <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
+              La vidéo de l'événement
+            </h2>
+            <div className="mt-5 aspect-video overflow-hidden rounded-2xl border border-black/10 bg-neutral-900">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${r.youtube}`}
+                title={`${r.client} : vidéo YouTube`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                className="h-full w-full"
+              />
+            </div>
+          </section>
         )}
         {/* Projet suivant : on garde le visiteur dans les réalisations */}
         {(() => {

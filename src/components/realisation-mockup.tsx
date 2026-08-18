@@ -59,10 +59,12 @@ function Browser({
 
 /* --------------------------- Capture du site ----------------------------- */
 
-// La page du client mise en scène : fond à grille de points, fenêtre
-// navigateur flottante inclinée en 3D, capture en noir et blanc pour rester
-// dans la DA monochrome. Au survol : la fenêtre se redresse, les couleurs
-// reviennent et la page défile lentement jusqu'en bas.
+// La page du client mise en scène, en couleur.
+// - Carte (grille) : fond sombre, la page inclinée en perspective 3D marquée,
+//   ancrée en haut à gauche et qui fuit vers le bas droit (style LIMOVA).
+//   Au survol, la page se redresse légèrement.
+// - Héro (page détail) : fenêtre navigateur sur grille de points ; la page
+//   défile jusqu'en bas au survol.
 export function SiteScreenMockup({
   screen,
   client,
@@ -72,25 +74,41 @@ export function SiteScreenMockup({
   client: string;
   hero?: boolean;
 }) {
+  if (!hero) {
+    // La page « couchée » en perspective sur fond clair : ancrée en haut à
+    // gauche (nette), elle fuit vers la droite où elle devient floue
+    // (profondeur de champ, comme la référence). Le flou progressif est une
+    // copie floutée de l'image révélée par un masque dégradé côté droit.
+    const plane =
+      "w-full max-w-none rounded-xl ring-1 ring-black/10";
+    return (
+      <div className="relative h-full w-full overflow-hidden bg-neutral-100">
+        <div className="absolute left-[7%] top-[13%] w-[125%] origin-top-left transition-transform duration-500 ease-out [transform:perspective(1200px)_rotateX(24deg)_rotateY(-14deg)_rotateZ(7deg)] group-hover:[transform:perspective(1200px)_rotateX(16deg)_rotateY(-9deg)_rotateZ(5deg)]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={screen.src}
+            alt={`Site ${client} réalisé par Webelevate`}
+            className={cn(plane, "shadow-[0_40px_80px_-24px_rgba(0,0,0,0.4)]")}
+          />
+          {/* copie floutée, visible seulement vers la droite */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={screen.src}
+            alt=""
+            aria-hidden
+            className={cn(
+              plane,
+              "absolute inset-0 blur-[5px] [mask-image:linear-gradient(105deg,transparent_45%,black_78%)]",
+            )}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={cn(
-        "relative flex h-full w-full flex-col bg-neutral-100",
-        "[background-image:radial-gradient(circle,rgba(0,0,0,0.10)_1px,transparent_1px)] [background-size:14px_14px]",
-        hero
-          ? "px-10 pt-10 md:px-16 md:pt-14 [perspective:1600px]"
-          : "px-7 pt-7 [perspective:1100px]",
-      )}
-    >
-      <div
-        className={cn(
-          "flex min-h-0 flex-1 flex-col overflow-hidden rounded-t-xl bg-white ring-1 ring-black/10",
-          "shadow-[0_32px_70px_-28px_rgba(0,0,0,0.45)] transition-transform duration-500 ease-out",
-          hero
-            ? "[transform:rotateX(5deg)_scale(1.02)] group-hover:[transform:none]"
-            : "[transform:rotateX(7deg)_rotateY(-9deg)_rotateZ(1.5deg)_scale(1.09)] group-hover:[transform:scale(1.02)]",
-        )}
-      >
+    <div className="relative flex h-full w-full flex-col bg-neutral-100 px-10 pt-10 [background-image:radial-gradient(circle,rgba(0,0,0,0.10)_1px,transparent_1px)] [background-size:14px_14px] md:px-16 md:pt-14">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-t-xl bg-white shadow-[0_32px_70px_-28px_rgba(0,0,0,0.45)] ring-1 ring-black/10">
         <div className="flex items-center gap-2 border-b border-black/[0.07] bg-neutral-50 px-3.5 py-2">
           <span className="size-2 rounded-full bg-neutral-300" />
           <span className="size-2 rounded-full bg-neutral-300" />
@@ -104,7 +122,7 @@ export function SiteScreenMockup({
           <img
             src={screen.src}
             alt={`Site ${client} réalisé par Webelevate`}
-            className="h-full w-full object-cover grayscale [object-position:0_0] [transition:object-position_6s_linear,filter_0.6s_ease] group-hover:grayscale-0 group-hover:[object-position:0_100%]"
+            className="h-full w-full object-cover [object-position:0_0] transition-[object-position] duration-[6000ms] ease-linear group-hover:[object-position:0_100%]"
           />
         </div>
       </div>

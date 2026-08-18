@@ -56,7 +56,9 @@ function RealisationCard({ r }: { r: Realisation }) {
           </div>
         )}
         <span className="absolute left-3 top-3 rounded-full border border-black/10 bg-white/90 px-2.5 py-1 text-[11px] font-medium text-black/60 backdrop-blur">
-          {categoryLabel(r.category)}
+          {[r.category, ...(r.extraCategories ?? [])]
+            .map(categoryLabel)
+            .join(" · ")}
         </span>
       </div>
 
@@ -85,7 +87,10 @@ export function RealisationsGrid() {
   const filtered =
     active === "all"
       ? orderedRealisations
-      : orderedRealisations.filter((r) => r.category === active);
+      : orderedRealisations.filter(
+          (r) =>
+            r.category === active || r.extraCategories?.includes(active),
+        );
 
   const pill = (selected: boolean) =>
     cn(

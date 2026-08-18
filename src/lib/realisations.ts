@@ -27,6 +27,9 @@ export type Realisation = {
   slug: string;
   client: string;
   category: RealisationCategory;
+  // Catégories additionnelles : le projet apparaît aussi dans ces filtres
+  // (ex. SaaS Summit couvert en vidéo ET en photo).
+  extraCategories?: RealisationCategory[];
   title: string; // accroche de la carte et de la page détail
   summary: string; // 1 à 2 phrases (carte + meta description SEO)
   context: string; // le contexte
@@ -40,6 +43,13 @@ export type Realisation = {
   video?: string; // page détail : vidéo en héro à la place de l'image
   // Capture du site livré, affichée dans un mockup navigateur (carte + héro).
   screen?: { src: string; url: string };
+  // Page détail : galerie photos affichée après le récit (accordéon si 4
+  // photos ou plus, sinon grille simple).
+  gallery?: string[];
+  // Page détail : réels vidéo (lecture au survol / au tap).
+  reels?: { src: string; poster?: string }[];
+  // Page détail : identifiant d'une vidéo YouTube mise en avant après le récit.
+  youtube?: string;
 };
 
 export const realisationsList: Realisation[] = [
@@ -57,11 +67,11 @@ export const realisationsList: Realisation[] = [
     summary:
       "Un site vitrine pour la Poissonnerie du Centre à Gisors : produits frais, créations artisanales et service traiteur, pensé pour capter les demandes.",
     context:
-      "La Poissonnerie du Centre, à Gisors, voulait une vraie présence en ligne : être trouvée par les clients de la ville, montrer son savoir-faire artisanal et faciliter la commande.",
+      "La Poissonnerie du Centre, tenue par Cédric Guillemot à Gisors, n'avait aucune vraie présence en ligne. Tout son savoir-faire se jouait au comptoir : produits frais, créations artisanales, plateaux et prestations traiteur pour les événements privés. Il fallait une vitrine capable de montrer tout cela, d'être trouvée par les clients de la ville et de faciliter la commande.",
     solution:
-      "Nous avons conçu un site vitrine sur-mesure, clair et rapide : présentation de la maison et de son poissonnier, mise en avant des créations, plateaux et prestations traiteur, et un parcours de contact sans friction pour commander ou se renseigner.",
+      "Nous avons conçu un site vitrine sur-mesure, clair et rapide, qui présente la maison et son poissonnier : les créations, les plateaux, le service traiteur pour les événements privés, les offres du mois et les avis clients. Les informations pratiques (deux points de vente, horaires, fermetures exceptionnelles) restent toujours à jour, et le parcours de contact permet de commander ou de se renseigner sans friction.",
     results:
-      "Le site capte énormément de demandes et donne à la poissonnerie une vitrine en ligne à la hauteur de son comptoir : les clients découvrent les prestations traiteur et commandent en avance.",
+      "La poissonnerie a gagné une vraie visibilité en ligne : les clients découvrent les prestations traiteur, consultent les offres du moment et commandent en avance. Le site capte énormément de demandes, pour le magasin comme pour les événements privés.",
   },
   {
     slug: "f-comme-fermeture",
@@ -76,9 +86,9 @@ export const realisationsList: Realisation[] = [
     summary:
       "Landing page et campagnes publicitaires pour un artisan menuisier alsacien : un retour sur investissement de 12 fois la mise.",
     context:
-      "F Comme Fermetures, artisan menuisier spécialisé dans la pose de fenêtres, volets et portes en Alsace, voulait générer des demandes qualifiées sans dépendre du bouche-à-oreille. L'enjeu : transformer un budget publicitaire maîtrisé en clients signés.",
+      "F Comme Fermetures, artisan menuisier spécialisé dans la pose de fenêtres, volets et portes, dépendait du bouche-à-oreille pour trouver ses chantiers. L'objectif : générer un flux de demandes qualifiées sur son secteur, avec un budget publicitaire maîtrisé et un retour mesurable.",
     solution:
-      "Nous avons mis en place des campagnes Google Ads ciblées et une landing page pensée pour convertir : promesse claire, avis Google 5 étoiles mis en avant et formulaire de devis accessible dès le premier écran.",
+      "Nous avons tout construit de bout en bout : la landing page et les campagnes Google Ads. Les annonces ciblent l'Alsace sur des mots-clés précis liés à la pose de fenêtres, volets et portes. Chaque clic arrive sur une page pensée pour convertir : promesse claire, avis Google 5 étoiles mis en avant et formulaire de devis accessible dès le premier écran. Les performances sont suivies campagne par campagne, pour savoir exactement ce que rapporte chaque euro investi.",
     results:
       "Avec 1 500 € investis, la campagne a généré 1 500 clics, 30 leads qualifiés et 6 clients signés, pour 18 000 € de chiffre d'affaires. Un retour sur investissement de 12 pour 1.",
     stats: [
@@ -101,11 +111,11 @@ export const realisationsList: Realisation[] = [
     summary:
       "Site vitrine et référencement pour un traiteur événementiel : des demandes de devis en continu grâce à un très bon positionnement Google.",
     context:
-      "BS Traiteur, cuisinier à domicile et traiteur événementiel (mariages, baptêmes, événements d'entreprise), avait besoin d'un site à la hauteur de ses prestations, capable de transformer les recherches locales en demandes de devis.",
+      "BS Traiteur, cuisinier à domicile et traiteur événementiel à Wittelsheim (mariages, baptêmes, apéritifs dînatoires, événements d'entreprise), avait besoin d'une présence en ligne à la hauteur de ses prestations, capable de transformer les recherches Google en demandes de devis.",
     solution:
-      "Nous avons créé un site vitrine élégant qui met les prestations en appétit, structuré pour le référencement naturel : contenus travaillés, pages dédiées aux entreprises et aux particuliers, avis clients mis en avant et parcours de demande de devis simplifié.",
+      "Nous avons travaillé sur trois fronts : un site vitrine élégant qui met les prestations en appétit, avec des pages dédiées aux entreprises et aux particuliers ; le référencement naturel (structure, contenus, pages optimisées) ; et la collecte d'avis Google pour bâtir la preuve sociale. Le parcours de demande de devis a été simplifié au maximum.",
     results:
-      "Le site est 1er sur Google sur les recherches BS Traiteur, devant des traiteurs parisiens réputés, et capte énormément de demandes de devis. Le traiteur reçoit un flux régulier de nouveaux contacts qualifiés.",
+      "Le site est 1er sur Google sur les recherches BS Traiteur, devant des traiteurs bien installés, avec une note de 5 étoiles portée par des dizaines d'avis clients. Résultat : un flux régulier de demandes de devis et de nouveaux contacts qualifiés.",
   },
   {
     slug: "owen",
@@ -115,12 +125,12 @@ export const realisationsList: Realisation[] = [
     summary:
       "Création d'un tunnel de vente complet pour une offre de coaching : un parcours pensé pour convertir, de la page de vente au paiement.",
     context:
-      "Owen vendait ses coachings sans parcours structuré : son audience s'intéressait, mais rien ne la guidait jusqu'à l'achat. Il lui fallait un tunnel de vente clair et convaincant.",
+      "Owen vend des coachings en un contre un. Son audience s'intéressait, mais rien ne la guidait jusqu'à l'achat : pas de page de vente, pas de parcours structuré, des ventes qui reposaient uniquement sur les échanges en direct.",
     solution:
-      "Nous avons conçu son tunnel de bout en bout : une page de vente au copywriting travaillé, un parcours simplifié au maximum et un paiement fluide, sans étape superflue.",
+      "Nous avons construit son tunnel de vente complet sur Systeme.io : une page de vente au copywriting travaillé, une offre claire, un parcours réduit au strict nécessaire et un paiement en ligne fluide. Chaque étape a été pensée pour transformer l'intérêt en achat, sans intervention manuelle.",
     results:
-      "Le tunnel a généré des ventes dès son lancement et Owen est pleinement satisfait du résultat. Son offre de coaching dispose maintenant d'un parcours qui convertit, en continu et sans intervention manuelle.",
-    tags: ["Tunnel de vente", "Copywriting", "Paiement en ligne"],
+      "Le tunnel a généré des ventes dès son lancement et Owen est pleinement satisfait du résultat. Son offre de coaching dispose maintenant d'un parcours qui convertit en continu, pendant qu'il se concentre sur ses clients.",
+    tags: ["Tunnel de vente", "Systeme.io", "Copywriting"],
   },
 
   // ----------------------------- E-COMMERCE ------------------------------
@@ -137,11 +147,11 @@ export const realisationsList: Realisation[] = [
     summary:
       "Boutique en ligne pour un atelier de personnalisation : textile floqué, gravure, objets personnalisés. Un parcours simple, de l'idée à la commande.",
     context:
-      "Le petit atelier de Sab personnalise à la main textile, gourdes, gobelets et objets gravés. Il fallait une boutique en ligne chaleureuse, capable de présenter sept univers de produits et de guider chaque client vers sa création.",
+      "Le petit atelier de Sab personnalise à la main textile, gourdes, gobelets et objets gravés. Sabrina n'avait aucun site : les commandes se géraient au fil des messages, pièce par pièce. Il lui fallait une boutique en ligne fidèle à son univers, capable de présenter ses sept familles de produits, de simplifier la gestion des commandes et de la rendre visible en ligne.",
     solution:
-      "Nous avons conçu un e-commerce fidèle à l'identité de l'atelier : univers clairs, personnalisation directement sur la fiche produit (texte, visuel), parcours de commande simple et paiement sécurisé.",
+      "Nous avons créé son e-commerce de zéro, dans un univers chaleureux qui lui ressemble : sept univers de produits clairement organisés, personnalisation directement sur la fiche produit (texte, visuel), paiement sécurisé et parcours de commande simple. Le tout pensé pour qu'elle soit totalement autonome au quotidien.",
     results:
-      "Une boutique opérationnelle que Sab pilote en toute autonomie : les clients personnalisent et commandent en ligne, l'atelier produit et expédie.",
+      "Sab est passée de zéro présence en ligne à une boutique complète qu'elle pilote seule : les clients personnalisent et commandent sur le site, l'atelier produit et expédie. Les demandes arrivent désormais directement en ligne.",
   },
   {
     slug: "naawah",
@@ -157,11 +167,11 @@ export const realisationsList: Realisation[] = [
     summary:
       "Refonte complète d'une boutique en ligne haut de gamme après un prestataire défaillant : tout a été reconstruit proprement.",
     context:
-      "Naawah, marque de cacao de luxe, sortait d'une expérience difficile : l'ancien prestataire avait livré un site incohérent et inexploitable. Il fallait tout reprendre, vite et bien.",
+      "Naawah, marque de cacao de luxe, sortait d'une expérience difficile : l'ancien prestataire avait livré un site incohérent, loin du positionnement haut de gamme de la marque et inexploitable au quotidien. Il fallait tout reprendre, vite et bien.",
     solution:
-      "Nous avons reconstruit l'e-commerce de zéro : architecture propre, design à la hauteur du positionnement luxe de la marque, parcours d'achat fluide et base technique saine pour la suite.",
+      "Nous avons reconstruit l'e-commerce de zéro : architecture propre, design sobre et élégant à la hauteur de l'univers du luxe, mise en valeur des grands crus et des terroirs, parcours d'achat fluide. Chaque page a été pensée pour refléter l'image de marque, de la collection aux engagements de la maison.",
     results:
-      "Une boutique en ligne enfin fiable et élégante, alignée avec le positionnement premium de la marque, sur des fondations techniques solides.",
+      "Une boutique enfin fiable et élégante, alignée avec le positionnement premium de Naawah, sur des fondations techniques saines. La marque dispose d'un e-commerce qui lui ressemble et qu'elle peut faire évoluer sereinement.",
     testimonial: {
       quote:
         "Un site qui nous ressemble, créatif et efficace. Le résultat dépasse le brief.",
@@ -181,11 +191,11 @@ export const realisationsList: Realisation[] = [
     summary:
       "Modernisation de la boutique en ligne d'un fleuriste : un catalogue clair et un parcours d'achat repensé pour vendre mieux.",
     context:
-      "Fleur et Végétal, fleuriste haut de gamme, disposait d'une partie e-commerce vieillissante qui freinait les ventes en ligne.",
+      "Fleur et Végétal, fleuriste haut de gamme, disposait d'une partie e-commerce vieillissante : design daté, parcours d'achat confus, une expérience qui freinait les ventes en ligne.",
     solution:
-      "Nous avons refondu la boutique : catalogue organisé par type de création (bouquets du moment, sur commande, fleurs séchées, roses), photos mises en valeur, parcours d'achat simplifié et expérience mobile revue.",
+      "Nous avons repris toute la partie e-commerce : design modernisé, pages produits retravaillées côté UX/UI, catalogue organisé par type de création (bouquets, plantes, créations végétales) et un tunnel de vente simplifié où chaque étape est optimisée pour la conversion, sur ordinateur comme sur mobile.",
     results:
-      "Un e-commerce plus clair et plus agréable, qui facilite le passage à l'achat.",
+      "Une boutique plus claire, plus élégante et plus simple à parcourir : le passage à l'achat est devenu naturel, et le site reflète enfin le niveau des créations de l'atelier.",
   },
 
   // ------------------------------- VIDÉO ---------------------------------
@@ -199,11 +209,11 @@ export const realisationsList: Realisation[] = [
     summary:
       "Production vidéo récurrente pour Cuisine Schmidt : image de marque, contenus et événements. Premier contrat d'un an transformé en partenariat de 3 ans.",
     context:
-      "Cuisine Schmidt cherchait un partenaire vidéo régulier pour nourrir son image de marque : contenus, branding et couverture d'événements. Un premier contrat d'un an a été signé en mars 2025.",
+      "Cuisine Schmidt cherchait un partenaire régulier pour animer la présence en ligne de son magasin : du contenu de qualité, publié à un rythme constant. Un premier contrat d'un an de community management a été signé en mars 2025.",
     solution:
-      "Nous produisons des vidéos récurrentes qui alimentent la marque sur tous ses canaux : films d'image, contenus pour les réseaux, captation d'événements. Un rythme régulier, une qualité constante.",
+      "Chaque mois, nous venons produire photos et vidéos au showroom : formats courts pour les réseaux sociaux, mise en valeur des cuisines et de l'équipe, couverture des événements du magasin. Un rythme régulier, une qualité constante et une image cohérente sur tous les canaux.",
     results:
-      "250 000 vues en 2 semaines seulement sur les premières publications, une notoriété en hausse et un impact direct sur l'activité. Résultat : le contrat initial d'un an a été renouvelé pour 3 ans.",
+      "250 000 vues en 2 semaines seulement sur les premières publications, une notoriété locale en nette hausse et un impact direct sur l'activité du magasin. Résultat : le contrat initial d'un an a été renouvelé pour 3 ans de collaboration.",
     stats: [
       { value: "250 000", label: "vues en 2 semaines" },
       { value: "3 ans", label: "de contrat renouvelé" },
@@ -225,11 +235,11 @@ export const realisationsList: Realisation[] = [
     summary:
       "Couverture vidéo des événements Dachser : journée tennis aux Internationaux de Strasbourg, journée des partenaires et journée des collaborateurs, avec prises de vue drone.",
     context:
-      "Dachser, groupe international de transport et logistique, voulait valoriser ses événements internes et ses moments partenaires avec des vidéos à la hauteur de sa marque.",
+      "Dachser, groupe international de transport et logistique, voulait valoriser ses temps forts internes et partenaires avec des vidéos à la hauteur de sa marque. Trois événements nous ont été confiés.",
     solution:
-      "Trois tournages menés de bout en bout : une journée tennis pour illustrer leurs rencontres aux Internationaux de Strasbourg, la journée des partenaires et la journée des collaborateurs, avec prises de vue au drone pour donner de l'ampleur aux images.",
+      "Trois tournages menés de bout en bout : une journée avec les collaborateurs aux Internationaux de Strasbourg (meetings le matin, repas, puis le tennis), la journée des partenaires à l'agence de Strasbourg avec des plans drone du site, et la journée des collaborateurs avec l'ensemble des équipes. À chaque fois : captation, montage et livraison de films prêts à diffuser.",
     results:
-      "Des films professionnels que le groupe utilise pour sa communication interne et externe, et une collaboration installée sur la durée : trois tournages livrés, trois fois renouvelée.",
+      "Des films professionnels que le groupe utilise pour sa communication interne et externe, et une collaboration installée sur la durée : trois événements confiés, trois fois renouvelée.",
     testimonial: {
       quote:
         "Des vidéos corporate à la hauteur d'un groupe international. Cadrage, tournage, livraison : tout était carré.",
@@ -242,31 +252,65 @@ export const realisationsList: Realisation[] = [
     tags: ["Captation d'événement", "Interviews", "Formats réseaux"],
     image: "/realisations/saas-summit.jpg",
     video: "/realisations/saas-summit.mp4",
+    youtube: "_kIxjlEf_0U",
+    gallery: [
+      "/realisations/saas-summit-1.jpg",
+      "/realisations/saas-summit-2.jpg",
+      "/realisations/saas-summit-3.jpg",
+      "/realisations/saas-summit-4.jpg",
+      "/realisations/saas-summit-5.jpg",
+      "/realisations/saas-summit-6.jpg",
+      "/realisations/saas-summit-7.jpg",
+    ],
     client: "SaaS Summit",
     category: "video",
+    extraCategories: ["photo"],
     title: "Au cœur de l'événement des entrepreneurs du SaaS",
+    stats: [{ value: "200", label: "founders réunis à l'événement" }],
     summary:
-      "Captation vidéo d'un événement entrepreneurial : conférences, workshops et interviews des fondateurs présents.",
+      "Captation vidéo et photo d'un événement entrepreneurial : conférences, workshops et interviews des fondateurs présents.",
     context:
-      "En collaboration avec les frères Chapelon, Paul-Marie et Rafael, le SaaS Summit réunissait de nombreux entrepreneurs (Kylian, Robin, Raphaël et d'autres) autour de conférences et de workshops.",
+      "Organisé en collaboration avec les frères Chapelon (Mathias et Grégoire Chapelon), Paul-Marie Hamon et Rafael Guilbert, le SaaS Summit réunissait de nombreux entrepreneurs, dont Kylian Khalifa, Robin Dormion et Raphaël Guilhem, autour de conférences et de workshops.",
     solution:
       "Nous avons couvert l'événement et les workshops : captation des temps forts, des interventions et de l'énergie de la salle, avec des formats pensés pour les réseaux sociaux.",
     results:
       "Des contenus qui prolongent l'événement bien après sa clôture et valorisent ses intervenants comme ses organisateurs.",
   },
   {
+    slug: "saas-workshop",
+    tags: ["Captation d'événement", "Workshop", "Vidéo YouTube"],
+    client: "SaaS Workshop",
+    category: "video",
+    title: "Une journée de workshop captée de bout en bout",
+    summary:
+      "Captation vidéo de la journée workshop au Novotel Paris Bercy, au lendemain du SaaS Summit : ateliers, échanges et temps forts entre entrepreneurs.",
+    context:
+      "Au lendemain du SaaS Summit, les organisateurs réunissaient les entrepreneurs pour une journée complète de workshop à l'hôtel Novotel Paris Bercy : des ateliers concrets, des échanges directs et beaucoup de valeur partagée.",
+    solution:
+      "Nous avons couvert la journée en vidéo de bout en bout : les ateliers, les échanges entre entrepreneurs et l'énergie des sessions, avec des formats courts pour les réseaux sociaux et une vidéo YouTube qui retrace l'événement.",
+    results:
+      "Des contenus qui prolongent la journée bien après sa clôture : la vidéo YouTube fait revivre l'événement et les formats courts valorisent les participants comme les organisateurs.",
+  },
+  {
     slug: "mg-chapelon",
     tags: ["Direction artistique", "Tournage", "Montage"],
     image: "/realisations/mg-chapelon.jpg",
+    reels: [
+      { src: "/realisations/mg-reel-1.mp4", poster: "/realisations/mg-reel-1.jpg" },
+      { src: "/realisations/mg-reel-2.mp4", poster: "/realisations/mg-reel-2.jpg" },
+      { src: "/realisations/mg-reel-3.mp4", poster: "/realisations/mg-reel-3.jpg" },
+      { src: "/realisations/mg-reel-4.mp4", poster: "/realisations/mg-reel-4.jpg" },
+      { src: "/realisations/mg-reel-5.mp4", poster: "/realisations/mg-reel-5.jpg" },
+    ],
     client: "MG Chapelon",
     category: "video",
     title: "L'image de marque qui accompagne leur croissance",
     summary:
       "Travail de fond sur l'image de marque de Mathias et Grégoire Chapelon : direction artistique et qualité de contenu.",
     context:
-      "Mathias et Grégoire Chapelon voulaient professionnaliser leur image et la qualité de leurs contenus pour accompagner leur croissance.",
+      "Mathias et Grégoire Chapelon voulaient professionnaliser leur image pour accompagner leur croissance : des contenus à la hauteur de leurs ambitions, cohérents sur tous leurs canaux.",
     solution:
-      "Nous travaillons leur image de marque en vidéo : direction artistique, tournages soignés et montage exigeant, avec une cohérence visuelle sur tous leurs contenus, des réseaux sociaux à leurs événements.",
+      "Nous travaillons leur image de marque en continu : vidéos YouTube, reels et photos pour Instagram, avec une direction artistique constante, des tournages soignés et un montage exigeant. La collaboration s'étend à leurs événements, aux côtés de Paul-Marie Hamon et Rafael Guilbert.",
     results:
       "Une identité visuelle affirmée, des contenus dont la qualité sert directement leur crédibilité d'entrepreneurs, et une collaboration qui dure depuis maintenant plusieurs mois.",
     testimonial: {
@@ -381,9 +425,9 @@ export const realisationsList: Realisation[] = [
     summary:
       "Vidéos de campagne pour les élections municipales de Benfeld : présentation de l'équipe et de ses idées, relayée par les DNA.",
     context:
-      "Pour les élections municipales de Benfeld, la liste « Benfeld avec vous, pour vous » voulait présenter son équipe et ses idées pour la ville de manière moderne et accessible.",
+      "Pour les élections municipales de Benfeld, la liste « Benfeld avec vous, pour vous » voulait une campagne moderne et incarnée : présenter son équipe et ses idées pour la ville, au-delà des tracts classiques.",
     solution:
-      "Nous avons conçu et produit les vidéos de campagne : présentation des membres de l'équipe, mise en valeur du programme et formats adaptés aux réseaux sociaux.",
+      "Nous avons pris en charge toute l'image de la campagne : l'ensemble des photos et des vidéos, des portraits de l'équipe aux vidéos de présentation du programme, avec des formats calibrés pour les réseaux sociaux.",
     results:
       "Une campagne très visible, reprise par les DNA (Dernières Nouvelles d'Alsace), qui a permis à la liste de toucher bien au-delà de ses cercles habituels.",
   },
@@ -396,9 +440,9 @@ export const realisationsList: Realisation[] = [
     summary:
       "IA téléphonique pour une entreprise de rénovation de piscines : elle répond aux appels entrants, oriente vers le bon service et capte chaque demande, 24h/24.",
     context:
-      "Chez PRCP, entreprise de rénovation de piscines, chaque appel manqué était un chantier potentiel perdu : impossible de répondre à tout, tout le temps, entre les interventions, les congés et les horaires d'ouverture.",
+      "Chez PRCP, entreprise de rénovation de piscines, le téléphone sonne pendant les chantiers, entre deux rendez-vous et hors horaires. Chaque appel manqué était un chantier potentiel perdu, et les congés laissaient l'accueil complètement à l'arrêt.",
     solution:
-      "Nous avons déployé une IA téléphonique qui décroche chaque appel entrant, comprend la demande et oriente l'appelant vers le bon interlocuteur : devis, suivi de chantier ou entretien. En parallèle, une automatisation d'e-mails enregistre chaque demande et la transmet immédiatement à l'équipe concernée.",
+      "Nous avons déployé une IA téléphonique qui décroche chaque appel entrant, comprend la demande et oriente l'appelant vers le bon secteur de l'entreprise : devis, suivi de chantier ou entretien. En parallèle, une automatisation transmet chaque demande par e-mail à l'équipe concernée, immédiatement, même pendant les congés. L'accueil ne s'arrête jamais.",
     results:
       "L'accueil tourne désormais 24h/24, 7j/7, congés compris : chaque appel est pris en charge, chaque demande est captée et tracée. Plus aucun client perdu faute de réponse.",
     tags: ["IA téléphonique", "Automatisation d'e-mails", "Accueil 24h/24"],
@@ -425,6 +469,21 @@ export const realisationsList: Realisation[] = [
       "Une série de photos et de vidéos que leur propriétaire est fier de partager, et qui montre notre exigence sur l'automobile.",
     tags: ["Shooting automobile", "Vidéo", "Retouche & étalonnage"],
     image: "/photos/photo-7.jpg",
+  },
+  {
+    slug: "thomas-cupra",
+    tags: ["Shooting automobile", "Direction artistique", "Retouche & étalonnage"],
+    client: "Thomas",
+    category: "photo",
+    title: "Le caractère d'une Cupra en images",
+    summary:
+      "Shooting photo automobile : la Cupra de Thomas mise en scène, cadrages dynamiques et retouche soignée.",
+    context:
+      "Thomas voulait des images à la hauteur de sa Cupra : des photos soignées qui rendent justice au caractère de la voiture, pour le plaisir et pour les partager.",
+    solution:
+      "Nous avons organisé le shooting de bout en bout : repérage des décors, prises de vue en situation, plans de détail, puis retouche et étalonnage pour un rendu fidèle au tempérament de la voiture.",
+    results:
+      "Une série de photos que Thomas est fier de partager, dans la lignée de notre exigence sur l'automobile.",
   },
 ];
 
