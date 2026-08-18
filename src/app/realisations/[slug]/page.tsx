@@ -32,6 +32,8 @@ export async function generateMetadata({
   const { slug } = await params;
   const r = getRealisation(slug);
   if (!r) return {};
+  // Visuel de partage : photo du projet, sinon capture du site livré.
+  const ogImage = r.image ?? r.screen?.src;
   return {
     title: `${r.client} : ${r.title}`,
     description: r.summary,
@@ -40,7 +42,7 @@ export async function generateMetadata({
       title: `${r.client} · ${site.name}`,
       description: r.summary,
       type: "article",
-      ...(r.image ? { images: [r.image] } : {}),
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
   };
 }
@@ -61,7 +63,9 @@ export default async function RealisationPage({
     )
     .join(" · ");
 
-  // Données structurées : l'étude de cas comme CreativeWork signée Webelevate.
+  // Données structurées : l'étude de cas comme CreativeWork signée Webelevate,
+  // avec la vidéo YouTube référencée quand elle existe (SEO vidéo).
+  const jsonLdImage = r.image ?? r.screen?.src;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -70,7 +74,18 @@ export default async function RealisationPage({
     about: categoryLabel,
     author: { "@type": "Organization", name: "Webelevate" },
     publisher: { "@type": "Organization", name: "Webelevate" },
-    ...(r.image ? { image: r.image } : {}),
+    ...(jsonLdImage ? { image: jsonLdImage } : {}),
+    ...(r.youtube
+      ? {
+          video: {
+            "@type": "VideoObject",
+            name: `${r.client} : ${r.title}`,
+            description: r.summary,
+            embedUrl: `https://www.youtube-nocookie.com/embed/${r.youtube}`,
+            thumbnailUrl: `https://i.ytimg.com/vi/${r.youtube}/hqdefault.jpg`,
+          },
+        }
+      : {}),
   };
 
   return (
@@ -263,7 +278,7 @@ export default async function RealisationPage({
         {r.youtube && (
           <section className="mt-14">
             <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
-              La vidéo de l'événement
+              {r.youtubeTitle ?? "La vidéo YouTube"}
             </h2>
             <div className="mt-5 aspect-video overflow-hidden rounded-2xl border border-black/10 bg-neutral-900">
               <iframe

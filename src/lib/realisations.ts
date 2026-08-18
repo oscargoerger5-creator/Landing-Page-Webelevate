@@ -53,6 +53,8 @@ export type Realisation = {
   reelsVertical?: boolean;
   // Page détail : identifiant d'une vidéo YouTube mise en avant après le récit.
   youtube?: string;
+  // Titre de la section YouTube (défaut : « La vidéo YouTube »).
+  youtubeTitle?: string;
 };
 
 export const realisationsList: Realisation[] = [
@@ -236,13 +238,13 @@ export const realisationsList: Realisation[] = [
     category: "video",
     title: "Trois tournages pour un groupe logistique international",
     summary:
-      "Couverture vidéo des événements Dachser : journée tennis aux Internationaux de Strasbourg, journée des partenaires et journée des collaborateurs, avec prises de vue drone.",
+      "Couverture vidéo des événements Dachser : Internationaux de Strasbourg, journée des partenaires et journée des collaborateurs, avec prises de vue drone.",
     context:
       "Dachser, groupe international de transport et logistique, voulait valoriser ses temps forts internes et partenaires avec des vidéos à la hauteur de sa marque. Trois événements nous ont été confiés.",
     solution:
       "Trois tournages menés de bout en bout : une journée avec les collaborateurs aux Internationaux de Strasbourg (meetings le matin, repas, puis le tennis), la journée des partenaires à l'agence de Strasbourg avec des plans drone du site, et la journée des collaborateurs avec l'ensemble des équipes. À chaque fois : captation, montage et livraison de films prêts à diffuser.",
     results:
-      "Des films professionnels que le groupe utilise pour sa communication interne et externe, et une collaboration installée sur la durée : trois événements confiés, trois fois renouvelée.",
+      "Des films professionnels que le groupe utilise pour sa communication interne et externe, et une collaboration installée sur la durée : trois événements confiés, trois fois renouvelée. Ces films sont réservés à la communication du groupe : nous ne les diffusons pas publiquement, et cette confidentialité fait partie de notre engagement envers chaque client.",
     testimonial: {
       quote:
         "Des vidéos corporate à la hauteur d'un groupe international. Cadrage, tournage, livraison : tout était carré.",
@@ -256,6 +258,7 @@ export const realisationsList: Realisation[] = [
     image: "/realisations/saas-summit.jpg",
     video: "/realisations/saas-summit.mp4",
     youtube: "_kIxjlEf_0U",
+    youtubeTitle: "La vidéo de l'événement",
     gallery: [
       "/realisations/saas-summit-1.jpg",
       "/realisations/saas-summit-2.jpg",
@@ -288,6 +291,7 @@ export const realisationsList: Realisation[] = [
     image: "/realisations/saas-workshop.jpg",
     video: "/realisations/saas-workshop.mp4",
     youtube: "n-3MkCnVCPI",
+    youtubeTitle: "La vidéo de l'événement",
     gallery: [
       "/realisations/saas-workshop-1.jpg",
       "/realisations/saas-workshop-2.jpg",
@@ -599,6 +603,189 @@ export const realisationsList: Realisation[] = [
       "Nous avons organisé le shooting de bout en bout : repérage des décors, prises de vue en situation, plans de détail, puis retouche et étalonnage pour un rendu fidèle au tempérament de la voiture.",
     results:
       "Une série de photos que Thomas est fier de partager, dans la lignée de notre exigence sur l'automobile.",
+  },
+  {
+    slug: "fleur-et-vegetal-afterwork",
+    tags: ["Photo événementiel", "Vidéo", "Réseaux sociaux"],
+    client: "Fleur et Végétal",
+    category: "photo",
+    extraCategories: ["video"],
+    image: "/realisations/fleur-tbv.jpg",
+    gallery: [
+      "/realisations/fleur-tbv-1.jpg",
+      "/realisations/fleur-tbv-2.jpg",
+      "/realisations/fleur-tbv-3.jpg",
+      "/realisations/fleur-tbv-4.jpg",
+      "/realisations/fleur-tbv-5.jpg",
+      "/realisations/fleur-tbv-6.jpg",
+    ],
+    reels: [
+      { src: "/realisations/fleur-tbv-reel-1.mp4", poster: "/realisations/fleur-tbv-reel-1.jpg" },
+    ],
+    reelsVertical: true,
+    title: "Leurs créations florales à l'After Work de TBV",
+    summary:
+      "Photo et vidéo pour Fleur et Végétal lors de l'After Work de TBV : leurs compositions mises en valeur au cœur de l'événement.",
+    context:
+      "Fleur et Végétal signait les compositions florales de la soirée After Work de TBV et voulait garder des images de son travail en situation, au milieu de l'événement.",
+    solution:
+      "Présents sur la soirée, nous avons capté leurs créations en photo et en vidéo : les compositions dans le décor du showroom, les détails et l'ambiance autour.",
+    results:
+      "Des contenus que le fleuriste réutilise sur ses réseaux pour montrer son savoir-faire en conditions réelles, au-delà de la boutique.",
+  },
+  {
+    slug: "ambiance-styles",
+    tags: ["Shooting magasin", "Réseaux sociaux", "Image de marque"],
+    client: "Ambiance & Styles",
+    category: "photo",
+    image: "/realisations/ambiance.jpg",
+    gallery: [
+      "/realisations/ambiance-1.jpg",
+      "/realisations/ambiance-2.jpg",
+      "/realisations/ambiance-3.jpg",
+      "/realisations/ambiance-4.jpg",
+      "/realisations/ambiance-5.jpg",
+    ],
+    title: "Le magasin mis en scène pour les réseaux sociaux",
+    summary:
+      "Shooting photo du magasin Ambiance & Styles : des images pensées pour alimenter les réseaux sociaux de l'enseigne.",
+    context:
+      "Ambiance & Styles, enseigne de cuisine et d'arts de la table, voulait des images professionnelles de son magasin pour nourrir sa présence sur les réseaux sociaux.",
+    solution:
+      "Nous avons shooté le magasin sous son meilleur jour : les espaces, les univers produits et les mises en scène, avec des cadrages pensés pour les formats des réseaux.",
+    results:
+      "Une banque d'images prête à publier, qui donne envie de pousser la porte du magasin et professionnalise la présence en ligne de l'enseigne.",
+  },
+  {
+    slug: "solvation-germany",
+    tags: ["Shooting corporate", "Chantiers", "Photo & vidéo"],
+    client: "Solvation Germany",
+    category: "photo",
+    extraCategories: ["video"],
+    image: "/realisations/solvation.jpg",
+    gallery: [
+      "/realisations/solvation-1.jpg",
+      "/realisations/solvation-2.jpg",
+      "/realisations/solvation-3.jpg",
+      "/realisations/solvation-4.jpg",
+      "/realisations/solvation-5.jpg",
+    ],
+    reels: [
+      { src: "/realisations/solvation-reel-1.mp4", poster: "/realisations/solvation-reel-1.jpg" },
+      { src: "/realisations/solvation-reel-2.mp4", poster: "/realisations/solvation-reel-2.jpg" },
+      { src: "/realisations/solvation-reel-3.mp4", poster: "/realisations/solvation-reel-3.jpg" },
+      { src: "/realisations/solvation-reel-4.mp4", poster: "/realisations/solvation-reel-4.jpg" },
+    ],
+    reelsVertical: true,
+    title: "Leur agence et leurs chantiers en images",
+    summary:
+      "Shooting photo et vidéo pour Solvation Germany : l'agence, les équipes et les chantiers du client allemand en images professionnelles.",
+    context:
+      "Solvation Germany, client allemand, voulait des images à la hauteur de son activité : montrer son agence, ses équipes et ses chantiers avec un rendu professionnel.",
+    solution:
+      "Nous nous sommes déplacés pour couvrir l'ensemble : shooting photo et vidéo de l'agence, des équipes au travail et des chantiers en cours.",
+    results:
+      "Des images corporate que l'entreprise utilise pour sa communication, son site et ses supports commerciaux, en France comme en Allemagne.",
+  },
+  {
+    slug: "tout-et-bon",
+    tags: ["Photo culinaire", "Traiteur", "B2B"],
+    client: "Tout & Bon",
+    category: "photo",
+    image: "/realisations/tout-et-bon.jpg",
+    gallery: [
+      "/realisations/tout-et-bon-1.jpg",
+      "/realisations/tout-et-bon-2.jpg",
+      "/realisations/tout-et-bon-3.jpg",
+      "/realisations/tout-et-bon-4.jpg",
+      "/realisations/tout-et-bon-5.jpg",
+      "/realisations/tout-et-bon-6.jpg",
+      "/realisations/tout-et-bon-7.jpg",
+      "/realisations/tout-et-bon-8.jpg",
+    ],
+    title: "La gastronomie d'entreprise en photos",
+    summary:
+      "Photos des prestations traiteur de Tout & Bon : plateaux-repas et buffets d'entreprise mis en appétit.",
+    context:
+      "Tout & Bon, spécialiste du traiteur pour entreprises, avait besoin de photos professionnelles de ses prestations pour ses supports et sa communication.",
+    solution:
+      "Nous avons photographié leurs prestations en situation : plateaux-repas, buffets et dressages, avec un travail sur la lumière qui met les produits en appétit.",
+    results:
+      "Des visuels qui valorisent l'offre auprès des clients professionnels et donnent à la marque une image à la hauteur de ses prestations.",
+  },
+  {
+    slug: "sab-shooting-produit",
+    tags: ["Shooting produit", "E-commerce", "Packshot"],
+    client: "Le petit atelier de Sab",
+    category: "photo",
+    image: "/realisations/sab-produit.jpg",
+    gallery: [
+      "/realisations/sab-produit-1.jpg",
+      "/realisations/sab-produit-2.jpg",
+      "/realisations/sab-produit-3.jpg",
+      "/realisations/sab-produit-4.jpg",
+      "/realisations/sab-produit-5.jpg",
+      "/realisations/sab-produit-6.jpg",
+    ],
+    title: "Ses créations personnalisées shootées aux petits soins",
+    summary:
+      "Shooting produit pour Le petit atelier de Sab : ses créations personnalisées photographiées pour la boutique en ligne et les réseaux.",
+    context:
+      "Après la création de sa boutique en ligne, il fallait des photos à la hauteur des créations de Sab : des visuels propres et cohérents pour les fiches produits et les réseaux sociaux.",
+    solution:
+      "Nous avons shooté ses créations une par une : mise en scène soignée, lumière travaillée et détails des personnalisations, avec un rendu homogène sur toute la gamme.",
+    results:
+      "Des fiches produits qui donnent confiance et envie d'acheter, et des visuels que Sab réutilise sur tous ses canaux. La boucle est bouclée : le site, puis les images qui le font vendre.",
+  },
+  {
+    slug: "julien-krieg",
+    tags: ["Cadrage", "Vidéo YouTube", "Tournage"],
+    client: "Julien Krieg",
+    category: "video",
+    extraCategories: ["photo"],
+    image: "/realisations/julien-krieg.jpg",
+    youtube: "1iDS-NvNtXI",
+    gallery: [
+      "/realisations/julien-krieg-1.jpg",
+      "/realisations/julien-krieg-2.jpg",
+      "/realisations/julien-krieg-3.jpg",
+      "/realisations/julien-krieg-4.jpg",
+      "/realisations/julien-krieg-5.jpg",
+      "/realisations/julien-krieg-6.jpg",
+      "/realisations/julien-krieg-7.jpg",
+    ],
+    title: "Derrière la caméra de sa vidéo YouTube",
+    summary:
+      "Cadrage de la vidéo YouTube de Julien Krieg : un tournage cadré avec soin pour servir son contenu.",
+    context:
+      "Julien Krieg préparait une vidéo pour sa chaîne YouTube et voulait un rendu professionnel : des plans propres, stables et bien composés, à la hauteur de son contenu.",
+    solution:
+      "Nous avons assuré le cadrage du tournage : composition des plans, gestion de la lumière et des valeurs de cadre, pour donner à la vidéo un rendu soigné du premier au dernier plan.",
+    results:
+      "Une vidéo publiée sur sa chaîne avec une image professionnelle, à découvrir ci-dessous.",
+  },
+  {
+    slug: "d4mss",
+    tags: ["Shooting photo", "Artiste", "Réseaux sociaux"],
+    client: "D4MSS",
+    category: "photo",
+    image: "/realisations/d4mss.jpg",
+    gallery: [
+      "/realisations/d4mss-1.jpg",
+      "/realisations/d4mss-2.jpg",
+      "/realisations/d4mss-3.jpg",
+      "/realisations/d4mss-4.jpg",
+      "/realisations/d4mss-5.jpg",
+    ],
+    title: "L'univers d'un DJ capté en photos",
+    summary:
+      "Shooting photo pour le DJ D4MSS : des images qui posent son univers et alimentent ses réseaux.",
+    context:
+      "D4MSS, DJ, avait besoin d'images fortes pour poser son identité d'artiste : des photos utilisables pour ses réseaux, ses annonces de dates et sa communication.",
+    solution:
+      "Nous avons construit un shooting autour de son univers : mise en scène, jeu sur les lumières et cadrages marqués, pour des images qui lui ressemblent.",
+    results:
+      "Une série de photos qui affirme son image d'artiste et nourrit sa présence en ligne.",
   },
 ];
 

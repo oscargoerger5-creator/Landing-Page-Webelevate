@@ -153,7 +153,18 @@ export const clients: Client[] = [
     role: "Founder Taap.it & Corporations",
     photo: "/clients/kyliankhalifa.jpg",
   },
-  { type: "company", name: "Solvation", logo: "/clients/solvation.jpg" },
+  {
+    type: "company",
+    name: "Solvation",
+    logo: "/clients/solvation.jpg",
+    marqueeOnly: true,
+  },
+  {
+    type: "company",
+    name: "Ambiance & Styles",
+    logo: "/clients/ambiance-styles.jpg",
+    logoClassName: "rounded-md",
+  },
   {
     type: "person",
     name: "Florent Ghizzoni",
@@ -164,6 +175,13 @@ export const clients: Client[] = [
     type: "company",
     name: "Cuisina création",
     logo: "/clients/cuisina-creations.png",
+    marqueeOnly: true,
+  },
+  {
+    type: "company",
+    name: "Tout & Bon",
+    logo: "/clients/tout-et-bon.jpg",
+    logoClassName: "rounded-md",
   },
   {
     type: "person",
@@ -177,6 +195,13 @@ export const clients: Client[] = [
     name: "Raphael Guilhem",
     role: "Founding growth Pletor AI",
     photo: "/clients/raph-guilhem.jpg",
+  },
+  {
+    type: "company",
+    name: "DNA · Dernières Nouvelles d'Alsace",
+    logo: "/clients/dna.png",
+    logoClassName: "rounded-md",
+    marqueeOnly: true,
   },
   {
     type: "company",
