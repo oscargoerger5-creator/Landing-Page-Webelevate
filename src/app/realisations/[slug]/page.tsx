@@ -241,7 +241,13 @@ export default async function RealisationPage({
               reels={r.reels}
               client={r.client}
               vertical={r.reelsVertical}
-              title={r.category === "photo" ? "Les réels" : "Leurs réels"}
+              title={
+                r.reels.length === 1
+                  ? "Le réel"
+                  : r.category === "photo"
+                    ? "Les réels"
+                    : "Leurs réels"
+              }
             />
           </div>
         )}

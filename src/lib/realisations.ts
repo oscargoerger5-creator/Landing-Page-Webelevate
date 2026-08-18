@@ -341,16 +341,30 @@ export const realisationsList: Realisation[] = [
     tags: ["Vidéo sportive", "Reels", "Réseaux sociaux"],
     client: "AHB",
     category: "video",
+    extraCategories: ["photo"],
+    image: "/realisations/ahb.jpg",
+    gallery: [
+      "/realisations/ahb-1.jpg",
+      "/realisations/ahb-2.jpg",
+      "/realisations/ahb-3.jpg",
+      "/realisations/ahb-4.jpg",
+      "/realisations/ahb-5.jpg",
+      "/realisations/ahb-6.jpg",
+    ],
+    reels: [
+      { src: "/realisations/ahb-reel-1.mp4", poster: "/realisations/ahb-reel-1.jpg" },
+    ],
+    reelsVertical: true,
     title: "Des vidéos sportives vues des centaines de milliers de fois",
     summary:
-      "Vidéos d'équipe pour le club AHB : des réels qui atteignent des centaines de milliers de vues.",
+      "Vidéos et photos d'équipe pour le club AHB : des réels qui dépassent les 160 000 vues.",
     context:
       "Le club AHB voulait faire rayonner ses équipes au-delà de ses supporters et donner envie de suivre le club.",
     solution:
-      "Nous produisons des vidéos sportives à forte intensité : temps forts des matchs, coulisses des équipes et formats courts calibrés pour les réseaux sociaux.",
+      "Nous produisons des vidéos sportives à forte intensité : temps forts des matchs, coulisses des équipes et formats courts calibrés pour les réseaux sociaux, complétés par des photos de match.",
     results:
-      "Une visibilité énorme pour le club : plusieurs réels atteignent des centaines de milliers de vues.",
-    stats: [{ value: "100 000+", label: "vues sur plusieurs réels" }],
+      "Une visibilité énorme pour le club : le réel ci-dessous dépasse à lui seul les 160 000 vues, et plusieurs autres atteignent des centaines de milliers de vues.",
+    stats: [{ value: "160 000+", label: "vues sur un seul réel" }],
   },
   {
     slug: "hsg",

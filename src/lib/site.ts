@@ -322,6 +322,7 @@ export type Realisation = {
   summary: string;
   url?: string;
   image?: string;
+  video?: string; // illustration vidéo (lecture différée dans le carrousel)
 };
 
 export const realisations: Realisation[] = featuredSlugs
@@ -331,7 +332,9 @@ export const realisations: Realisation[] = featuredSlugs
     title: `${r.client} : ${r.title}`,
     summary: r.summary,
     url: `/realisations/${r.slug}`,
-    image: r.image,
+    // À défaut de photo, la capture du site sert d'illustration (cadrée haut).
+    image: r.image ?? r.screen?.src,
+    video: r.video,
   }));
 
 // Détail des services (page /services) — accroche, description longue et

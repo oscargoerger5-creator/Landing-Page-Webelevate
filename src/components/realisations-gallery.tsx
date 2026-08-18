@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { CardVideo } from "@/components/realisations-grid";
 import {
   Carousel,
   type CarouselApi,
@@ -93,12 +94,16 @@ export function RealisationsGallery() {
                   className="group flex flex-col"
                 >
                   <div className="flex aspect-[3/2] overflow-hidden rounded-xl border border-black/10 bg-black/[0.04]">
-                    {item.image ? (
+                    {item.video ? (
+                      <CardVideo src={item.video} poster={item.image} />
+                    ) : item.image ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                        className={`h-full w-full object-cover transition duration-300 group-hover:scale-105 ${
+                          item.image.includes("/site-") ? "object-top" : ""
+                        }`}
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center text-xs text-black/30">

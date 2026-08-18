@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,41 @@ import {
 const categoryLabel = (key: RealisationCategory) =>
   realisationCategories.find((c) => c.key === key)?.label ?? key;
 
+// Illustration vidéo de carte : poster statique, la vidéo ne se charge et ne
+// se lance que quand la carte est visible à l'écran (et se met en pause dès
+// qu'elle en sort) pour ne pas alourdir la page.
+// Exporté : aussi utilisé par le carrousel de réalisations de l'accueil.
+export function CardVideo({ src, poster }: { src: string; poster?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) void video.play().catch(() => {});
+        else video.pause();
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(video);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="none"
+      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+    />
+  );
+}
+
 function RealisationCard({ r }: { r: Realisation }) {
   return (
     <Link
@@ -26,7 +61,9 @@ function RealisationCard({ r }: { r: Realisation }) {
     >
       {/* Visuel (ou placeholder monochrome tant que le mockup n'est pas fourni) */}
       <div className="relative aspect-[16/10] overflow-hidden bg-neutral-100">
-        {r.screen ? (
+        {r.video ? (
+          <CardVideo src={r.video} poster={r.image} />
+        ) : r.screen ? (
           <SiteScreenMockup screen={r.screen} client={r.client} />
         ) : r.image ? (
           // eslint-disable-next-line @next/next/no-img-element
