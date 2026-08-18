@@ -48,6 +48,8 @@ export type Realisation = {
   gallery?: string[];
   // Page détail : réels vidéo (lecture au survol / au tap).
   reels?: { src: string; poster?: string }[];
+  // Réels au format vertical 9:16 (sinon 4:3).
+  reelsVertical?: boolean;
   // Page détail : identifiant d'une vidéo YouTube mise en avant après le récit.
   youtube?: string;
 };
@@ -458,6 +460,28 @@ export const realisationsList: Realisation[] = [
     slug: "fynn-porsche",
     client: "Fynn",
     category: "photo",
+    extraCategories: ["video"],
+    gallery: [
+      "/realisations/fynn-1.jpg",
+      "/realisations/fynn-2.jpg",
+      "/realisations/fynn-3.jpg",
+      "/realisations/fynn-4.jpg",
+      "/realisations/fynn-5.jpg",
+      "/realisations/fynn-6.jpg",
+      "/realisations/fynn-7.jpg",
+      "/realisations/fynn-8.jpg",
+      "/realisations/fynn-9.jpg",
+      "/realisations/fynn-10.jpg",
+      "/realisations/fynn-11.jpg",
+      "/realisations/fynn-12.jpg",
+      "/realisations/fynn-13.jpg",
+      "/realisations/fynn-14.jpg",
+    ],
+    reels: [
+      { src: "/realisations/fynn-reel-1.mp4", poster: "/realisations/fynn-reel-1.jpg" },
+      { src: "/realisations/fynn-reel-2.mp4", poster: "/realisations/fynn-reel-2.jpg" },
+    ],
+    reelsVertical: true,
     title: "Une Porsche Spyder RS sous son meilleur angle",
     summary:
       "Shooting photo et vidéo automobile : la Porsche de Fynn mise en scène sur route et en lumière naturelle, du détail de jante au plan large.",

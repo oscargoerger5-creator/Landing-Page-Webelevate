@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { ExpandingGallery } from "@/components/expanding-gallery";
+import {
+  ExpandingGallery,
+  PhotoCarousel,
+} from "@/components/expanding-gallery";
 import { FinalCta } from "@/components/final-cta";
 import { ReelGrid } from "@/components/reel-grid";
 import {
@@ -192,15 +195,13 @@ export default async function RealisationPage({
           ))}
         </div>
 
-        {/* Réels vidéo : carrousel avec flèches, lecture au survol / au tap */}
-        {r.reels && r.reels.length > 0 && (
+        {/* Galerie photos : carrousel à flèches pour les grandes séries
+            (plus de 8), accordéon dès 4 photos, sinon grille simple */}
+        {r.gallery && r.gallery.length > 8 ? (
           <div className="mt-14">
-            <ReelGrid reels={r.reels} client={r.client} />
+            <PhotoCarousel images={r.gallery} client={r.client} />
           </div>
-        )}
-
-        {/* Galerie photos : accordéon dès 4 photos, sinon grille simple */}
-        {r.gallery && r.gallery.length > 0 && (
+        ) : r.gallery && r.gallery.length > 0 ? (
           <section className="mt-14">
             <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
               En images
@@ -225,6 +226,18 @@ export default async function RealisationPage({
               )}
             </div>
           </section>
+        ) : null}
+
+        {/* Réels vidéo : carrousel avec flèches, lecture au survol / au tap */}
+        {r.reels && r.reels.length > 0 && (
+          <div className="mt-14">
+            <ReelGrid
+              reels={r.reels}
+              client={r.client}
+              vertical={r.reelsVertical}
+              title={r.category === "photo" ? "Les réels" : "Leurs réels"}
+            />
+          </div>
         )}
 
         {/* Vidéo YouTube mise en avant */}

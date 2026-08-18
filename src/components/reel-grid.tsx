@@ -12,10 +12,12 @@ function Reel({
   src,
   poster,
   label,
+  vertical = false,
 }: {
   src: string;
   poster?: string;
   label: string;
+  vertical?: boolean;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -50,7 +52,10 @@ function Reel({
         if (!playing || muted) play(true);
         else pause();
       }}
-      className="relative block w-72 shrink-0 cursor-pointer snap-center overflow-hidden rounded-2xl bg-neutral-100 text-left sm:w-96 md:w-[26rem]"
+      className={cn(
+        "relative block shrink-0 cursor-pointer snap-center overflow-hidden rounded-2xl bg-neutral-100 text-left",
+        vertical ? "w-56 sm:w-64 md:w-72" : "w-72 sm:w-96 md:w-[26rem]",
+      )}
     >
       <video
         ref={ref}
@@ -59,7 +64,10 @@ function Reel({
         loop
         playsInline
         preload="none"
-        className="aspect-[4/3] w-full object-cover"
+        className={cn(
+          "w-full object-cover",
+          vertical ? "aspect-[9/16]" : "aspect-[4/3]",
+        )}
       />
       {/* Pastille : lecture à l'arrêt, état du son pendant la lecture */}
       <span className="absolute bottom-3 right-3 grid size-9 place-items-center rounded-full bg-white/90 shadow-sm backdrop-blur">
@@ -79,10 +87,12 @@ export function ReelGrid({
   reels,
   client,
   title = "Leurs réels",
+  vertical = false,
 }: {
   reels: { src: string; poster?: string }[];
   client: string;
   title?: string;
+  vertical?: boolean;
 }) {
   const scroller = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
@@ -114,13 +124,18 @@ export function ReelGrid({
     el.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
+  // Quand tout tient sans défiler, on masque les flèches et on centre.
+  const fits = !canPrev && !canNext;
+
   return (
     <section>
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
           {title}
         </h2>
-        <div className="flex shrink-0 items-center gap-2">
+        <div
+          className={cn("flex shrink-0 items-center gap-2", fits && "hidden")}
+        >
           <Button
             size="icon"
             variant="outline"
@@ -148,6 +163,7 @@ export function ReelGrid({
         className={cn(
           "-mx-6 mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2",
           "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          fits && "justify-center",
         )}
       >
         {reels.map((r, i) => (
@@ -155,6 +171,7 @@ export function ReelGrid({
             key={r.src}
             src={r.src}
             poster={r.poster}
+            vertical={vertical}
             label={`${client} : réel ${i + 1}`}
           />
         ))}
