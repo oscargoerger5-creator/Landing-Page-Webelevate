@@ -1,4 +1,4 @@
-import { Check, Lock, MousePointer2, Phone } from "lucide-react";
+import { Check, Lock, Mail, MousePointer2, Phone, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Visuels générés en code pour les réalisations sites / e-commerce / IA :
@@ -252,13 +252,22 @@ function OwenMockup({ hero }: MockupProps) {
   );
 }
 
-/* ----------------- PRCP : dashboard d'accueil téléphonique --------------- */
+/* ----------- PRCP : standard téléphonique IA (scène animée) -------------- */
 
+// Cycle de 12 s en 3 phases : le client appelle (bulle : rénovation, devis,
+// entretien), le signal en pointillés rejoint l'IA qui réfléchit, le chemin
+// se crée vers le bon service qui décroche, et un fil part en parallèle vers
+// l'e-mail transmis à l'équipe. Keyframes prcp-* dans globals.css.
 function PrcpMockup({ hero }: MockupProps) {
-  const calls = [
-    { who: "Appel entrant", to: "Orienté · Devis rénovation" },
-    { who: "Appel entrant", to: "Orienté · Suivi de chantier" },
-    { who: "Appel de nuit", to: "Demande captée · E-mail envoyé" },
+  const dests = [
+    { label: "Rénovation", d: "M196 86 C240 64 262 42 296 36" },
+    { label: "Devis", d: "M198 96 C240 96 262 96 296 96" },
+    { label: "Entretien", d: "M196 106 C240 128 262 150 296 156" },
+  ];
+  const bubbles = [
+    "« Ma piscine est à rénover... »",
+    "« J'aimerais un devis. »",
+    "« Pour un entretien ? »",
   ];
   return (
     <div
@@ -277,38 +286,140 @@ function PrcpMockup({ hero }: MockupProps) {
             En ligne 24h/24
           </span>
         </div>
-        <div className="grid grid-cols-[1fr_auto] gap-3 px-3.5 py-3">
-          <div className="space-y-1.5">
-            {calls.map((c, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 rounded-lg border border-black/[0.07] bg-white p-2 shadow-sm"
+
+        {/* Scène */}
+        <div className="relative min-h-0 flex-1">
+          {/* Chemins en pointillés (le dash-offset défile : le signal coule) */}
+          <svg
+            viewBox="0 0 400 220"
+            preserveAspectRatio="none"
+            className="absolute inset-0 h-full w-full"
+            aria-hidden
+          >
+            <g className="prcp-callpath">
+              <path
+                d="M64 96 C104 96 130 96 160 96"
+                fill="none"
+                stroke="#171717"
+                strokeWidth="1.5"
+                className="prcp-dash"
+              />
+            </g>
+            {dests.map((dst, i) => (
+              <g
+                key={dst.label}
+                className="prcp-route"
+                style={{ animationDelay: `${i * 4}s` }}
               >
-                <span className="grid size-5 shrink-0 place-items-center rounded-full bg-neutral-900">
-                  <Phone className="size-2.5 text-white" />
-                </span>
-                <div className="min-w-0">
-                  <p className="text-[9px] font-semibold text-neutral-800">{c.who}</p>
-                  <p className="truncate text-[8px] text-neutral-400">{c.to}</p>
-                </div>
-                <Check className="ml-auto size-3 shrink-0 text-neutral-800" />
-              </div>
+                <path
+                  d={dst.d}
+                  fill="none"
+                  stroke="#171717"
+                  strokeWidth="1.5"
+                  className="prcp-dash"
+                />
+              </g>
+            ))}
+            <g className="prcp-mailpath">
+              <path
+                d="M180 118 C180 145 180 160 180 176"
+                fill="none"
+                stroke="#171717"
+                strokeWidth="1.5"
+                className="prcp-dash"
+              />
+            </g>
+          </svg>
+
+          {/* Bulle de demande du client (le texte change à chaque phase) */}
+          <div className="absolute left-[4%] top-[8%] h-6 w-[40%]">
+            {bubbles.map((b, i) => (
+              <span
+                key={b}
+                className={cn(
+                  "prcp-bubble absolute left-0 top-0 rounded-lg rounded-bl-none border border-black/[0.08] bg-white px-2 py-1 text-[7px] font-medium text-neutral-700 shadow-sm",
+                  hero && "md:px-3 md:py-1.5 md:text-[10px]",
+                )}
+                style={{ animationDelay: `${i * 4}s` }}
+              >
+                {b}
+              </span>
             ))}
           </div>
-          <div className="flex w-20 flex-col justify-between rounded-lg bg-neutral-900 p-2.5 text-white">
-            <p className="text-[7px] uppercase tracking-wide text-white/50">
-              Appels manqués
-            </p>
-            <p className="text-xl font-bold tracking-tight">0</p>
-            <div className="flex items-end gap-0.5">
-              {[3, 7, 5, 9, 6, 10, 8].map((h, i) => (
-                <div
-                  key={i}
-                  className="w-full rounded-sm bg-white/30"
-                  style={{ height: `${h * 1.6}px` }}
-                />
-              ))}
+
+          {/* Client */}
+          <div className="absolute left-[11%] top-[43.6%] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1">
+            <span
+              className={cn(
+                "grid size-8 place-items-center rounded-full border border-black/10 bg-white shadow-sm",
+                hero && "md:size-11",
+              )}
+            >
+              <User className={cn("size-3.5 text-neutral-700", hero && "md:size-5")} />
+            </span>
+            <span className={cn("text-[6px] font-medium uppercase tracking-wide text-neutral-400", hero && "md:text-[8px]")}>
+              Client
+            </span>
+          </div>
+
+          {/* IA au standard */}
+          <div className="absolute left-[45%] top-[43.6%] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1">
+            <span className="relative grid place-items-center">
+              {/* anneau de réflexion */}
+              <span className="prcp-think absolute inset-0 rounded-full border-2 border-neutral-900" />
+              <span
+                className={cn(
+                  "grid size-9 place-items-center rounded-full bg-neutral-900 shadow-md",
+                  hero && "md:size-12",
+                )}
+              >
+                <Phone className={cn("size-3.5 text-white", hero && "md:size-5")} />
+              </span>
+            </span>
+            <span className={cn("text-[6px] font-bold uppercase tracking-wide text-neutral-900", hero && "md:text-[8px]")}>
+              IA PRCP
+            </span>
+          </div>
+
+          {/* Services (le bon s'allume et décroche) */}
+          {dests.map((dst, i) => (
+            <div
+              key={dst.label}
+              className="absolute left-[82%] -translate-y-1/2"
+              style={{ top: `${[16.4, 43.6, 70.9][i]}%` }}
+            >
+              <span
+                className={cn(
+                  "prcp-dest flex items-center gap-1 rounded-full border bg-white px-2 py-1 text-[7px] font-semibold shadow-sm",
+                  hero && "md:px-3 md:py-1.5 md:text-[10px]",
+                )}
+                style={{ animationDelay: `${i * 4}s` }}
+              >
+                {dst.label}
+                <span
+                  className="prcp-dest-check grid size-2.5 place-items-center rounded-full bg-white"
+                  style={{ animationDelay: `${i * 4}s` }}
+                >
+                  <Check className="size-1.5 text-neutral-900" strokeWidth={4} />
+                </span>
+              </span>
             </div>
+          ))}
+
+          {/* E-mail transmis à l'équipe */}
+          <div className="absolute left-[45%] top-[86%] -translate-x-1/2 -translate-y-1/2">
+            <span
+              className={cn(
+                "flex items-center gap-1.5 rounded-full border border-black/[0.08] bg-white px-2 py-1 text-[7px] font-medium text-neutral-700 shadow-sm",
+                hero && "md:px-3 md:py-1.5 md:text-[10px]",
+              )}
+            >
+              <Mail className={cn("size-2.5 text-neutral-700", hero && "md:size-3.5")} />
+              Demande envoyée par e-mail
+              <span className="prcp-mail-check grid size-3 place-items-center rounded-full bg-emerald-500">
+                <Check className="size-2 text-white" strokeWidth={4} />
+              </span>
+            </span>
           </div>
         </div>
       </div>

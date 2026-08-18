@@ -447,3 +447,221 @@
     transform: none;
   }
 }
+
+/* Standard téléphonique IA animé (mockup PRCP), cycle de 12 s en 3 phases
+   de 4 s : le client appelle (bulle : rénovation / devis / entretien), le
+   signal en pointillés rejoint l'IA qui réfléchit, le chemin se crée vers le
+   bon service qui répond, et un fil part en parallèle vers l'e-mail validé.
+   Les pointillés « coulent » le long des chemins (marche de dash-offset). */
+.prcp-dash {
+  stroke-dasharray: 3 7;
+  animation: prcp-dash 0.9s linear infinite;
+}
+@keyframes prcp-dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+/* Appel client -> IA : visible à chaque phase de 4 s */
+.prcp-callpath {
+  opacity: 0;
+  animation: prcp-callpath 4s infinite;
+}
+@keyframes prcp-callpath {
+  0%,
+  4% {
+    opacity: 0;
+  }
+  10%,
+  86% {
+    opacity: 1;
+  }
+  96%,
+  100% {
+    opacity: 0;
+  }
+}
+/* Bulle de demande du client : une par phase (délais 0/4/8 s) */
+.prcp-bubble {
+  opacity: 0;
+  animation: prcp-bubble 12s infinite;
+}
+@keyframes prcp-bubble {
+  0%,
+  1% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  4%,
+  29% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  33%,
+  100% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+/* Réflexion de l'IA : double pulsation d'un anneau */
+.prcp-think {
+  opacity: 0;
+  animation: prcp-think 4s infinite;
+}
+@keyframes prcp-think {
+  0%,
+  22% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  30% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+  38% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+  44% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+  52%,
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+/* Chemin IA -> service : un par phase (délais 0/4/8 s) */
+.prcp-route {
+  opacity: 0;
+  animation: prcp-route 12s infinite;
+}
+@keyframes prcp-route {
+  0%,
+  15% {
+    opacity: 0;
+  }
+  18%,
+  30% {
+    opacity: 1;
+  }
+  33%,
+  100% {
+    opacity: 0;
+  }
+}
+/* Service actif : la carte s'allume quand l'appel lui est transmis */
+.prcp-dest {
+  animation: prcp-dest 12s infinite;
+}
+@keyframes prcp-dest {
+  0%,
+  18% {
+    background-color: #ffffff;
+    color: #171717;
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+  21%,
+  32% {
+    background-color: #171717;
+    color: #ffffff;
+    border-color: #171717;
+  }
+  35%,
+  100% {
+    background-color: #ffffff;
+    color: #171717;
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+}
+.prcp-dest-check {
+  opacity: 0;
+  animation: prcp-dest-check 12s infinite;
+}
+@keyframes prcp-dest-check {
+  0%,
+  20% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  23% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  26%,
+  32% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  35%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+/* Fil vers l'e-mail + validation, à chaque phase */
+.prcp-mailpath {
+  opacity: 0;
+  animation: prcp-mailpath 4s infinite;
+}
+@keyframes prcp-mailpath {
+  0%,
+  56% {
+    opacity: 0;
+  }
+  63%,
+  92% {
+    opacity: 1;
+  }
+  98%,
+  100% {
+    opacity: 0;
+  }
+}
+.prcp-mail-check {
+  opacity: 0;
+  animation: prcp-mail-check 4s infinite;
+}
+@keyframes prcp-mail-check {
+  0%,
+  70% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  76% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  80%,
+  94% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prcp-dash,
+  .prcp-callpath,
+  .prcp-bubble,
+  .prcp-think,
+  .prcp-route,
+  .prcp-dest,
+  .prcp-dest-check,
+  .prcp-mailpath,
+  .prcp-mail-check {
+    animation: none;
+  }
+  .prcp-callpath,
+  .prcp-mailpath {
+    opacity: 0.8;
+  }
+  .prcp-bubble:first-child,
+  .prcp-mail-check {
+    opacity: 1;
+    transform: none;
+  }
+}
