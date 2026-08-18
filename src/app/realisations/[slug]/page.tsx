@@ -7,6 +7,7 @@ import {
   PhotoCarousel,
 } from "@/components/expanding-gallery";
 import { FinalCta } from "@/components/final-cta";
+import { HeroVideo } from "@/components/hero-video";
 import { ReelGrid } from "@/components/reel-grid";
 import {
   hasMockup,
@@ -115,7 +116,13 @@ export default async function RealisationPage({
 
         {/* Visuel principal : vidéo, capture du site, image, mockup, logo ou nom */}
         <div className="group mt-10 overflow-hidden rounded-2xl border border-black/10 bg-neutral-100">
-          {r.video ? (
+          {r.video && r.videoSound ? (
+            <HeroVideo
+              src={r.video}
+              poster={r.image}
+              alt={`${r.client} : ${r.title}`}
+            />
+          ) : r.video ? (
             <video
               src={r.video}
               autoPlay

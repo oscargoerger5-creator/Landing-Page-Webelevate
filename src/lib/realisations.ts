@@ -41,6 +41,7 @@ export type Realisation = {
   image?: string;
   logo?: string; // visuel de secours : logo centré sur fond neutre
   video?: string; // page détail : vidéo en héro à la place de l'image
+  videoSound?: boolean; // la vidéo héro a une piste audio (son au clic)
   // Capture du site livré, affichée dans un mockup navigateur (carte + héro).
   screen?: { src: string; url: string };
   // Page détail : galerie photos affichée après le récit (accordéon si 4
@@ -371,26 +372,46 @@ export const realisationsList: Realisation[] = [
     tags: ["Vidéo sportive", "Formats courts", "Réseaux sociaux"],
     client: "HSG",
     category: "video",
+    extraCategories: ["photo"],
+    image: "/realisations/hsg.jpg",
+    gallery: [
+      "/realisations/hsg-1.jpg",
+      "/realisations/hsg-2.jpg",
+      "/realisations/hsg-3.jpg",
+      "/realisations/hsg-4.jpg",
+      "/realisations/hsg-5.jpg",
+    ],
+    reels: [
+      { src: "/realisations/hsg-reel-1.mp4", poster: "/realisations/hsg-reel-1.jpg" },
+    ],
+    reelsVertical: true,
     title: "Le club vit aussi en dehors du terrain",
     summary:
-      "Vidéos d'équipe pour le club HSG : des contenus qui donnent de la visibilité au club et à ses joueurs.",
+      "Vidéos et photos d'équipe pour le club HSG : des contenus qui donnent de la visibilité au club et à ses joueurs.",
     context:
       "Comme beaucoup de clubs, HSG manquait de contenus à la hauteur de ce qui se joue sur le terrain.",
     solution:
-      "Nous filmons les équipes et les matchs, puis produisons des formats courts pensés pour les réseaux sociaux du club.",
+      "Nous filmons les équipes et les matchs, puis produisons des formats courts pensés pour les réseaux sociaux du club, complétés par des photos de match.",
     results:
       "Une présence en ligne dynamisée et une visibilité en nette hausse pour le club et ses équipes.",
   },
   {
-    slug: "pirates-handball",
+    slug: "piraths-handball",
     tags: ["Vidéo sportive", "Formats courts", "Coulisses"],
-    client: "Les Pirates Handball",
+    client: "Les Piraths Handball",
     category: "video",
+    image: "/realisations/piraths.jpg",
+    reels: [
+      { src: "/realisations/piraths-reel-1.mp4", poster: "/realisations/piraths-reel-1.jpg" },
+      { src: "/realisations/piraths-reel-2.mp4", poster: "/realisations/piraths-reel-2.jpg" },
+      { src: "/realisations/piraths-reel-3.mp4", poster: "/realisations/piraths-reel-3.jpg" },
+    ],
+    reelsVertical: true,
     title: "L'intensité du handball en formats courts",
     summary:
-      "Vidéos pour le club des Pirates : temps forts des matchs et coulisses en formats courts pour les réseaux.",
+      "Vidéos pour le club des Piraths : temps forts des matchs et coulisses en formats courts pour les réseaux.",
     context:
-      "Les Pirates voulaient des contenus vidéo réguliers pour faire vivre le club en ligne et rassembler leur communauté au-delà des tribunes.",
+      "Les Piraths voulaient des contenus vidéo réguliers pour faire vivre le club en ligne et rassembler leur communauté au-delà des tribunes.",
     solution:
       "Captation des matchs et des coulisses, montage rythmé et formats verticaux prêts à publier sur les réseaux du club.",
     results:
@@ -401,6 +422,11 @@ export const realisationsList: Realisation[] = [
     tags: ["Vidéo sportive", "Formats courts", "Réseaux sociaux"],
     client: "Metz Handball",
     category: "video",
+    image: "/realisations/metz.jpg",
+    reels: [
+      { src: "/realisations/metz-reel-1.mp4", poster: "/realisations/metz-reel-1.jpg" },
+    ],
+    reelsVertical: true,
     title: "Des images à la hauteur d'un grand club",
     summary:
       "Production vidéo pour Metz Handball : l'intensité des matchs captée et montée en formats courts pour les réseaux.",
@@ -416,6 +442,9 @@ export const realisationsList: Realisation[] = [
     tags: ["Interview", "Film d'entreprise", "Sponsoring"],
     client: "Karcher TP",
     category: "video",
+    image: "/realisations/karcher.jpg",
+    video: "/realisations/karcher.mp4",
+    videoSound: true,
     title: "Une vidéo d'entreprise pour un dossier de sponsoring",
     summary:
       "Interview et plans de l'entreprise : une vidéo professionnelle réalisée pour appuyer un sponsoring.",
@@ -429,17 +458,26 @@ export const realisationsList: Realisation[] = [
   {
     slug: "tbv",
     client: "TBV",
-    category: "video",
-    title: "Une soirée After Work capturée en vidéo et en photos",
+    category: "photo",
+    image: "/realisations/tbv.jpg",
+    gallery: [
+      "/realisations/tbv-1.jpg",
+      "/realisations/tbv-2.jpg",
+      "/realisations/tbv-3.jpg",
+      "/realisations/tbv-4.jpg",
+      "/realisations/tbv-5.jpg",
+      "/realisations/tbv-6.jpg",
+    ],
+    title: "Une soirée After Work capturée en photos",
     summary:
-      "Couverture photo et vidéo de la soirée After Work de TBV : l'ambiance du showroom et de ses invités, prête à revivre sur les réseaux.",
+      "Couverture photo de la soirée After Work de TBV : l'ambiance du showroom et de ses invités, prête à revivre sur les réseaux.",
     context:
       "TBV organisait une soirée After Work dans son showroom automobile et voulait en garder une trace à la hauteur de l'événement, pour ses invités comme pour sa communication.",
     solution:
-      "Nous avons couvert la soirée en photo et en vidéo : l'ambiance, les voitures, les invités et les moments forts, puis livré un aftermovie et une série de photos prêtes à publier.",
+      "Nous avons couvert la soirée en photo : l'ambiance, les voitures, les invités et les moments forts, puis livré une série de photos prêtes à publier.",
     results:
-      "Des contenus qui prolongent l'événement bien après la soirée et que TBV réutilise sur ses réseaux pour entretenir son image.",
-    tags: ["Aftermovie", "Photo événementiel", "Réseaux sociaux"],
+      "Des photos qui prolongent l'événement bien après la soirée et que TBV réutilise sur ses réseaux pour entretenir son image.",
+    tags: ["Photo événementiel", "Showroom", "Réseaux sociaux"],
     testimonial: {
       quote:
         "Des vidéos qui ont donné un vrai coup de neuf à notre image. Réactifs et à l'écoute du début à la fin.",

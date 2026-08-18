@@ -120,6 +120,9 @@ export type Client = {
   logoClassName?: string; // company : override de taille du logo (ex. TBV)
   role?: string; // person (son activité, ex. "Coach business")
   photo?: string; // person
+  // true : visible uniquement dans le marquee de l'accueil (pas dans les
+  // bandes de preuve sociale Contact / CTA, calibrées pour 7 logos).
+  marqueeOnly?: boolean;
 };
 
 export const clients: Client[] = [
@@ -174,6 +177,18 @@ export const clients: Client[] = [
     name: "Raphael Guilhem",
     role: "Founding growth Pletor AI",
     photo: "/clients/raph-guilhem.jpg",
+  },
+  {
+    type: "company",
+    name: "Les Piraths Handball",
+    logo: "/clients/piraths-handball.png",
+    marqueeOnly: true,
+  },
+  {
+    type: "company",
+    name: "Metz Handball",
+    logo: "/clients/metz-handball.png",
+    marqueeOnly: true,
   },
   {
     type: "person",

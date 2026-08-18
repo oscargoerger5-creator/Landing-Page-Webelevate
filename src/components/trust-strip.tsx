@@ -35,7 +35,9 @@ export function LogoRow({
   className?: string;
   imgClassName?: string;
 }) {
-  const logos = clientCompanies.filter((c) => c.logo);
+  // Les entrées marqueeOnly (clubs sportifs) restent sur le slider de
+  // l'accueil : ces rangées sont calibrées pour tenir sur une ligne.
+  const logos = clientCompanies.filter((c) => c.logo && !c.marqueeOnly);
   const logoImg = (c: (typeof logos)[number]) => {
     const dark = tone === "dark" ? darkLogos[c.name] : undefined;
     return (
