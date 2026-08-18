@@ -1,16 +1,18 @@
+"use client";
 import { cn } from "@/lib/utils";
+import { Marquee } from "@/components/clients";
 import { clientCompanies, clientPersons } from "@/lib/site";
 
 // Preuve sociale compacte, réutilisable là où le visiteur hésite à passer à
 // l'action. Ordre voulu : d'abord les marques (logos, toujours en couleur),
-// ensuite les entrepreneurs (avatars). Deux usages : bande complète sous
-// l'agenda Contact, version courte dans le CTA final (fond sombre : chaque
-// logo couleur est posé sur une pastille blanche).
+// ensuite les entrepreneurs (avatars). Desktop : rangées statiques sur une
+// ligne. Mobile : deux sliders (un entreprises, un entrepreneurs) pour ne pas
+// allonger la page. Deux usages : bande complète sous l'agenda Contact,
+// version courte dans le CTA final (fond sombre, variantes de logos dédiées).
 
 // Variantes des logos préparées pour le fond sombre du CTA : fond détouré et
 // éléments noirs passés en blanc, couleurs de marque conservées (générées
-// dans public/clients/*-dark.png). Les logos absents d'ici passent tels quels
-// (Dachser, Schmidt : déjà lisibles sur fond noir).
+// dans public/clients/*-dark.png). Les logos absents d'ici passent tels quels.
 const darkLogos: Record<string, { src: string; className?: string }> = {
   // « DACHSER » bleu conservé, « Intelligent Logistics » passé en blanc.
   Dachser: { src: "/clients/dachser-dark.png" },
@@ -22,8 +24,8 @@ const darkLogos: Record<string, { src: string; className?: string }> = {
   Naawah: { src: "/clients/naawah-dark.png" },
 };
 
-// Rangée de logos entreprises en couleur, sur une seule ligne dès md.
-// `tone` : "plain" sur page claire, "dark" sur le fond noir du CTA.
+// Rangée de logos entreprises en couleur : statique sur une ligne dès md,
+// slider sur mobile. `tone` : "plain" sur page claire, "dark" sur le CTA noir.
 export function LogoRow({
   tone = "plain",
   className,
@@ -33,37 +35,47 @@ export function LogoRow({
   className?: string;
   imgClassName?: string;
 }) {
+  const logos = clientCompanies.filter((c) => c.logo);
+  const logoImg = (c: (typeof logos)[number]) => {
+    const dark = tone === "dark" ? darkLogos[c.name] : undefined;
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={dark?.src ?? c.logo}
+        alt={c.name}
+        className={cn(
+          "w-auto object-contain",
+          imgClassName,
+          c.logoClassName,
+          dark?.className,
+        )}
+      />
+    );
+  };
+
   return (
-    <div
-      className={cn(
-        "flex flex-wrap items-center justify-center gap-x-7 gap-y-5 md:flex-nowrap",
-        className,
-      )}
-    >
-      {clientCompanies
-        .filter((c) => c.logo)
-        .map((c) => {
-          const dark = tone === "dark" ? darkLogos[c.name] : undefined;
-          return (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={c.name}
-              src={dark?.src ?? c.logo}
-              alt={c.name}
-              className={cn(
-                "w-auto object-contain",
-                imgClassName,
-                c.logoClassName,
-                dark?.className,
-              )}
-            />
-          );
-        })}
-    </div>
+    <>
+      {/* Desktop : une seule ligne statique */}
+      <div
+        className={cn(
+          "flex items-center justify-center gap-x-7 max-md:hidden md:gap-x-9",
+          className,
+        )}
+      >
+        {logos.map((c) => (
+          <span key={c.name}>{logoImg(c)}</span>
+        ))}
+      </div>
+      {/* Mobile : slider */}
+      <div className="w-full md:hidden">
+        <Marquee items={logos} render={logoImg} speed={40} />
+      </div>
+    </>
   );
 }
 
-// Pile de photos rondes qui se chevauchent. `ringClassName` doit reprendre la
+// Entrepreneurs : pile de photos rondes qui se chevauchent sur desktop,
+// slider de photos espacées sur mobile. `ringClassName` doit reprendre la
 // couleur du fond (white sur page claire, neutral-900 dans le CTA sombre).
 export function AvatarStack({
   size = "size-10",
@@ -74,24 +86,34 @@ export function AvatarStack({
   ringClassName?: string;
   max?: number;
 }) {
-  const persons = clientPersons.filter((p) => p.photo).slice(0, max);
+  const persons = clientPersons.filter((p) => p.photo);
+  const avatar = (p: (typeof persons)[number], overlap: boolean) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={p.photo}
+      alt={p.name}
+      title={p.name}
+      className={cn(
+        "rounded-full object-cover",
+        size,
+        overlap && cn("ring-2", ringClassName),
+      )}
+    />
+  );
+
   return (
-    <div className="flex items-center -space-x-3">
-      {persons.map((p) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          key={p.name}
-          src={p.photo}
-          alt={p.name}
-          title={p.name}
-          className={cn(
-            "rounded-full object-cover ring-2",
-            size,
-            ringClassName,
-          )}
-        />
-      ))}
-    </div>
+    <>
+      {/* Desktop : pile qui se chevauche */}
+      <div className="flex items-center justify-center -space-x-3 max-md:hidden">
+        {persons.slice(0, max).map((p) => (
+          <span key={p.name}>{avatar(p, true)}</span>
+        ))}
+      </div>
+      {/* Mobile : slider (sens inverse des logos) */}
+      <div className="w-full md:hidden">
+        <Marquee items={persons} render={(p) => avatar(p, false)} reverse speed={40} />
+      </div>
+    </>
   );
 }
 
@@ -104,7 +126,7 @@ export function TrustStrip() {
         className="gap-x-8 md:gap-x-11"
         imgClassName="h-9 max-w-[110px] md:h-11 md:max-w-[150px]"
       />
-      <div className="mt-10 flex justify-center">
+      <div className="mt-8 md:mt-10">
         <AvatarStack size="size-12 md:size-14" />
       </div>
       <p className="mt-5 text-sm text-black/50">

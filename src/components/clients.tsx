@@ -47,7 +47,8 @@ function PersonItem({ c }: { c: Client }) {
 // Marquee à VITESSE constante : la durée s'adapte à la largeur du contenu
 // (durée = largeur d'une copie / vitesse), donc les deux sliders bougent
 // exactement à la même vitesse quelle que soit la largeur.
-function Marquee({
+// Exporté : aussi utilisé par trust-strip (sliders mobile du CTA et de Contact).
+export function Marquee({
   items,
   render,
   reverse = false,
