@@ -6,6 +6,7 @@ import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
 import { useScroll } from "@/components/ui/use-scroll";
 import { Logo } from "@/components/logo";
 import { nav } from "@/lib/site";
+import { usePathname } from "next/navigation";
 
 // WhatsApp Webelevate — ouvre une conversation directe avec le numéro.
 const WHATSAPP_URL = "https://wa.me/33658488714";
@@ -23,6 +24,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
 export function SiteHeader() {
   const [open, setOpen] = React.useState(false);
   const scrolled = useScroll(10);
+  // Page Studio : le header passe en négatif (fond noir, textes blancs).
+  const dark = usePathname() === "/studio";
 
   React.useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -34,10 +37,12 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  const navLink =
-    "rounded-lg px-3 py-2 text-sm text-neutral-600 transition-colors hover:bg-black/5 hover:text-neutral-900";
-  const cta =
-    "inline-flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-lg bg-neutral-900 px-5 text-sm font-medium text-white transition-colors hover:bg-neutral-800";
+  const navLink = dark
+    ? "rounded-lg px-3 py-2 text-sm text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+    : "rounded-lg px-3 py-2 text-sm text-neutral-600 transition-colors hover:bg-black/5 hover:text-neutral-900";
+  const cta = dark
+    ? "inline-flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-lg bg-white px-5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-200"
+    : "inline-flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-lg bg-neutral-900 px-5 text-sm font-medium text-white transition-colors hover:bg-neutral-800";
 
   return (
     <header
@@ -45,10 +50,15 @@ export function SiteHeader() {
         "sticky top-0 z-50 mx-auto w-full text-neutral-900 transition-all duration-[600ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] will-change-[max-width,border-radius,top]",
         scrolled && !open
           ? // Scrollé : pill flottant (desktop) avec ombre marquée
-            "border-b border-transparent bg-white/90 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)] backdrop-blur-lg md:top-4 md:max-w-4xl md:rounded-2xl md:border md:border-black/10"
-          : // En haut : pleine largeur, ombre douce pour ressortir sur le blanc
-            "border-b border-black/[0.07] bg-white shadow-[0_4px_20px_-10px_rgba(0,0,0,0.25)] md:max-w-full md:rounded-none",
-        open && "bg-white",
+            dark
+            ? "border-b border-transparent bg-neutral-950/90 shadow-[0_10px_30px_-12px_rgba(255,255,255,0.25)] backdrop-blur-lg md:top-4 md:max-w-4xl md:rounded-2xl md:border md:border-white/15"
+            : "border-b border-transparent bg-white/90 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)] backdrop-blur-lg md:top-4 md:max-w-4xl md:rounded-2xl md:border md:border-black/10"
+          : // En haut : pleine largeur, ombre douce
+            dark
+            ? "border-b border-white/10 bg-neutral-950 shadow-[0_4px_24px_-8px_rgba(255,255,255,0.18)] md:max-w-full md:rounded-none"
+            : "border-b border-black/[0.07] bg-white shadow-[0_4px_20px_-10px_rgba(0,0,0,0.25)] md:max-w-full md:rounded-none",
+        open && (dark ? "bg-neutral-950" : "bg-white"),
+        dark ? "text-white" : "text-neutral-900",
       )}
     >
       <nav
@@ -66,7 +76,7 @@ export function SiteHeader() {
           <Logo
             className="h-10"
             wordmarkClassName="text-2xl sm:max-[830px]:hidden"
-            theme="light"
+            theme={dark ? "dark" : "light"}
           />
         </Link>
 
@@ -98,7 +108,10 @@ export function SiteHeader() {
           aria-label="Menu"
           aria-expanded={open}
           onClick={() => setOpen(!open)}
-          className="flex size-10 items-center justify-center rounded-lg border border-black/10 text-neutral-900 sm:hidden"
+          className={cn(
+            "flex size-10 items-center justify-center rounded-lg border sm:hidden",
+            dark ? "border-white/20 text-white" : "border-black/10 text-neutral-900",
+          )}
         >
           <MenuToggleIcon open={open} className="size-5" duration={300} />
         </button>
@@ -107,7 +120,8 @@ export function SiteHeader() {
       {/* Menu mobile */}
       <div
         className={cn(
-          "fixed inset-x-0 top-16 bottom-0 z-50 flex flex-col overflow-hidden border-t border-black/10 bg-white sm:hidden",
+          "fixed inset-x-0 top-16 bottom-0 z-50 flex flex-col overflow-hidden border-t sm:hidden",
+          dark ? "border-white/10 bg-neutral-950" : "border-black/10 bg-white",
           open ? "block" : "max-sm:hidden",
         )}
       >
