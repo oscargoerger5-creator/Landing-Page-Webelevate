@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
@@ -79,6 +80,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <WhatsAppFloat />
         <CalModalCleanup />
+        {/* Taap.it (Radar) — suivi d'audience : trafic, clics sortants, formulaires */}
+        <Script
+          src="https://taap.it/scripts/tracker.js"
+          data-project="pk_06d76aa0c956a33cbb135892765a825b"
+          data-track-outbound="true"
+          data-track-forms="true"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
