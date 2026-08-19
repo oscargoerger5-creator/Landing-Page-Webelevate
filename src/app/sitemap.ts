@@ -3,7 +3,7 @@ import { realisationsList } from "@/lib/realisations";
 
 // TODO : remplacer par https://webelevate.fr quand le domaine sera actif
 // (penser aussi au metadataBase du layout).
-const BASE_URL = "https://landing-page-webelevate.vercel.app";
+const BASE_URL = "https://www.webelevate.fr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [

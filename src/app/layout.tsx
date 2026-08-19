@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   // TODO : passer à https://webelevate.fr quand le domaine sera actif
   // (mettre aussi à jour sitemap.ts et robots.ts).
-  metadataBase: new URL("https://landing-page-webelevate.vercel.app"),
+  metadataBase: new URL("https://www.webelevate.fr"),
   title: {
     // Mot-clé métier + zone géographique : ce qui s'affiche dans Google.
     default: "Webelevate · Agence web, photo & vidéo en Alsace",
@@ -41,8 +41,8 @@ const localBusinessJsonLd = {
   "@type": "ProfessionalService",
   name: "Webelevate",
   description: site.description,
-  url: "https://landing-page-webelevate.vercel.app",
-  logo: "https://landing-page-webelevate.vercel.app/logo-webelevate-icon.png",
+  url: "https://www.webelevate.fr",
+  logo: "https://www.webelevate.fr/logo-webelevate-icon.png",
   email: site.email,
   address: {
     "@type": "PostalAddress",
