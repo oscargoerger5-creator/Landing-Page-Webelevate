@@ -145,6 +145,7 @@ export function StudioMosaic() {
     src: m.images?.[0] ?? m.poster ?? "",
     client: m.client,
     slug: m.slug,
+    aspect: m.aspect,
   }));
   const rows = [flat.slice(0, 9), flat.slice(9, 18), flat.slice(18, 27)];
   // Les rangées haut/bas ont des images plus grandes : à durée égale elles
@@ -181,12 +182,16 @@ export function StudioMosaic() {
                   href={`/realisations/${it.slug}`}
                   className="block shrink-0 overflow-hidden rounded-lg"
                 >
+                  {/* Ratio repris de la tuile desktop : la largeur est connue
+                      AVANT le chargement de l'image. Sinon la rangée s'élargit
+                      au fil des téléchargements et l'animation (en % de la
+                      largeur) ralentit puis saute (rangées vides sur mobile). */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={it.src}
                     alt={it.client}
-                    loading="lazy"
-                    className="h-44 w-auto"
+                    loading={i < row.length ? "eager" : "lazy"}
+                    className={cn("h-44 w-auto object-cover", it.aspect)}
                   />
                 </Link>
               ))}
