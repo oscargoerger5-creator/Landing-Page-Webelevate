@@ -147,7 +147,10 @@ export function StudioMosaic() {
     slug: m.slug,
   }));
   const rows = [flat.slice(0, 9), flat.slice(9, 18), flat.slice(18, 27)];
-  const durations = [52, 64, 46];
+  // Les rangées haut/bas ont des images plus grandes : à durée égale elles
+  // paraissent traîner. On raccourcit leur durée pour retrouver la vivacité
+  // de la rangée du milieu (qui reste la référence, inchangée).
+  const durations = [40, 64, 36];
 
   return (
     <>
