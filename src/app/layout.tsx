@@ -23,10 +23,42 @@ export const metadata: Metadata = {
   // (mettre aussi à jour sitemap.ts et robots.ts).
   metadataBase: new URL("https://landing-page-webelevate.vercel.app"),
   title: {
-    default: `${site.name} · ${site.tagline}`,
+    // Mot-clé métier + zone géographique : ce qui s'affiche dans Google.
+    default: "Webelevate · Agence web, photo & vidéo en Alsace",
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  openGraph: {
+    siteName: site.name,
+    locale: "fr_FR",
+    type: "website",
+  },
+};
+
+// Données structurées : l'agence en tant qu'entreprise locale (SEO / GEO).
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Webelevate",
+  description: site.description,
+  url: "https://landing-page-webelevate.vercel.app",
+  logo: "https://landing-page-webelevate.vercel.app/logo-webelevate-icon.png",
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "16 rue Eugène Dischert",
+    postalCode: "67230",
+    addressLocality: "Benfeld",
+    addressRegion: "Alsace",
+    addressCountry: "FR",
+  },
+  areaServed: ["Alsace", "Strasbourg", "Grand Est", "France"],
+  knowsAbout: [
+    "Création de sites internet",
+    "Photographie professionnelle",
+    "Production vidéo",
+    "Automatisation IA",
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -36,6 +68,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fontSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white text-neutral-900">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd),
+          }}
+        />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

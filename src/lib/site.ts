@@ -8,7 +8,7 @@ export const site = {
   name: "webelevate",
   tagline: "Sites web, photo, vidéo & IA sous un même toit",
   description:
-    "Webelevate est une agence créative et tech : on conçoit des sites, on produit vos images et vidéos, et on met l'IA à votre service.",
+    "Webelevate, agence créative et tech en Alsace, près de Strasbourg : création de sites internet, shootings photo, vidéos et automatisations IA pour les entreprises.",
   email: "oscargoergerpro@gmail.com", // TODO : passer sur contact@webelevate.fr quand le domaine sera actif
 } as const;
 
