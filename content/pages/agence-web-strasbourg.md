@@ -4,23 +4,23 @@ city: Strasbourg
 title: "Agence web à Strasbourg : site internet, photo et vidéo"
 metaTitle: "Agence web à Strasbourg : site sur-mesure en 21 jours"
 description: "Webelevate, agence web à Strasbourg : sites vitrines et e-commerce sur-mesure avec vos propres photos et vidéos, livrés en 21 jours. Appel gratuit de 15 min."
-answer: "Webelevate est une agence web basée à Strasbourg qui réunit création de sites internet, studio photo/vidéo et automatisations IA. Sites vitrines à partir de 2 000 €, e-commerce à partir de 3 000 €, livrés en 21 jours en moyenne avec retours illimités. Nous accompagnons les entreprises de Strasbourg, de l'Eurométropole, de toute l'Alsace et de partout en France."
+answer: "Webelevate est une agence web basée à Strasbourg qui réunit création de sites internet, studio photo/vidéo et automatisations IA. Sites vitrines à partir de 2 000 € TTC, e-commerce à partir de 3 000 € TTC, livrés en 21 jours en moyenne avec retours illimités. Nous accompagnons les entreprises de Strasbourg, de l'Eurométropole, de toute l'Alsace et de partout en France."
 datePublished: 2026-09-27
 dateModified: 2026-09-27
 realisations: [bs-traiteur, f-comme-fermeture, cuisine-schmidt]
 related: [/services/creation-site-internet, /videaste-strasbourg, /blog/prix-site-internet]
 prices:
   - label: "Site vitrine sur-mesure"
-    from: "2 000 €"
+    from: "2 000 € TTC"
   - label: "Site e-commerce"
-    from: "3 000 €"
+    from: "3 000 € TTC"
 faq:
   - q: "Où est basée l'agence Webelevate ?"
     a: "Nous sommes basés à Strasbourg et intervenons dans toute l'Eurométropole et en Alsace. Pour les projets web, nous travaillons aussi à distance avec des clients partout en France."
   - q: "Peut-on se rencontrer à Strasbourg ?"
     a: "Oui. Le premier échange se fait généralement par un appel de 15 minutes, puis on peut se rencontrer pour le kick-off ou le shooting, qui se déroule chez vous."
   - q: "Combien coûte un site internet avec une agence web à Strasbourg ?"
-    a: "Chez Webelevate, un site vitrine démarre à 2 000 € et un e-commerce à 3 000 €. Le devis final dépend des pages, des fonctionnalités et des contenus à produire."
+    a: "Chez Webelevate, un site vitrine démarre à 2 000 € TTC et un e-commerce à 3 000 € TTC. Le devis final dépend des pages, des fonctionnalités et des contenus à produire."
   - q: "Quelle est la différence entre Webelevate et une autre agence web strasbourgeoise ?"
     a: "Une seule équipe pour le site, les photos, les vidéos et l'IA. Votre site est construit avec vos propres visuels, livré en 21 jours, et vous restez propriétaire de tout."
   - q: "Vous occupez-vous du référencement local à Strasbourg ?"

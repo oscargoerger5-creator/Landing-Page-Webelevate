@@ -2,8 +2,8 @@
 kind: guide
 title: "Combien coûte un site internet en 2026 ?"
 metaTitle: "Prix d'un site internet en 2026 : vitrine, e-commerce"
-description: "Combien coûte un site internet en 2026 ? Ce qui fait varier le prix d'un site vitrine ou e-commerce, les coûts annuels à prévoir et nos tarifs à partir de 2 000 €."
-answer: "Le prix d'un site internet dépend surtout de son type (vitrine ou e-commerce), du nombre de pages, des fonctionnalités, des contenus à produire (textes, photos, vidéos) et du niveau de sur-mesure. Chez Webelevate, agence web à Strasbourg, un site vitrine sur-mesure démarre à 2 000 € et un site e-commerce à 3 000 €, livré en 21 jours en moyenne."
+description: "Combien coûte un site internet en 2026 ? Ce qui fait varier le prix d'un site vitrine ou e-commerce, les coûts annuels à prévoir et nos tarifs à partir de 2 000 € TTC."
+answer: "Le prix d'un site internet dépend surtout de son type (vitrine ou e-commerce), du nombre de pages, des fonctionnalités, des contenus à produire (textes, photos, vidéos) et du niveau de sur-mesure. Chez Webelevate, agence web à Strasbourg, un site vitrine sur-mesure démarre à 2 000 € TTC et un site e-commerce à 3 000 € TTC, livré en 21 jours en moyenne."
 datePublished: 2026-09-27
 dateModified: 2026-09-27
 service: creation-site-internet
@@ -11,18 +11,18 @@ realisations: [bs-traiteur, naawah, f-comme-fermeture]
 related: [/services/creation-site-internet, /agence-web-strasbourg, /services/photographe-entreprise]
 prices:
   - label: "Site vitrine sur-mesure"
-    from: "2 000 €"
+    from: "2 000 € TTC"
     note: "Présenter votre activité et générer des demandes de devis"
   - label: "Site e-commerce"
-    from: "3 000 €"
+    from: "3 000 € TTC"
     note: "Vendre en ligne : catalogue, panier, paiement sécurisé"
 faq:
   - q: "Pourquoi les prix des sites internet varient-ils autant ?"
     a: "Parce qu'on ne compare pas la même chose : un thème installé en quelques heures, un site conçu sur-mesure avec des contenus produits pour vous, ou une boutique avec des centaines de produits n'ont ni le même travail ni le même résultat."
   - q: "Quel est le prix d'un site vitrine ?"
-    a: "Chez Webelevate, un site vitrine sur-mesure démarre à 2 000 €. Le prix final dépend du nombre de pages, des fonctionnalités (formulaire de devis, prise de rendez-vous…) et des contenus à produire."
+    a: "Chez Webelevate, un site vitrine sur-mesure démarre à 2 000 € TTC. Le prix final dépend du nombre de pages, des fonctionnalités (formulaire de devis, prise de rendez-vous…) et des contenus à produire."
   - q: "Quel est le prix d'un site e-commerce ?"
-    a: "Chez Webelevate, un site e-commerce démarre à 3 000 €. Le nombre de produits, les options de personnalisation, les modes de livraison et les photos produits font varier le devis."
+    a: "Chez Webelevate, un site e-commerce démarre à 3 000 € TTC. Le nombre de produits, les options de personnalisation, les modes de livraison et les photos produits font varier le devis."
   - q: "Faut-il prévoir des coûts après la mise en ligne ?"
     a: "Oui : au minimum le nom de domaine et l'hébergement chaque année, et selon les besoins la maintenance, les évolutions et de nouveaux contenus. Demandez toujours ces coûts récurrents avant de signer."
   - q: "Les photos et vidéos sont-elles comprises dans le prix ?"
@@ -35,7 +35,7 @@ faq:
 
 Il n'existe pas « un » prix de site internet, parce qu'on ne parle pas toujours du même produit. Entre un thème installé en une journée et un site conçu sur-mesure avec vos propres photos, pensé pour générer des demandes, l'écart de prix reflète **un écart de travail et de résultat**.
 
-Chez Webelevate, nos tarifs de départ sont simples : **site vitrine à partir de 2 000 €**, **site e-commerce à partir de 3 000 €**. Le devis final est établi après un appel de 15 minutes, en fonction de votre projet.
+Chez Webelevate, nos tarifs de départ sont simples : **site vitrine à partir de 2 000 € TTC**, **site e-commerce à partir de 3 000 € TTC**. Le devis final est établi après un appel de 15 minutes, en fonction de votre projet.
 
 ## Les 6 facteurs qui font varier le prix
 

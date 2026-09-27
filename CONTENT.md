@@ -28,7 +28,7 @@ realisations: [bs-traiteur, naawah]   # slugs de src/lib/realisations.ts (3 max 
 related: [/services/creation-site-internet, /agence-web-strasbourg]   # chemins internes existants
 prices:                              # optionnel : uniquement des prix validés par Oscar
   - label: "Site vitrine sur-mesure"
-    from: "2 000 €"
+    from: "2 000 € TTC"
     note: "optionnel"
 faq:                                 # 5 à 8 questions spécifiques à la page
   - q: "Question ?"
@@ -42,7 +42,7 @@ draft: false                         # true = non publié
 - Commencer au niveau `##` : le H1 est généré depuis `title`.
 - Tableaux, listes et chiffres réels : c'est ce qui se fait citer.
 - Nommer l'entité en entier dans les passages clés : « Webelevate, agence web à Strasbourg ».
-- Ne jamais inventer de chiffres, de clients, d'avis ou de prix. Prix validés à ce jour : **site vitrine à partir de 2 000 €**, **site e-commerce à partir de 3 000 €**. Toutes les autres prestations sont **sur devis**.
+- Ne jamais inventer de chiffres, de clients, d'avis ou de prix. Prix validés à ce jour : **site vitrine à partir de 2 000 € TTC**, **site e-commerce à partir de 3 000 € TTC**. Toutes les autres prestations sont **sur devis**.
 - Les liens internes vers les réalisations se font en Markdown : `[Cuisine Schmidt](/realisations/cuisine-schmidt)`.
 
 ## Vérifier

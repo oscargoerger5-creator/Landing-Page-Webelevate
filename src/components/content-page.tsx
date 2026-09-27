@@ -63,6 +63,7 @@ function contentJsonLd(entry: ContentEntry, parent: { name: string; path: string
                     "@type": "PriceSpecification",
                     minPrice: Number(p.from.replace(/[^\d]/g, "")),
                     priceCurrency: "EUR",
+                    valueAddedTaxIncluded: true,
                   },
                 })),
               }

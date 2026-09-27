@@ -2,22 +2,22 @@
 kind: service
 title: "Création de site internet à Strasbourg et en Alsace"
 metaTitle: "Création de site internet à Strasbourg, livré en 21 jours"
-description: "Webelevate crée des sites vitrines et e-commerce sur-mesure à Strasbourg : design unique, photos et vidéos pro, livré en 21 jours. À partir de 2 000 €."
-answer: "Webelevate, agence web à Strasbourg, conçoit des sites internet sur-mesure (vitrine, e-commerce, landing page) livrés en 21 jours en moyenne. Studio photo/vidéo et développement sous le même toit : votre site est construit avec vos vrais visuels. Site vitrine à partir de 2 000 €, e-commerce à partir de 3 000 €."
+description: "Webelevate crée des sites vitrines et e-commerce sur-mesure à Strasbourg : design unique, photos et vidéos pro, livré en 21 jours. À partir de 2 000 € TTC."
+answer: "Webelevate, agence web à Strasbourg, conçoit des sites internet sur-mesure (vitrine, e-commerce, landing page) livrés en 21 jours en moyenne. Studio photo/vidéo et développement sous le même toit : votre site est construit avec vos vrais visuels. Site vitrine à partir de 2 000 € TTC, e-commerce à partir de 3 000 € TTC."
 datePublished: 2026-09-27
 dateModified: 2026-09-27
 realisations: [f-comme-fermeture, bs-traiteur, naawah]
 related: [/agence-web-strasbourg, /blog/prix-site-internet, /services/photographe-entreprise]
 prices:
   - label: "Site vitrine sur-mesure"
-    from: "2 000 €"
+    from: "2 000 € TTC"
     note: "Design unique, pages essentielles, optimisé pour Google et le mobile"
   - label: "Site e-commerce"
-    from: "3 000 €"
+    from: "3 000 € TTC"
     note: "Boutique en ligne, fiches produits, paiement sécurisé"
 faq:
   - q: "Combien coûte un site internet chez Webelevate ?"
-    a: "Un site vitrine démarre à 2 000 € et un site e-commerce à 3 000 €. Le prix final dépend du nombre de pages, des fonctionnalités et des contenus à produire (shooting photo, vidéo). Vous recevez un devis clair et détaillé après un appel de 15 minutes."
+    a: "Un site vitrine démarre à 2 000 € TTC et un site e-commerce à 3 000 € TTC. Le prix final dépend du nombre de pages, des fonctionnalités et des contenus à produire (shooting photo, vidéo). Vous recevez un devis clair et détaillé après un appel de 15 minutes."
   - q: "Combien de temps faut-il pour créer mon site ?"
     a: "21 jours en moyenne, du premier appel à la mise en ligne : cadrage, direction artistique, shooting, design, développement, présentation d'une V1 puis ajustements."
   - q: "Est-ce que je serai propriétaire de mon site ?"
