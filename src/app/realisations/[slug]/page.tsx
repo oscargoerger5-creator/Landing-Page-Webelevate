@@ -21,6 +21,7 @@ import {
   realisationsList,
 } from "@/lib/realisations";
 import { site } from "@/lib/site";
+import { absoluteUrl, BUSINESS_ID } from "@/lib/schema";
 
 export function generateStaticParams() {
   return realisationsList.map((r) => ({ slug: r.slug }));
@@ -72,9 +73,10 @@ export default async function RealisationPage({
     headline: `${r.client} : ${r.title}`,
     description: r.summary,
     about: categoryLabel,
-    author: { "@type": "Organization", name: "Webelevate" },
-    publisher: { "@type": "Organization", name: "Webelevate" },
-    ...(jsonLdImage ? { image: jsonLdImage } : {}),
+    mainEntityOfPage: absoluteUrl(`/realisations/${r.slug}`),
+    author: { "@id": BUSINESS_ID },
+    publisher: { "@id": BUSINESS_ID },
+    ...(jsonLdImage ? { image: absoluteUrl(jsonLdImage) } : {}),
     ...(r.youtube
       ? {
           video: {
@@ -93,6 +95,20 @@ export default async function RealisationPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Accueil", item: absoluteUrl("/") },
+              { "@type": "ListItem", position: 2, name: "Réalisations", item: absoluteUrl("/realisations") },
+              { "@type": "ListItem", position: 3, name: r.client, item: absoluteUrl(`/realisations/${r.slug}`) },
+            ],
+          }),
+        }}
       />
       <article className="mx-auto max-w-3xl px-6 pb-16 pt-16 md:pt-24">
         <Link

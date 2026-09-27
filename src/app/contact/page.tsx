@@ -5,9 +5,10 @@ import { TrustStrip } from "@/components/trust-strip";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact et devis : site, vidéo ou photo à Strasbourg",
   description:
-    "Réservez un appel découverte de 15 minutes : objectifs, besoins, budget. Réponse claire à la fin de l'appel.",
+    "Réservez un appel découverte gratuit de 15 minutes avec Webelevate, à Strasbourg : objectifs, besoins, budget. Délai et prix clairs à la fin de l'appel.",
+  alternates: { canonical: "/contact" },
 };
 
 const WHATSAPP_URL = "https://wa.me/33658488714";
@@ -72,8 +73,16 @@ export default function ContactPage() {
           className="text-black/75 underline-offset-4 transition-colors hover:text-black hover:underline"
         >
           WhatsApp
+        </a>{" "}
+        <span className="mx-1.5">·</span>
+        <a
+          href={site.phoneHref}
+          className="text-black/75 underline-offset-4 transition-colors hover:text-black hover:underline"
+        >
+          {site.phone}
         </a>
       </p>
+      <p className="mt-2 text-center text-sm text-black/40">{site.area}</p>
     </div>
   );
 }

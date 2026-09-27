@@ -55,6 +55,25 @@ export function SiteFooter() {
           >
             {site.email}
           </a>
+          <a
+            href={site.phoneHref}
+            className={cn(
+              "mt-1.5 block text-sm underline-offset-4 transition-colors hover:underline",
+              dark
+                ? "text-white/70 hover:text-white"
+                : "text-black/70 hover:text-black",
+            )}
+          >
+            {site.phone}
+          </a>
+          <p
+            className={cn(
+              "mt-1.5 text-sm",
+              dark ? "text-white/45" : "text-black/45",
+            )}
+          >
+            {site.area}
+          </p>
         </div>
 
         {/* Pages */}

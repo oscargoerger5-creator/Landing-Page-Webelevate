@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Conditions générales de vente",
+  alternates: { canonical: "/cgv" },
 };
 
 // CGV complètes (auto-entrepreneur, clientèle pro, acompte 50 %, solde à

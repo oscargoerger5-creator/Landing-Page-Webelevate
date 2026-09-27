@@ -6,9 +6,9 @@ import { StudioMosaic } from "@/components/studio-mosaic";
 import { StudioTerrains } from "@/components/studio-terrains";
 
 export const metadata: Metadata = {
-  title: "Studio",
+  title: "Studio photo & vidéo à Strasbourg",
   description:
-    "Le studio créatif de Webelevate : photo et vidéo pour les marques et les entrepreneurs. Showreel, images et terrains de jeu.",
+    "Le studio photo et vidéo de Webelevate à Strasbourg : films de marque, événementiel, reels et shootings pour les marques et les entrepreneurs. Showreel et projets.",
   alternates: { canonical: "/studio" },
 };
 

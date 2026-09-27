@@ -75,8 +75,8 @@ export function Hero() {
         </h1>
 
         <p className="mt-5 max-w-xl text-lg text-black/60">
-          Sites web, photo, vidéo et IA. On réunit le créatif et la tech pour
-          faire rayonner votre marque.
+          Sites web, photo, vidéo et IA à Strasbourg. On réunit le créatif et
+          la tech pour faire rayonner votre marque.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
