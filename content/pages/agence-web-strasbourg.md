@@ -8,7 +8,7 @@ answer: "Webelevate est une agence web basée à Strasbourg qui réunit créatio
 datePublished: 2026-09-27
 dateModified: 2026-09-27
 realisations: [bs-traiteur, f-comme-fermeture, cuisine-schmidt]
-related: [/services/creation-site-internet, /videaste-strasbourg, /guides/prix-site-internet]
+related: [/services/creation-site-internet, /videaste-strasbourg, /blog/prix-site-internet]
 prices:
   - label: "Site vitrine sur-mesure"
     from: "2 000 €"

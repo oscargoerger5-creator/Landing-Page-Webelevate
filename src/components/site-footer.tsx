@@ -87,11 +87,7 @@ export function SiteFooter() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link href="/guides" className={link}>
-                Guides
-              </Link>
-            </li>
+
           </ul>
         </nav>
 

@@ -1,15 +1,15 @@
 # Contenus SEO : comment ajouter une page
 
-Les pages services, les pages locales/métier et les guides sont des fichiers Markdown dans `content/`.
-**Ajouter un contenu = créer UN fichier `.md`.** Aucune modification de code n'est nécessaire : la page, le sitemap, `/llms.txt` et le hub `/guides` se mettent à jour tout seuls au prochain build.
+Les pages services, les pages locales/métier et les articles du blog sont des fichiers Markdown dans `content/`.
+**Ajouter un contenu = créer UN fichier `.md`.** Aucune modification de code n'est nécessaire : la page, le sitemap, `/llms.txt` et la page `/blog` se mettent à jour tout seuls au prochain build.
 
 | Dossier | URL générée | `kind` |
 |---|---|---|
 | `content/services/<slug>.md` | `/services/<slug>` | `service` |
 | `content/pages/<slug>.md` | `/<slug>` (ex. `/agence-web-strasbourg`, `/site-internet-traiteur`) | `ville` ou `metier` |
-| `content/guides/<slug>.md` | `/guides/<slug>` | `guide` |
+| `content/blog/<slug>.md` | `/blog/<slug>` | `guide` |
 
-Le slug est le nom du fichier : minuscules, tirets, sans accents. Un slug de `content/pages/` ne doit pas entrer en conflit avec une route existante (`services`, `realisations`, `studio`, `contact`, `guides`, pages légales).
+Le slug est le nom du fichier : minuscules, tirets, sans accents. Un slug de `content/pages/` ne doit pas entrer en conflit avec une route existante (`services`, `realisations`, `studio`, `contact`, `blog`, pages légales).
 
 ## Frontmatter
 

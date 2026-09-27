@@ -17,7 +17,7 @@ const KIND_LABEL: Record<ContentEntry["kind"], string> = {
   service: "Service",
   ville: "Local",
   metier: "Par métier",
-  guide: "Guide",
+  guide: "Article",
 };
 
 function formatDate(date: string) {
@@ -29,7 +29,7 @@ function formatDate(date: string) {
 }
 
 // Données structurées de la page : Service (pages service / locales / métier)
-// ou Article (guides), + FAQPage + fil d'Ariane.
+// ou Article (articles du blog), + FAQPage + fil d'Ariane.
 function contentJsonLd(entry: ContentEntry, parent: { name: string; path: string }) {
   const url = absoluteUrl(contentPath(entry));
   const main =

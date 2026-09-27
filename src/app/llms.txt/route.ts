@@ -31,9 +31,9 @@ export function GET() {
       (e) => `- [${e.title}](${site.url}${contentPath(e)}) : ${e.answer}`,
     ),
     "",
-    "## Guides",
+    "## Articles (blog)",
     "",
-    ...getContent("guides").map(
+    ...getContent("blog").map(
       (e) => `- [${e.title}](${site.url}${contentPath(e)}) : ${e.answer}`,
     ),
     "",

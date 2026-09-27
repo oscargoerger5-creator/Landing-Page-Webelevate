@@ -3,18 +3,18 @@ import { notFound } from "next/navigation";
 import { ContentPage } from "@/components/content-page";
 import { contentPath, getContent, getContentEntry } from "@/lib/content";
 
-// Pages générées depuis content/guides/*.md (voir CONTENT.md).
+// Pages générées depuis content/blog/*.md (voir CONTENT.md).
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getContent("guides").map((e) => ({ slug: e.slug }));
+  return getContent("blog").map((e) => ({ slug: e.slug }));
 }
 
 export async function generateMetadata({
   params,
-}: PageProps<"/guides/[slug]">): Promise<Metadata> {
+}: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const entry = getContentEntry("guides", slug);
+  const entry = getContentEntry("blog", slug);
   if (!entry) return {};
   return {
     title: entry.metaTitle,
@@ -28,9 +28,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: PageProps<"/guides/[slug]">) {
+export default async function Page({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
-  const entry = getContentEntry("guides", slug);
+  const entry = getContentEntry("blog", slug);
   if (!entry) notFound();
-  return <ContentPage entry={entry} parent={{ name: "Tous les guides", path: "/guides" }} />;
+  return <ContentPage entry={entry} parent={{ name: "Tous les articles", path: "/blog" }} />;
 }

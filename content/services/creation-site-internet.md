@@ -7,7 +7,7 @@ answer: "Webelevate, agence web à Strasbourg, conçoit des sites internet sur-m
 datePublished: 2026-09-27
 dateModified: 2026-09-27
 realisations: [f-comme-fermeture, bs-traiteur, naawah]
-related: [/agence-web-strasbourg, /guides/prix-site-internet, /services/photographe-entreprise]
+related: [/agence-web-strasbourg, /blog/prix-site-internet, /services/photographe-entreprise]
 prices:
   - label: "Site vitrine sur-mesure"
     from: "2 000 €"

@@ -1,4 +1,4 @@
-// Contenus SEO (pages services, pages locales/métier, guides) écrits en
+// Contenus SEO (pages services, pages locales/métier, articles du blog) écrits en
 // Markdown dans /content. Ajouter un contenu = ajouter UN fichier .md :
 // les pages, le sitemap et /llms.txt se mettent à jour tout seuls.
 // Format détaillé dans CONTENT.md à la racine du repo.
@@ -8,7 +8,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
-export type ContentCollection = "services" | "pages" | "guides";
+export type ContentCollection = "services" | "pages" | "blog";
 
 export type ContentKind = "service" | "ville" | "metier" | "guide";
 
@@ -40,7 +40,7 @@ const CONTENT_DIR = path.join(process.cwd(), "content");
 // Chemin public d'un contenu selon sa collection.
 export function contentPath(e: Pick<ContentEntry, "collection" | "slug">) {
   if (e.collection === "services") return `/services/${e.slug}`;
-  if (e.collection === "guides") return `/guides/${e.slug}`;
+  if (e.collection === "blog") return `/blog/${e.slug}`;
   return `/${e.slug}`;
 }
 
@@ -94,5 +94,5 @@ export function getContentEntry(
 }
 
 export function getAllContent(): ContentEntry[] {
-  return (["services", "pages", "guides"] as const).flatMap(getContent);
+  return (["services", "pages", "blog"] as const).flatMap(getContent);
 }
