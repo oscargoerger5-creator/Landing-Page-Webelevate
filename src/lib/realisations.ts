@@ -272,7 +272,10 @@ export const realisationsList: Realisation[] = [
     category: "video",
     extraCategories: ["photo"],
     title: "Au cœur de l'événement des entrepreneurs du SaaS",
-    stats: [{ value: "200", label: "founders réunis à l'événement" }],
+    stats: [
+      { value: "20 000 €", label: "de contrats signés après l'événement" },
+      { value: "200", label: "founders réunis à l'événement" },
+    ],
     summary:
       "Captation vidéo et photo d'un événement entrepreneurial : conférences, workshops et interviews des fondateurs présents.",
     context:
@@ -280,7 +283,7 @@ export const realisationsList: Realisation[] = [
     solution:
       "Nous avons couvert l'événement et les workshops : captation des temps forts, des interventions et de l'énergie de la salle, avec des formats pensés pour les réseaux sociaux.",
     results:
-      "Des contenus qui prolongent l'événement bien après sa clôture et valorisent ses intervenants comme ses organisateurs.",
+      "Des contenus qui prolongent l'événement bien après sa clôture et valorisent ses intervenants comme ses organisateurs. Surtout, un impact business direct : les images et les vidéos produites ont contribué à la signature de 20 000 € de contrats à la suite de l'événement.",
   },
   {
     slug: "saas-workshop",
