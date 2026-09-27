@@ -53,7 +53,7 @@ export function CardVideo({ src, poster }: { src: string; poster?: string }) {
   );
 }
 
-function RealisationCard({ r }: { r: Realisation }) {
+export function RealisationCard({ r }: { r: Realisation }) {
   return (
     <Link
       href={`/realisations/${r.slug}`}

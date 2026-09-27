@@ -157,13 +157,21 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-flex h-11 items-center gap-1.5 rounded-full bg-neutral-900 px-6 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
-                >
-                  Discuter de ce projet
-                  <ArrowUpRight className="size-4" />
-                </Link>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <Link
+                    href="/contact"
+                    className="inline-flex h-11 items-center gap-1.5 rounded-full bg-neutral-900 px-6 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                  >
+                    Discuter de ce projet
+                    <ArrowUpRight className="size-4" />
+                  </Link>
+                  <Link
+                    href={s.page}
+                    className="inline-flex h-11 items-center rounded-full border border-black/15 px-6 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50"
+                  >
+                    En savoir plus
+                  </Link>
+                </div>
               </div>
 
               {/* Visuel — plein cadre, contours fins */}
