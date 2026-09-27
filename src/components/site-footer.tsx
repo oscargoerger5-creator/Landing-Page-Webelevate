@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { nav, services, site } from "@/lib/site";
+import { nav, serviceDetails, site } from "@/lib/site";
 import { Logo } from "@/components/logo";
 
 const legalLinks = [
@@ -87,6 +87,11 @@ export function SiteFooter() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/guides" className={link}>
+                Guides
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -94,13 +99,23 @@ export function SiteFooter() {
         <nav aria-label="Services">
           <p className="text-sm font-semibold">Services</p>
           <ul className="mt-4 space-y-2.5">
-            {services.map((s) => (
+            {serviceDetails.map((s) => (
               <li key={s.slug}>
-                <Link href={`/services#${s.slug}`} className={link}>
+                <Link href={s.page} className={link}>
                   {s.title}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/agence-web-strasbourg" className={link}>
+                Agence web Strasbourg
+              </Link>
+            </li>
+            <li>
+              <Link href="/videaste-strasbourg" className={link}>
+                Vidéaste Strasbourg
+              </Link>
+            </li>
           </ul>
         </nav>
 

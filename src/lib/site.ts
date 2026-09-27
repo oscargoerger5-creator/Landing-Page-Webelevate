@@ -401,6 +401,7 @@ export const realisations: Realisation[] = featuredSlugs
 // liste de ce qui est inclus. Ordre d'affichage = ordre du tableau.
 export type ServiceDetail = {
   slug: string;
+  page: string; // page détaillée du service (content/services/<page>.md)
   kicker: string; // sous-titre métier au-dessus du titre
   title: string;
   headline: string;
@@ -411,6 +412,7 @@ export type ServiceDetail = {
 export const serviceDetails: ServiceDetail[] = [
   {
     slug: "sites-internet",
+    page: "/services/creation-site-internet",
     kicker: "Conception & développement",
     title: "Site internet",
     headline: "Votre site ne doit pas juste exister. Il doit vendre.",
@@ -426,6 +428,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "ia",
+    page: "/services/automatisation-ia",
     kicker: "Automatisation & assistants",
     title: "IA",
     headline: "Vos journées font 24 heures. On vous en rend quelques-unes.",
@@ -441,6 +444,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "video",
+    page: "/services/production-video",
     kicker: "Production & montage",
     title: "Vidéo",
     headline: "Vous avez 3 secondes pour capter l'attention. On les soigne.",
@@ -456,6 +460,7 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "photo",
+    page: "/services/photographe-entreprise",
     kicker: "Shooting & direction artistique",
     title: "Photo",
     headline: "On ne prend pas des photos. On construit votre image.",

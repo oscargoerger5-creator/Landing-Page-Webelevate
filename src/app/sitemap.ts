@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { realisationsList } from "@/lib/realisations";
+import { contentPath, getAllContent } from "@/lib/content";
 
 // Pas de lastModified : une date qui change à chaque build (new Date())
 // n'apporte rien et Google finit par ignorer le champ. À réintroduire avec de
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/realisations", priority: 0.9 },
     { path: "/studio", priority: 0.7 },
     { path: "/contact", priority: 0.8 },
+    { path: "/guides", priority: 0.7 },
     { path: "/mentions-legales", priority: 0.2 },
     { path: "/confidentialite", priority: 0.2 },
     { path: "/cgv", priority: 0.2 },
@@ -22,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pages.map((p) => ({
       url: `${BASE_URL}${p.path}`,
       priority: p.priority,
+    })),
+    // Contenus SEO : vraie date de mise à jour (frontmatter dateModified).
+    ...getAllContent().map((e) => ({
+      url: `${BASE_URL}${contentPath(e)}`,
+      lastModified: e.dateModified,
+      priority: e.kind === "guide" ? 0.7 : 0.9,
     })),
     ...realisationsList.map((r) => ({
       url: `${BASE_URL}/realisations/${r.slug}`,

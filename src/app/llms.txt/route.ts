@@ -1,5 +1,6 @@
 import { faq, serviceDetails, site } from "@/lib/site";
 import { orderedRealisations, realisationCategories } from "@/lib/realisations";
+import { contentPath, getContent } from "@/lib/content";
 
 // /llms.txt : résumé du site en texte brut pour les moteurs IA (ChatGPT,
 // Perplexity, Claude…). Généré depuis les données du site, donc toujours à
@@ -22,6 +23,18 @@ export function GET() {
     ...serviceDetails.map(
       (s) =>
         `- [${s.title}](${site.url}/services#${s.slug}) : ${s.description} Inclus : ${s.included.join(", ")}.`,
+    ),
+    "",
+    "## Pages détaillées",
+    "",
+    ...[...getContent("services"), ...getContent("pages")].map(
+      (e) => `- [${e.title}](${site.url}${contentPath(e)}) : ${e.answer}`,
+    ),
+    "",
+    "## Guides",
+    "",
+    ...getContent("guides").map(
+      (e) => `- [${e.title}](${site.url}${contentPath(e)}) : ${e.answer}`,
     ),
     "",
     "## Chiffres clés",

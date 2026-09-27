@@ -2,11 +2,18 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { faq } from "@/lib/site";
+import { faq, type FaqItem } from "@/lib/site";
 
 // FAQ — accordéon minimaliste : tout fermé par défaut, une question ouverte
 // à la fois, ouverture animée (grid-rows), icône + qui pivote en ×.
-export function Faq() {
+// `items` / `title` : FAQ spécifique d'une page (par défaut, celle de l'accueil).
+export function Faq({
+  items = faq,
+  title = "Les questions qu'on nous pose",
+}: {
+  items?: FaqItem[];
+  title?: string;
+} = {}) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
@@ -16,12 +23,12 @@ export function Faq() {
           FAQ
         </p>
         <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-          Les questions qu'on nous pose
+          {title}
         </h2>
       </div>
 
       <div className="mx-auto max-w-2xl divide-y divide-black/[0.08] border-y border-black/[0.08]">
-        {faq.map((item, i) => {
+        {items.map((item, i) => {
           const isOpen = open === i;
           return (
             <div key={i}>
