@@ -27,16 +27,20 @@ export const siteJsonLd = {
       image: absoluteUrl("/logo-webelevate-icon.png"),
       email: site.email,
       telephone: "+33658488714",
+      // Même localisation que la fiche Google Business (zone de service
+      // « Strasbourg ») ; le siège légal (Benfeld) figure dans les mentions légales.
       address: {
         "@type": "PostalAddress",
-        streetAddress: "16 rue Eugène Dischert",
-        postalCode: "67230",
-        addressLocality: "Benfeld",
+        addressLocality: "Strasbourg",
         addressRegion: "Grand Est",
         addressCountry: "FR",
       },
       areaServed: [
         { "@type": "City", name: "Strasbourg" },
+        { "@type": "City", name: "Benfeld" },
+        { "@type": "City", name: "Erstein" },
+        { "@type": "City", name: "Sélestat" },
+        { "@type": "City", name: "Obernai" },
         { "@type": "AdministrativeArea", name: "Eurométropole de Strasbourg" },
         { "@type": "AdministrativeArea", name: "Alsace" },
         { "@type": "AdministrativeArea", name: "Grand Est" },

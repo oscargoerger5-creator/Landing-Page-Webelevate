@@ -112,6 +112,16 @@ export function SiteFooter() {
                 Vidéaste Strasbourg
               </Link>
             </li>
+            <li>
+              <Link href="/agence-web-benfeld" className={link}>
+                Agence web Benfeld
+              </Link>
+            </li>
+            <li>
+              <Link href="/agence-web-centre-alsace" className={link}>
+                Agence web centre Alsace
+              </Link>
+            </li>
           </ul>
         </nav>
 
