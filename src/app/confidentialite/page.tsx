@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
+  alternates: { canonical: "/confidentialite" },
 };
 
 // ⚠️ Compléter le responsable de traitement (section 1) avec les mêmes

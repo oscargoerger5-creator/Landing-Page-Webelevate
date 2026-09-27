@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
+  alternates: { canonical: "/mentions-legales" },
 };
 
 // Mentions complètes (LCEN art. 6-III).

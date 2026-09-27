@@ -8,8 +8,14 @@ export const site = {
   name: "webelevate",
   tagline: "Sites web, photo, vidéo & IA sous un même toit",
   description:
-    "Webelevate, agence créative et tech en Alsace, près de Strasbourg : création de sites internet, shootings photo, vidéos et automatisations IA pour les entreprises.",
+    "Webelevate, agence web, photo et vidéo à Strasbourg : sites sur-mesure livrés en 21 jours, vidéos d'entreprise, shootings photo et automatisations IA.",
   email: "oscargoergerpro@gmail.com", // TODO : passer sur contact@webelevate.fr quand le domaine sera actif
+  // Téléphone : doit rester identique à celui de la fiche Google Business.
+  phone: "06 58 48 87 14",
+  phoneHref: "tel:+33658488714",
+  // Zone d'intervention, affichée dans le footer et reprise dans le JSON-LD.
+  area: "Basé à Strasbourg · en Alsace et partout en France",
+  url: "https://webelevate.fr",
 } as const;
 
 export type NavItem = { label: string; href: string };

@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
 import { CalModalCleanup } from "@/components/cal-booking";
 import { site } from "@/lib/site";
+import { siteJsonLd } from "@/lib/schema";
 
 // Police principale : Outfit — sans-serif géométrique proche du wordmark Webelevate.
 const fontSans = Outfit({
@@ -19,12 +20,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // TODO : passer à https://webelevate.fr quand le domaine sera actif
-  // (mettre aussi à jour sitemap.ts et robots.ts).
   metadataBase: new URL("https://webelevate.fr"),
   title: {
     // Mot-clé métier + zone géographique : ce qui s'affiche dans Google.
-    default: "Webelevate · Agence web, photo & vidéo en Alsace",
+    default: "Webelevate · Agence web, photo & vidéo à Strasbourg",
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -33,32 +32,6 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     type: "website",
   },
-};
-
-// Données structurées : l'agence en tant qu'entreprise locale (SEO / GEO).
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Webelevate",
-  description: site.description,
-  url: "https://webelevate.fr",
-  logo: "https://webelevate.fr/logo-webelevate-icon.png",
-  email: site.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "16 rue Eugène Dischert",
-    postalCode: "67230",
-    addressLocality: "Benfeld",
-    addressRegion: "Alsace",
-    addressCountry: "FR",
-  },
-  areaServed: ["Alsace", "Strasbourg", "Grand Est", "France"],
-  knowsAbout: [
-    "Création de sites internet",
-    "Photographie professionnelle",
-    "Production vidéo",
-    "Automatisation IA",
-  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -71,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessJsonLd),
+            __html: JSON.stringify(siteJsonLd),
           }}
         />
         <SiteHeader />

@@ -7,9 +7,10 @@ import { FinalCta } from "@/components/final-cta";
 import { serviceDetails } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Création de site, vidéo, photo & IA à Strasbourg",
   description:
-    "Sites internet, IA, vidéo et photo : les services de l'agence Webelevate, sous un même toit.",
+    "Sites internet sur-mesure, production vidéo, shootings photo et automatisations IA : une seule équipe à Strasbourg. Site livré en 21 jours, retours illimités.",
+  alternates: { canonical: "/services" },
 };
 
 // Diaporama par paires de la même catégorie : humains ensemble, voitures

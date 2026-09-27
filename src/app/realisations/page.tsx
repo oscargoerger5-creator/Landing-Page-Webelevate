@@ -3,9 +3,10 @@ import { RealisationsGrid } from "@/components/realisations-grid";
 import { FinalCta } from "@/components/final-cta";
 
 export const metadata: Metadata = {
-  title: "Réalisations",
+  title: "Réalisations web, vidéo & photo en Alsace",
   description:
-    "Sites internet, e-commerce et vidéos réalisés par Webelevate : CG Poissonnerie, Cuisine Schmidt, Dachser, Naawah et bien d'autres. Découvrez nos projets et leurs résultats.",
+    "30+ projets réalisés par Webelevate : sites internet, e-commerce, vidéos et shootings pour Cuisine Schmidt, Dachser, SaaS Summit, Naawah… Découvrez les résultats.",
+  alternates: { canonical: "/realisations" },
 };
 
 // RÉALISATIONS — grille filtrable par catégorie, chaque carte mène à une

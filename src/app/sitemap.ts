@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { realisationsList } from "@/lib/realisations";
 
-// TODO : remplacer par https://webelevate.fr quand le domaine sera actif
-// (penser aussi au metadataBase du layout).
+// Pas de lastModified : une date qui change à chaque build (new Date())
+// n'apporte rien et Google finit par ignorer le champ. À réintroduire avec de
+// vraies dates de mise à jour quand les contenus en auront.
 const BASE_URL = "https://webelevate.fr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,12 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...pages.map((p) => ({
       url: `${BASE_URL}${p.path}`,
-      lastModified: new Date(),
       priority: p.priority,
     })),
     ...realisationsList.map((r) => ({
       url: `${BASE_URL}/realisations/${r.slug}`,
-      lastModified: new Date(),
       priority: 0.7,
     })),
   ];
