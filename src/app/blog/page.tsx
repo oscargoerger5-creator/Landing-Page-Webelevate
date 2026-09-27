@@ -38,12 +38,28 @@ function ArticleCard({ e, cta }: { e: ContentEntry; cta: string }) {
   );
 }
 
-// BLOG — tous les articles SEO : guides et conseils (content/blog/*.md),
-// puis les pages « site internet pour [métier] » (content/pages, kind metier).
-export default function BlogPage() {
-  const articles = getContent("blog");
-  const metiers = getContent("pages").filter((e) => e.kind === "metier");
+// BLOG — tous les contenus SEO, rangés par catégorie : guides et conseils
+// (content/blog), pages services, pages locales et pages métier.
+const SECTIONS: {
+  title: string;
+  cta: string;
+  items: () => ContentEntry[];
+}[] = [
+  { title: "Guides et conseils", cta: "Lire l'article", items: () => getContent("blog") },
+  { title: "Nos services en détail", cta: "Découvrir", items: () => getContent("services") },
+  {
+    title: "Près de chez vous",
+    cta: "Voir la page",
+    items: () => getContent("pages").filter((e) => e.kind === "ville"),
+  },
+  {
+    title: "Site internet par métier",
+    cta: "Voir la page",
+    items: () => getContent("pages").filter((e) => e.kind === "metier"),
+  },
+];
 
+export default function BlogPage() {
   return (
     <>
       <section className="mx-auto max-w-6xl px-6 pb-10 pt-20 md:pt-28">
@@ -60,27 +76,22 @@ export default function BlogPage() {
           </p>
         </div>
 
-        <h2 className="mt-16 text-sm font-medium uppercase tracking-widest text-black/40">
-          Guides et conseils
-        </h2>
-        <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {articles.map((e) => (
-            <ArticleCard key={e.slug} e={e} cta="Lire l'article" />
-          ))}
-        </div>
-
-        {metiers.length > 0 && (
-          <>
-            <h2 className="mt-16 text-sm font-medium uppercase tracking-widest text-black/40">
-              Site internet par métier
-            </h2>
-            <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {metiers.map((e) => (
-                <ArticleCard key={e.slug} e={e} cta="Voir la page" />
-              ))}
+        {SECTIONS.map((section) => {
+          const items = section.items();
+          if (items.length === 0) return null;
+          return (
+            <div key={section.title}>
+              <h2 className="mt-16 text-sm font-medium uppercase tracking-widest text-black/40">
+                {section.title}
+              </h2>
+              <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {items.map((e) => (
+                  <ArticleCard key={e.slug} e={e} cta={section.cta} />
+                ))}
+              </div>
             </div>
-          </>
-        )}
+          );
+        })}
       </section>
       <FinalCta />
     </>
