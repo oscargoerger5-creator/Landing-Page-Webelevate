@@ -24,6 +24,7 @@ const faqJsonLd = {
 };
 
 // ACCUEIL — ordre : Hero → Clients → Réalisations → Services → Process → Avis → CTA.
+// Les réalisations passent avant les services : la preuve d'abord, l'offre ensuite.
 export default function HomePage() {
   return (
     <>
@@ -34,11 +35,11 @@ export default function HomePage() {
       {/* HERO (composant dédié) + slider clients */}
       <Hero />
 
-      {/* SERVICES — bento 2×2 (Vidéo · Photo · Site · IA) */}
-      <ServicesBento />
-
       {/* RÉALISATIONS — carrousel de projets */}
       <RealisationsGallery />
+
+      {/* SERVICES — bento 2×2 (Vidéo · Photo · Site · IA) */}
+      <ServicesBento />
 
       {/* PROCESS — frise parcours + délai */}
       <ProcessTimeline />
