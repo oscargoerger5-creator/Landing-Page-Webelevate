@@ -369,6 +369,7 @@ export const socialProof = {
 // Réalisations mises en avant dans le carrousel de l'accueil :
 // une sélection des vrais projets (données dans lib/realisations.ts).
 const featuredSlugs = [
+  "ethan-prosper",
   "dachser",
   "cuisine-schmidt",
   "saas-summit",

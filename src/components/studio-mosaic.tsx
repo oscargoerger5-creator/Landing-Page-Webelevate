@@ -23,6 +23,7 @@ type MosaicItem = {
 const mosaic: MosaicItem[] = [
   { client: "Fynn · Porsche Spyder RS", slug: "fynn-porsche", aspect: "aspect-[2/3]", images: ["/realisations/fynn-10.jpg", "/realisations/fynn-12.jpg", "/realisations/fynn-2.jpg"] },
   { client: "Dachser", slug: "dachser", aspect: "aspect-[3/2]", images: ["/realisations/dachser.jpg"] },
+  { client: "Ethan Prosper · Vlog Bali", slug: "ethan-prosper", aspect: "aspect-video", images: ["/realisations/ethan-prosper.jpg"] },
   { client: "SaaS Summit", slug: "saas-summit", aspect: "aspect-[2/3]", images: ["/realisations/saas-summit-7.jpg", "/realisations/saas-summit-3.jpg", "/realisations/saas-summit-5.jpg"] },
   { client: "MG Chapelon", slug: "mg-chapelon", aspect: "aspect-[9/16]", video: "/realisations/mg-reel-2.mp4", poster: "/realisations/mg-reel-2.jpg" },
   { client: "Thomas · Cupra", slug: "thomas-cupra", aspect: "aspect-[2/3]", images: ["/realisations/thomas-1.jpg", "/realisations/thomas-4.jpg", "/realisations/thomas-6.jpg"] },
@@ -147,7 +148,7 @@ export function StudioMosaic() {
     slug: m.slug,
     aspect: m.aspect,
   }));
-  const rows = [flat.slice(0, 9), flat.slice(9, 18), flat.slice(18, 27)];
+  const rows = [flat.slice(0, 10), flat.slice(10, 20), flat.slice(20, 30)];
   // Les rangées haut/bas ont des images plus grandes : à durée égale elles
   // paraissent traîner. On raccourcit leur durée pour retrouver la vivacité
   // de la rangée du milieu (qui reste la référence, inchangée).

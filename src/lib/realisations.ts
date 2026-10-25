@@ -768,6 +768,24 @@ export const realisationsList: Realisation[] = [
       "Une vidéo publiée sur sa chaîne avec une image professionnelle, à découvrir ci-dessous.",
   },
   {
+    slug: "ethan-prosper",
+    tags: ["Vlog YouTube", "Drone", "Étalonnage"],
+    client: "Ethan Prosper",
+    category: "video",
+    image: "/realisations/ethan-prosper.jpg",
+    youtube: "mjkn9oLBdTM",
+    youtubeTitle: "Le vlog YouTube",
+    title: "Parti à Bali pour trader dans un manoir à 10 000 000 $",
+    summary:
+      "Vidéaste et étalonneur sur le vlog Bali d'Ethan Prosper : tournage, images drone et colorgrading d'une vidéo YouTube suivie à l'international.",
+    context:
+      "Ethan Prosper, créateur de contenu suivi à l'international, tournait un vlog à Bali pour sa chaîne YouTube. Il lui fallait une équipe capable de capter le voyage avec un niveau d'image à la hauteur de son audience.",
+    solution:
+      "Nous avons accompagné le tournage sur place en tant que vidéaste : captation du vlog, images drone au-dessus de Bali, puis étalonnage complet de la vidéo (colorgrading) pour un rendu cinématique cohérent du premier au dernier plan.",
+    results:
+      "Un vlog publié sur sa chaîne avec une image signée : des plans drone qui posent le décor et un étalonnage qui donne son ambiance à la vidéo, à découvrir ci-dessous.",
+  },
+  {
     slug: "d4mss",
     tags: ["Shooting photo", "Artiste", "Réseaux sociaux"],
     client: "D4MSS",
@@ -797,6 +815,7 @@ export const realisationsList: Realisation[] = [
 export const featuredOrder = [
   "dachser",
   "cuisine-schmidt",
+  "ethan-prosper",
   "saas-summit",
   "mg-chapelon",
   "naawah",
