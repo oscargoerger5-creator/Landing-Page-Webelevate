@@ -317,7 +317,7 @@ export const realisationsList: Realisation[] = [
   },
   {
     slug: "mg-chapelon",
-    tags: ["Direction artistique", "Tournage", "Montage"],
+    tags: ["Direction artistique", "Tournage", "Montage", "Motion design"],
     image: "/realisations/mg-chapelon.jpg",
     reels: [
       { src: "/realisations/mg-reel-1.mp4", poster: "/realisations/mg-reel-1.jpg" },
@@ -334,7 +334,7 @@ export const realisationsList: Realisation[] = [
     context:
       "Mathias et Grégoire Chapelon voulaient professionnaliser leur image pour accompagner leur croissance : des contenus à la hauteur de leurs ambitions, cohérents sur tous leurs canaux.",
     solution:
-      "Nous travaillons leur image de marque en continu : vidéos YouTube, reels et photos pour Instagram, avec une direction artistique constante, des tournages soignés et un montage exigeant. La collaboration s'étend à leurs événements, aux côtés de Paul-Marie Hamon et Rafael Guilbert.",
+      "Nous travaillons leur image de marque en continu : vidéos YouTube dont nous assurons le montage et le motion design, reels et photos pour Instagram, avec une direction artistique constante et des tournages soignés. La collaboration s'étend à leurs événements, aux côtés de Paul-Marie Hamon et Rafael Guilbert.",
     results:
       "Une identité visuelle affirmée, des contenus dont la qualité sert directement leur crédibilité d'entrepreneurs, et une collaboration qui dure depuis maintenant plusieurs mois.",
     testimonial: {
@@ -786,6 +786,58 @@ export const realisationsList: Realisation[] = [
       "Un vlog publié sur sa chaîne avec une image signée : des plans drone qui posent le décor et un étalonnage qui donne son ambiance à la vidéo, à découvrir ci-dessous.",
   },
   {
+    slug: "v-house-bali",
+    tags: ["Réel Instagram", "Villa de luxe", "Drone", "Étalonnage"],
+    client: "V House Bali",
+    category: "video",
+    extraCategories: ["photo"],
+    image: "/realisations/vhouse-5.jpg",
+    reels: [
+      { src: "/realisations/vhouse-reel-1.mp4", poster: "/realisations/vhouse-reel-1.jpg" },
+    ],
+    gallery: [
+      "/realisations/vhouse-1.jpg",
+      "/realisations/vhouse-2.jpg",
+      "/realisations/vhouse-3.jpg",
+      "/realisations/vhouse-5.jpg",
+      "/realisations/vhouse-6.jpg",
+      "/realisations/vhouse-7.jpg",
+      "/realisations/vhouse-8.jpg",
+      "/realisations/vhouse-9.jpg",
+      "/realisations/vhouse-10.jpg",
+      "/realisations/vhouse-11.jpg",
+      "/realisations/vhouse-12.jpg",
+      "/realisations/vhouse-13.jpg",
+    ],
+    title: "Le réel d'une des plus grandes villas de Bali",
+    summary:
+      "Réel Instagram pour la V House à Bali : une villa d'exception où séjournent des artistes français et des célébrités internationales.",
+    context:
+      "La V House est l'une des plus grandes villas de Bali : un lieu d'exception où séjournent des artistes français de passage sur l'île et des célébrités internationales. Il lui fallait un contenu à la hauteur du lieu pour sa communication.",
+    solution:
+      "Nous avons tourné un réel sur place : plans drone au-dessus de la propriété, cadrages soignés de l'architecture, de la piscine et des jardins, puis montage et étalonnage pour un rendu cinématique fidèle à l'atmosphère de la villa.",
+    results:
+      "Un réel publié sur le compte Instagram de la villa et une série d'images qui nourrissent sa communication, à découvrir ci-dessous.",
+  },
+  {
+    slug: "mg-chapelon-youtube",
+    tags: ["Montage vidéo", "Motion design", "Vidéo YouTube"],
+    client: "MG Chapelon",
+    category: "video",
+    image: "/realisations/mg-youtube.jpg",
+    youtube: "539weTkAh8w",
+    youtubeTitle: "La vidéo YouTube",
+    title: "Comment ce SaaS a atteint 1 milliard sans un euro de pub",
+    summary:
+      "Montage et motion design de la vidéo YouTube de MG Chapelon : une stratégie SaaS décortiquée, portée par une image et des animations soignées.",
+    context:
+      "Mathias et Grégoire Chapelon décortiquent dans cette vidéo la stratégie d'un SaaS devenu une entreprise à 1 milliard sans budget publicitaire. Un format long et dense, qui demandait un montage capable de tenir l'attention de bout en bout.",
+    solution:
+      "Nous avons assuré le montage complet de la vidéo et son motion design : rythme, habillage, animations des chiffres et des concepts clés, pour rendre la stratégie lisible et garder le spectateur dans le récit.",
+    results:
+      "Une vidéo publiée sur leur chaîne YouTube, au niveau d'exigence de leur image de marque, à découvrir ci-dessous.",
+  },
+  {
     slug: "d4mss",
     tags: ["Shooting photo", "Artiste", "Réseaux sociaux"],
     client: "D4MSS",
@@ -817,6 +869,8 @@ export const featuredOrder = [
   "cuisine-schmidt",
   "ethan-prosper",
   "saas-summit",
+  "v-house-bali",
+  "mg-chapelon-youtube",
   "mg-chapelon",
   "naawah",
   "saas-workshop",
