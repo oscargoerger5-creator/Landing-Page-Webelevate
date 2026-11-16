@@ -768,6 +768,24 @@ export const realisationsList: Realisation[] = [
       "Une vidéo publiée sur sa chaîne avec une image professionnelle, à découvrir ci-dessous.",
   },
   {
+    slug: "ethan-prosper-singapour",
+    tags: ["Vlog YouTube", "Cadrage", "Étalonnage"],
+    client: "Ethan Prosper",
+    category: "video",
+    image: "/realisations/ethan-prosper-singapour.jpg",
+    youtube: "1siuLu5PuMA",
+    youtubeTitle: "Le vlog YouTube",
+    title: "Life as a 22 Year Old Millionaire in Singapore",
+    summary:
+      "Cadrage et étalonnage du vlog Singapour d'Ethan Prosper : tournage de toute la vidéo, retouches et colorgrading d'une vidéo YouTube suivie à l'international.",
+    context:
+      "Ethan Prosper, créateur de contenu suivi à l'international, tournait un vlog à Singapour pour sa chaîne YouTube. Il avait besoin de quelqu'un pour cadrer toute la vidéo et prendre en charge les retouches, avec un niveau d'image à la hauteur de son audience.",
+    solution:
+      "Nous avons assuré le cadrage de l'ensemble du vlog sur place, puis les retouches et l'étalonnage complet de la vidéo (colorgrading) pour un rendu cinématique cohérent du premier au dernier plan.",
+    results:
+      "Un vlog publié sur sa chaîne avec une image soignée : des plans bien composés et un étalonnage qui donne son ambiance à la vidéo, à découvrir ci-dessous.",
+  },
+  {
     slug: "ethan-prosper",
     tags: ["Vlog YouTube", "Drone", "Étalonnage"],
     client: "Ethan Prosper",
@@ -865,6 +883,7 @@ export const realisationsList: Realisation[] = [
 // Ordre de mise en avant : les projets les plus forts d'abord (vue « Tous »
 // et carrousel de l'accueil). Les slugs absents gardent l'ordre du tableau.
 export const featuredOrder = [
+  "ethan-prosper-singapour",
   "dachser",
   "cuisine-schmidt",
   "ethan-prosper",
