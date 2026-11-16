@@ -62,6 +62,7 @@ const terrains: Terrain[] = [
   {
     label: "Créateurs",
     projects: [
+      { slug: "ethan-prosper-singapour", client: "Ethan Prosper · Vlog Singapour", src: "/realisations/ethan-prosper-singapour.jpg" },
       { slug: "ethan-prosper", client: "Ethan Prosper · Vlog Bali", src: "/realisations/ethan-prosper.jpg" },
       { slug: "mg-chapelon", client: "MG Chapelon", src: "/realisations/mg-chapelon.jpg" },
       { slug: "julien-krieg", client: "Julien Krieg", src: "/realisations/julien-krieg.jpg" },
